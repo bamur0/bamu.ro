@@ -56,12 +56,20 @@ The biggest finding was search. The first version searched within specific filte
 
 Sign-in and its scenarios (including a session open on another device), terms of use, home, catalog, create and edit, history, loading, errors and empty search. All of it in three resolutions, from 1366 to 2560 px, plus a clickable prototype for testing.
 
+## A design system built to scale to more suppliers
+
+The portal was designed for one supplier, but meant to open up to any of them. So I built a dedicated design system, versioned and with a changelog, in a Figma library separate from the product.
+
+It follows Atomic Design: foundations, 7 atom families, 15 molecule families and 15 organism families, from a button up to the product table or the validity list. That adds up to 599 variants, because every component ships with its states (default, hover, disabled, error), not just its happy path.
+
+Color lives in two layers. 104 primitive variables define the palette and 133 semantic tokens give each color a role, with names like `color/background/button/primary-normal`. Components only use tokens: when a color changes, it changes in one place, and engineering knows exactly which value to use in every state.
+
+<Figure caption="Figures from the original system and its token architecture, recreated. Pick a chain.">
+  <DesignSystemSpecimen />
+</Figure>
+
 ## Outcome
 
 Updates no longer depend on time zones: whatever the supplier changes shows up in the ERP right away. With the catalog current, sales reps quote with valid information and recover sales opportunities, such as products moving from discontinued back to available.
 
 The platform launched with one supplier and is now used by three. It's ready to onboard any new supplier.
-
-<Pending>
-How many components and tokens does the design system have? Does it live in a separate Figma library? If so, open it with the plugin so I can read it.
-</Pending>

@@ -56,12 +56,20 @@ El hallazgo más importante fue el buscador. La primera versión buscaba dentro 
 
 Inicio de sesión con sus escenarios (incluida la sesión abierta en otro dispositivo), acuerdo de uso, inicio, catálogo, alta y edición, historial, carga, error y búsqueda sin resultados. Todo en tres resoluciones, de 1366 a 2560 px, más un prototipo navegable para las pruebas.
 
+## Un sistema de diseño para escalar a más proveedores
+
+El portal se diseñó para un proveedor, pero con la idea de abrirlo a cualquiera. Por eso construí un sistema de diseño propio, versionado y con changelog, en una librería de Figma separada del producto.
+
+Está organizado con Atomic Design: fundamentos, 7 familias de átomos, 15 de moléculas y 15 de organismos, desde un botón hasta la tabla de productos o la lista de vigencias. En total son 599 variantes, porque cada componente incluye sus estados (normal, hover, deshabilitado, error) y no solo su versión ideal.
+
+Los colores viven en dos capas. 104 variables primitivas definen la paleta y 133 tokens semánticos le dan un rol a cada color, con nombres como `color/background/button/primary-normal`. Los componentes solo usan tokens: si un color cambia, cambia en un solo lugar, y desarrollo sabe exactamente qué valor usar en cada estado.
+
+<Figure caption="Cifras del sistema original y su arquitectura de tokens, recreada. Elige una cadena.">
+  <DesignSystemSpecimen />
+</Figure>
+
 ## Resultado
 
 Las actualizaciones dejaron de depender del horario: lo que el proveedor cambia se ve en el ERP al momento. Con el catálogo al día, los ejecutivos cotizan con información vigente y recuperan oportunidades de venta, como productos que pasan de descontinuados a disponibles.
 
 La plataforma salió a producción con un proveedor y hoy la usan tres. Está lista para incorporar a cualquier proveedor nuevo.
-
-<Pending>
-¿Cuántos componentes y tokens tiene el sistema de diseño? ¿Vive en una librería de Figma aparte? Si es así, ábrela con el plugin para leerla.
-</Pending>

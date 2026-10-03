@@ -5,6 +5,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { PlantPicker } from "./mockups/plant-picker";
 import { PendingVisual } from "./mockups/pending-visual";
 import { ChangeHistory } from "./mockups/change-history";
+import { DesignSystemSpecimen } from "./mockups/design-system-specimen";
 
 /** Nota de contenido faltante. Se ve en la vista previa para saber qué falta; se borra antes de publicar. */
 function Pending({ children, label }: { children: React.ReactNode; label: string }) {
@@ -37,10 +38,12 @@ export function getMdxComponents(locale: Locale): MDXComponents {
     ul: (props) => <ul className="my-4 list-disc space-y-2 pl-5 text-[17px] leading-[1.7] text-ink-2 marker:text-muted" {...props} />,
     strong: (props) => <strong className="font-semibold text-ink" {...props} />,
     a: (props) => <a className="link text-ink" {...props} />,
+    code: (props) => <code className="rounded-[5px] bg-surface-2 px-1.5 py-0.5 font-mono text-[0.85em] text-ink" {...props} />,
     Pending: ({ children }: { children: React.ReactNode }) => <Pending label={dict.case.pending}>{children}</Pending>,
     Figure,
     PlantPicker: () => <PlantPicker locale={locale} />,
     ChangeHistory: () => <ChangeHistory locale={locale} />,
+    DesignSystemSpecimen: () => <DesignSystemSpecimen locale={locale} />,
     PendingVisual: ({ label }: { label: string }) => (
       <div className="my-12 md:-mx-16 lg:-mx-32">
         <PendingVisual label={label} />
