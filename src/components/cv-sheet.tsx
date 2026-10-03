@@ -44,19 +44,23 @@ export function CvSheet({ cv }: { cv: Cv }) {
 
         <Section title={cv.headings.experience}>
           {cv.roles.map((r) => (
-            <div key={r.org + r.dates} className="break-inside-avoid">
-              <div className="flex flex-wrap justify-between gap-x-4">
-                <p>
-                  <span className="font-semibold">{r.org}</span>, {r.place}
-                </p>
-                <p>{r.dates}</p>
-              </div>
-              <p className="italic">{r.title}</p>
-              <ul className="mt-1.5 list-disc space-y-1 pl-5 marker:text-neutral-500">
-                {r.bullets.map((b) => (
-                  <li key={b.slice(0, 32)}>{b}</li>
-                ))}
-              </ul>
+            <div key={r.org}>
+              <p>
+                <span className="font-semibold">{r.org}</span>, {r.place}
+              </p>
+              {r.positions.map((pos) => (
+                <div key={pos.title + pos.dates} className="mt-1.5 break-inside-avoid">
+                  <div className="flex flex-wrap justify-between gap-x-4">
+                    <p className="italic">{pos.title}</p>
+                    <p>{pos.dates}</p>
+                  </div>
+                  <ul className="mt-1 list-disc space-y-1 pl-5 marker:text-neutral-500">
+                    {pos.bullets.map((b) => (
+                      <li key={b.slice(0, 32)}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
               <p className="mt-1.5 text-[0.92em] text-neutral-600">
                 <span className="font-semibold italic">{cv.headings.tools}</span> <span className="italic">{r.tools}</span>
               </p>

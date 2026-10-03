@@ -104,7 +104,7 @@ export function QuoteWorkspace({
                     </button>
                   </div>
                   <div className="mt-4 flex items-center gap-3">
-                    <span className="grid size-10 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold">DA</span>
+                    <span className="grid size-10 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold">CC</span>
                     <div>
                       <p className="text-[14px] font-semibold leading-tight">{t.client}</p>
                       <p className="text-muted">{t.clientType}</p>
@@ -136,7 +136,7 @@ export function QuoteWorkspace({
                     <p className="text-[11px] text-muted">{t.contact}</p>
                     <p className="mt-1 font-medium">{t.contactName}</p>
                     <p className="mt-1 flex items-center gap-1.5 text-ink-2">
-                      <EnvelopeSimple size={13} /> lparedes@ejemplo.pe
+                      <EnvelopeSimple size={13} /> compras@ejemplo.com
                     </p>
                   </div>
                 </motion.div>

@@ -6,12 +6,13 @@ import type { Locale } from "@/i18n/config";
  * Viñetas con verbo de acción, contexto del dominio e impacto medible, sin punto final.
  * Sin nombres de clientes (confidencialidad), sin foto ni teléfono en la versión web.
  */
+export type CvPosition = { title: string; dates: string; bullets: string[] };
+
+/** Una empresa con uno o más puestos (un ascenso se muestra dentro de la misma empresa). */
 export type CvRole = {
-  title: string;
   org: string;
   place: string;
-  dates: string;
-  bullets: string[];
+  positions: CvPosition[];
   tools: string;
 };
 
@@ -41,22 +42,33 @@ export const cv: Record<Locale, Cv> = {
       tools: "Herramientas:",
     },
     profile:
-      "Product Designer con más de 3 años diseñando productos B2B de punta a punta: plataformas de compra, ERP y CMS. Combina análisis de negocio, diseño UX/UI, sistemas de diseño y QA para llevar requisitos complejos a productos en producción con impacto medible.",
+      "Product Designer con más de 3 años diseñando productos digitales de punta a punta, de plataformas de compra a ERP y CMS. Combina análisis de negocio, diseño UX/UI, sistemas de diseño y QA para llevar requisitos complejos a productos en producción con impacto medible.",
     roles: [
       {
-        title: "UX/UI y Product Designer",
         org: "RYNDEM Studios",
         place: "Cuernavaca, Morelos",
-        dates: "2023 – Presente",
-        bullets: [
-          "Lideré de punta a punta, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor de insumos de laboratorio con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de la cotización al pedido",
-          "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, eliminando días de espera causados por una diferencia horaria de 12 horas; en producción con 3 proveedores",
-          "Construí el sistema de diseño del CMS con Atomic Design: 117 componentes con 599 variantes y 237 variables (104 primitivas y 133 tokens semánticos), versionado para escalar a nuevos proveedores",
-          "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de 40% las cotizaciones resueltas fuera del sistema",
-          "Participé en la adaptación del módulo de ventas del ERP para operar en Perú, desde las entrevistas con stakeholders hasta el QA y la implementación",
-          "Diseñé y ejecuté casos de prueba de QA con heurísticas de Nielsen y criterios de aceptación antes de cada liberación",
-          "Integré herramientas de IA en el flujo de diseño para prototipado rápido, documentación y validación con desarrollo",
-          "Colaboré con equipos de desarrollo y negocio bajo Agile/Scrum en planeación de sprints, revisiones de diseño y entregas iterativas",
+        positions: [
+          {
+            title: "Product Designer",
+            dates: "2025 – Presente",
+            bullets: [
+              "Lideré de punta a punta, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de la cotización al pedido",
+              "Definí requisitos, flujos y criterios de aceptación con stakeholders de negocio y desarrollo, y acompañé cada producto hasta su salida a producción",
+              "Integré herramientas de IA en el flujo de diseño para prototipado rápido, documentación y validación con desarrollo",
+              "Colaboré con equipos de desarrollo y negocio bajo Agile/Scrum en planeación de sprints, revisiones de diseño y entregas iterativas",
+            ],
+          },
+          {
+            title: "UX/UI Designer",
+            dates: "2023 – 2024",
+            bullets: [
+              "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, eliminando días de espera causados por una diferencia horaria de 12 horas; en producción con 3 proveedores",
+              "Construí el sistema de diseño del CMS con Atomic Design: 117 componentes con 599 variantes y 237 variables (104 primitivas y 133 tokens semánticos), versionado para escalar a nuevos proveedores",
+              "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de 40% las cotizaciones resueltas fuera del sistema",
+              "Participé en la adaptación del módulo de ventas del ERP para operar en Perú, desde las entrevistas con stakeholders hasta el QA y la implementación",
+              "Diseñé y ejecuté casos de prueba de QA con heurísticas de Nielsen y criterios de aceptación antes de cada liberación",
+            ],
+          },
         ],
         tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Gemini, Stitch, NotebookLM",
       },
@@ -90,22 +102,33 @@ export const cv: Record<Locale, Cv> = {
       tools: "Tools:",
     },
     profile:
-      "Product Designer with 3+ years designing B2B products end to end: procurement platforms, ERP and CMS. Combines business analysis, UX/UI design, design systems and QA to turn complex requirements into shipped products with measurable impact.",
+      "Product Designer with 3+ years designing digital products end to end, from procurement platforms to ERP and CMS. Combines business analysis, UX/UI design, design systems and QA to turn complex requirements into shipped products with measurable impact.",
     roles: [
       {
-        title: "UX/UI and Product Designer",
         org: "RYNDEM Studios",
         place: "Cuernavaca, Mexico",
-        dates: "2023 – Present",
-        bullets: [
-          "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a laboratory supplies distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut quote-to-order time by about 80%",
-          "Led UX/UI design of a CMS that lets international suppliers sync their catalog with the ERP in real time, removing days of delay caused by a 12-hour time difference; in production with 3 suppliers",
-          "Built the CMS design system with Atomic Design: 117 components with 599 variants and 237 variables (104 primitives and 133 semantic tokens), versioned to scale to new suppliers",
-          "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40%",
-          "Contributed to adapting the ERP sales module for Peru, from stakeholder interviews through QA and rollout",
-          "Designed and ran QA test cases against Nielsen's heuristics and acceptance criteria before every release",
-          "Integrated AI tools into the design workflow for rapid prototyping, documentation and validation with engineering",
-          "Partnered with engineering and business teams in Agile/Scrum on sprint planning, design reviews and iterative delivery",
+        positions: [
+          {
+            title: "Product Designer",
+            dates: "2025 – Present",
+            bullets: [
+              "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut quote-to-order time by about 80%",
+              "Defined requirements, flows and acceptance criteria with business and engineering stakeholders, and took each product through to production",
+              "Integrated AI tools into the design workflow for rapid prototyping, documentation and validation with engineering",
+              "Partnered with engineering and business teams in Agile/Scrum on sprint planning, design reviews and iterative delivery",
+            ],
+          },
+          {
+            title: "UX/UI Designer",
+            dates: "2023 – 2024",
+            bullets: [
+              "Led UX/UI design of a CMS that lets international suppliers sync their catalog with the ERP in real time, removing days of delay caused by a 12-hour time difference; in production with 3 suppliers",
+              "Built the CMS design system with Atomic Design: 117 components with 599 variants and 237 variables (104 primitives and 133 semantic tokens), versioned to scale to new suppliers",
+              "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40%",
+              "Contributed to adapting the ERP sales module for Peru, from stakeholder interviews through QA and rollout",
+              "Designed and ran QA test cases against Nielsen's heuristics and acceptance criteria before every release",
+            ],
+          },
         ],
         tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Gemini, Stitch, NotebookLM",
       },

@@ -33,16 +33,16 @@ const products: Record<Locale, Product[]> = {
 
 export const plants = {
   es: [
-    { id: "n", name: "Planta Norte", mode: "Entrega parcial", address: "Av. Industria 420, Apodaca, N.L." },
-    { id: "c", name: "Planta Centro", mode: "Entrega total", address: "Calle Cobre 18, Tlalnepantla, Edo. Méx." },
-    { id: "o", name: "Planta Occidente", mode: "Entrega total", address: "Periférico Sur 7710, Tlaquepaque, Jal." },
-    { id: "b", name: "Planta Bajío", mode: "Entrega parcial", address: "Parque Industrial 3, El Marqués, Qro." },
+    { id: "n", name: "Planta Norte", mode: "Entrega parcial", address: "Av. Principal 420, Zona Norte" },
+    { id: "c", name: "Planta Centro", mode: "Entrega total", address: "Calle 18 núm. 25, Zona Centro" },
+    { id: "o", name: "Planta Occidente", mode: "Entrega total", address: "Blvd. Poniente 7710, Zona Oeste" },
+    { id: "b", name: "Planta Sur", mode: "Entrega parcial", address: "Parque Industrial, Nave 3" },
   ],
   en: [
-    { id: "n", name: "North plant", mode: "Partial delivery", address: "Av. Industria 420, Apodaca, N.L." },
-    { id: "c", name: "Central plant", mode: "Full delivery", address: "Calle Cobre 18, Tlalnepantla, Edo. Méx." },
-    { id: "o", name: "West plant", mode: "Full delivery", address: "Periférico Sur 7710, Tlaquepaque, Jal." },
-    { id: "b", name: "Bajío plant", mode: "Partial delivery", address: "Parque Industrial 3, El Marqués, Qro." },
+    { id: "n", name: "North plant", mode: "Partial delivery", address: "Av. Principal 420, Zona Norte" },
+    { id: "c", name: "Central plant", mode: "Full delivery", address: "Calle 18 núm. 25, Zona Centro" },
+    { id: "o", name: "West plant", mode: "Full delivery", address: "Blvd. Poniente 7710, Zona Oeste" },
+    { id: "b", name: "South plant", mode: "Partial delivery", address: "Parque Industrial, Nave 3" },
   ],
 } satisfies Record<Locale, { id: string; name: string; mode: string; address: string }[]>;
 
@@ -51,7 +51,7 @@ export const ui = {
     vendor: "Catálogo del proveedor",
     buyer: "Cliente corporativo",
     delivery: "Entrega parcial",
-    address: "Planta Norte, Av. Industria 420",
+    address: "Planta Norte, Av. Principal 420",
     timer: "10 min restantes",
     cancel: "Cancelar sesión",
     products: "Productos",
@@ -76,7 +76,7 @@ export const ui = {
     vendor: "Supplier catalog",
     buyer: "Corporate buyer",
     delivery: "Partial delivery",
-    address: "North plant, Av. Industria 420",
+    address: "North plant, Av. Principal 420",
     timer: "10 min left",
     cancel: "End session",
     products: "Products",

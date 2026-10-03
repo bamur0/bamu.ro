@@ -4,7 +4,7 @@ const es = {
   meta: {
     title: "Roberto Báez · Product Designer",
     description:
-      "Product designer en México. Diseño productos B2B complejos (ERP, plataformas de compra y CMS) de punta a punta, del levantamiento de requisitos al QA.",
+      "Product designer en México. Diseño productos digitales de punta a punta, del levantamiento de requisitos al QA.",
   },
   nav: {
     work: "Trabajo",
@@ -18,7 +18,7 @@ const es = {
   },
   hero: {
     greeting: "Hola, soy Roberto.",
-    title: "Diseño productos B2B complejos para que se sientan simples.",
+    title: "Diseño productos complejos para que se sientan simples.",
     lead: "Product designer en RYNDEM Studios. Llevo ERPs, plataformas de compra y CMS de la investigación al QA.",
     ctaWork: "Ver casos",
     ctaContact: "Escríbeme",
@@ -94,6 +94,9 @@ const es = {
   },
   footer: {
     rights: "Diseñado y construido por Roberto Báez",
+    madeWith: "Hecho con",
+    love: "amor",
+    and: "y",
   },
 };
 
@@ -103,7 +106,7 @@ const en: Dictionary = {
   meta: {
     title: "Roberto Báez · Product Designer",
     description:
-      "Product designer based in Mexico. I design complex B2B products (ERP, procurement platforms and CMS) end to end, from requirements to QA.",
+      "Product designer based in Mexico. I design digital products end to end, from requirements to QA.",
   },
   nav: {
     work: "Work",
@@ -117,7 +120,7 @@ const en: Dictionary = {
   },
   hero: {
     greeting: "Hi, I'm Roberto.",
-    title: "I design complex B2B products so they feel simple.",
+    title: "I design complex products so they feel simple.",
     lead: "Product designer at RYNDEM Studios. I take ERPs, procurement platforms and CMS from research to QA.",
     ctaWork: "See work",
     ctaContact: "Email me",
@@ -193,6 +196,9 @@ const en: Dictionary = {
   },
   footer: {
     rights: "Designed and built by Roberto Báez",
+    madeWith: "Made with",
+    love: "love",
+    and: "and",
   },
 };
 
