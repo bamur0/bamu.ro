@@ -1,0 +1,77 @@
+---
+order: 1
+title: Plataforma PunchOut B2B
+summary: Un catálogo conectado al sistema de compras del cliente. El comprador elige planta, arma su carrito con precios pactados y lo regresa como orden de compra.
+client: Distribuidor de insumos de laboratorio
+type: Producto nuevo
+year: "2026"
+role: Analista y Product Designer
+duration: 1 mes
+team: Diseño y análisis a mi cargo, con el equipo de desarrollo
+status: En producción
+cover: punchout
+---
+
+<Pending>
+Redacté el porqué de cada decisión a partir de las pantallas en Figma. Revísalo y corrige lo que no coincida con lo que realmente pasó.
+</Pending>
+
+## Contexto
+
+En una compra PunchOut el comprador nunca sale de su sistema de compras corporativo. Desde ahí "salta" al catálogo del proveedor, arma un pedido con sus precios negociados y regresa el carrito a su sistema, donde sigue el flujo de aprobación interno. No hay checkout ni pago: la sesión termina cuando el carrito se transfiere.
+
+<Pending>
+¿Con qué sistema de compras se integra (SAP Ariba, Coupa, otro)? ¿Qué problema tenía el cliente antes de esta plataforma?
+</Pending>
+
+## El reto
+
+Diseñar y liberar en un mes un producto completo para un usuario que no es el cliente habitual del proveedor: un comprador corporativo que llega con prisa, dentro de una sesión con tiempo límite, frente a un catálogo lleno de datos técnicos (SKU, número CAS, presentación, normatividad y tiempo de entrega).
+
+## Mi rol
+
+Fui el único diseñador y analista del proyecto. Levanté requisitos, definí el flujo, diseñé la interfaz y todos sus estados, documenté el handoff con anotaciones por componente y acompañé el QA hasta producción.
+
+## El flujo
+
+Validación de sesión, aviso de privacidad, selección de planta, catálogo, carrito y transferencia. Seis pasos, y en ninguno el comprador tiene que adivinar qué sigue.
+
+<Figure caption="Selección de planta. Pruébalo: la dirección define el tipo de entrega del pedido.">
+  <PlantPicker />
+</Figure>
+
+## Decisiones clave
+
+### La planta va antes que el catálogo
+
+Un mismo cliente corporativo tiene varias plantas, cada una con su dirección y su tipo de entrega (parcial o total). Elegirla al entrar deja claro desde el inicio a dónde va el pedido, y ese contexto se queda visible arriba durante toda la sesión, con la opción de cambiarlo.
+
+### El tiempo de sesión siempre a la vista
+
+La sesión PunchOut caduca. Perder un carrito armado es el peor error posible en este producto, así que el tiempo restante vive en la barra superior y, antes de que expire, un aviso da la opción de continuar. Cancelar la sesión también pide confirmación.
+
+### El carrito vive junto al catálogo
+
+El comprador no está explorando: está armando un pedido. Por eso el carrito no es otra página sino un panel fijo con subtotal, IVA y total, que se actualiza mientras agrega productos.
+
+### Diseñado para datos reales, no para datos bonitos
+
+Probé el diseño con nombres de producto de cientos de caracteres, precios de doce dígitos y cantidades de siete. En el catálogo el nombre se trunca y se lee completo al pasar el cursor; en el carrito se muestra entero porque ahí es donde el comprador verifica lo que va a pedir.
+
+## Todos los estados
+
+Diseñé cada estado antes de pasar a desarrollo: carga con skeleton, catálogo sin resultados, carrito vacío, error de sesión, confirmación de cancelación, sesión por expirar y transferencia en proceso. Lo que no se diseña se termina improvisando en código.
+
+## Pruebas con usuarios
+
+<Pending>
+¿Qué método usaste, con cuántas personas y qué cambió en el diseño gracias a las pruebas?
+</Pending>
+
+## Resultado
+
+La plataforma está en producción.
+
+<Pending>
+Agrega resultados: tiempo para armar un pedido, pedidos transferidos, errores o tickets de soporte, o comentarios del cliente.
+</Pending>

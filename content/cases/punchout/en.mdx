@@ -1,0 +1,77 @@
+---
+order: 1
+title: B2B PunchOut platform
+summary: A catalog connected to the customer's procurement system. Buyers pick a plant, build a cart with negotiated prices and send it back as a purchase order.
+client: Laboratory supplies distributor
+type: New product
+year: "2026"
+role: Analyst and Product Designer
+duration: 1 month
+team: Sole designer and analyst, with the engineering team
+status: In production
+cover: punchout
+---
+
+<Pending>
+I wrote the reasoning behind each decision from the Figma screens. Review it and fix anything that doesn't match what actually happened.
+</Pending>
+
+## Context
+
+In a PunchOut purchase the buyer never leaves their corporate procurement system. From there they "punch out" to the supplier's catalog, build an order with their negotiated prices and send the cart back to their system, where internal approval continues. There is no checkout or payment: the session ends when the cart is transferred.
+
+<Pending>
+Which procurement system does it integrate with (SAP Ariba, Coupa, other)? What problem did the client have before this platform?
+</Pending>
+
+## The challenge
+
+Design and ship a complete product in one month for someone who isn't the supplier's usual customer: a corporate buyer in a hurry, inside a time-limited session, facing a catalog full of technical data (SKU, CAS number, pack size, compliance and lead time).
+
+## My role
+
+I was the only designer and analyst on the project. I gathered requirements, defined the flow, designed the interface and every state, documented the handoff with per-component annotations, and supported QA through release.
+
+## The flow
+
+Session check, privacy notice, plant selection, catalog, cart and transfer. Six steps, and in none of them does the buyer have to guess what comes next.
+
+<Figure caption="Plant selection. Try it: the address sets the order's delivery type.">
+  <PlantPicker />
+</Figure>
+
+## Key decisions
+
+### Plant comes before the catalog
+
+One corporate customer has several plants, each with its own address and delivery type (partial or full). Choosing it on entry makes it clear from the start where the order is going, and that context stays visible at the top for the whole session, with the option to change it.
+
+### Session time always in view
+
+PunchOut sessions expire. Losing a built cart is the worst possible error in this product, so the remaining time lives in the top bar and, before it runs out, a notice offers to continue. Ending the session also asks for confirmation.
+
+### The cart lives next to the catalog
+
+The buyer isn't browsing: they're building an order. So the cart isn't another page but a fixed panel with subtotal, VAT and total that updates as products are added.
+
+### Designed for real data, not pretty data
+
+I tested the design with product names hundreds of characters long, twelve-digit prices and seven-digit quantities. In the catalog the name is truncated and readable in full on hover; in the cart it's shown whole, because that's where the buyer checks what they're about to order.
+
+## Every state
+
+I designed each state before handoff: skeleton loading, empty catalog results, empty cart, session error, cancel confirmation, expiring session and transfer in progress. Whatever isn't designed ends up improvised in code.
+
+## User testing
+
+<Pending>
+What method did you use, with how many people, and what changed in the design because of testing?
+</Pending>
+
+## Outcome
+
+The platform is in production.
+
+<Pending>
+Add results: time to build an order, transferred orders, errors or support tickets, or client feedback.
+</Pending>

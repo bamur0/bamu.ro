@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+  Tokens
+  - Neutrales con un solo acento (lima, heredado de la página anterior de bamu.ro).
+  - El acento se usa como relleno (marcador, foco, estados), nunca como color de texto sobre fondo claro.
+  - Radios: botones y chips en pill, superficies 14px, controles dentro de mockups 8px.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f4f4f3;
+  --surface: #fbfbfa;
+  --surface-2: #ebebe9;
+  --ink: #19191b;
+  --ink-2: #47474c;
+  --muted: #66666c;
+  --line: #deded9;
+  --accent: #c8f060;
+  --accent-ink: #1c2600;
+  --shadow: 0 1px 2px rgb(25 25 27 / 0.04), 0 8px 24px -12px rgb(25 25 27 / 0.12);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #111112;
+  --surface: #18181a;
+  --surface-2: #232326;
+  --ink: #ededea;
+  --ink-2: #bdbdb7;
+  --muted: #94948f;
+  --line: #2c2c30;
+  --accent: #c8f060;
+  --accent-ink: #1c2600;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-sans: var(--font-onest);
+  --font-mono: var(--font-plex-mono);
+  --radius-surface: 14px;
+  --radius-control: 8px;
+  --shadow-soft: var(--shadow);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Marcador: subrayado grueso en el acento, para resaltar una idea dentro de un texto */
+.mark {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size: 100% 0.42em;
+  background-position: 0 88%;
+  padding-inline: 0.06em;
+}
+/* En oscuro, texto claro sobre lima no tiene contraste: el acento pasa al texto */
+[data-theme="dark"] .mark {
+  background-image: none;
+  color: var(--accent);
+}
+
+.link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line);
+  transition: text-decoration-color 160ms var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .link:hover {
+    text-decoration-color: var(--ink);
+  }
+}
+
+/*
+  Entrada del hero en CSS: corre sin esperar a JavaScript, así el titular
+  (el LCP de la página) nunca queda oculto. Cada línea llega en secuencia
+  con --i para marcar el orden de lectura.
+*/
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+}
+.enter {
+  animation: enter 700ms var(--ease-out-quint) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 50ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .enter {
+    animation-name: fade;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
 }
