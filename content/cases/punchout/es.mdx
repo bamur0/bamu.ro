@@ -1,0 +1,82 @@
+---
+order: 1
+title: Plataforma PunchOut B2B
+summary: Un catálogo conectado al sistema de compras del cliente, para que arme y envíe sus propios pedidos sin esperar al distribuidor.
+client: Distribuidor de insumos de laboratorio
+type: Producto nuevo
+year: "2026"
+role: Líder de proyecto, analista y Product Designer
+duration: 1 mes
+team: Lideré el proyecto como analista principal de negocio y sistemas, y product designer
+status: En producción
+cover: punchout
+problem: Cada pedido de un cliente corporativo tardaba uno o dos días entre solicitud, cotización, orden de compra y su gestión en el ERP.
+did: Lideré el proyecto de punta a punta en un mes, del análisis de negocio y sistemas al diseño de la interfaz, sus estados y las pruebas finales.
+impact: El tiempo de la cotización al pedido bajó cerca de 80%. La plataforma está en producción.
+---
+
+## Contexto
+
+Uno de los clientes corporativos del distribuidor compraba con un ida y vuelta manual: enviaba su solicitud, recibía una cotización, mandaba su orden de compra y todo se administraba en el ERP del distribuidor. Cada pedido tardaba uno o dos días en estar listo para tramitarse.
+
+El cliente quería comprar desde su propio sistema de compras, a su ritmo.
+
+## Para quién
+
+Para un comprador corporativo que no es el usuario habitual del distribuidor. Llega desde su propio sistema, con prisa, dentro de una sesión que expira y frente a un catálogo lleno de datos técnicos: SKU, número CAS, presentación, normatividad y tiempo de entrega.
+
+Del otro lado estaba el equipo del distribuidor, que necesitaba que cada orden llegara al ERP completa y sin inconsistencias.
+
+## La propuesta
+
+Una plataforma PunchOut. Desde su sistema de compras, el comprador entra al catálogo del distribuidor, donde solo ve los productos y precios de su contrato. Arma su pedido y lo regresa a su sistema, donde sigue su aprobación interna. La orden llega al ERP ya estructurada. No hay checkout ni pago: la sesión termina cuando el carrito se transfiere.
+
+## El flujo
+
+Validación de sesión, aviso de privacidad, selección de planta, catálogo, carrito y transferencia.
+
+<Figure caption="Selección de planta, recreada. Elige una: la dirección define el tipo de entrega del pedido.">
+  <PlantPicker />
+</Figure>
+
+## Decisiones y lo que costaron
+
+### La planta va antes que el catálogo
+
+Un mismo cliente tiene varias plantas, cada una con su dirección y su tipo de entrega, parcial o total. Elegirla al entrar deja claro desde el inicio a dónde va el pedido, y el contexto se queda visible durante toda la sesión.
+
+El costo es un paso más antes de ver productos. Vale la pena: un pedido con la dirección equivocada cuesta mucho más que un clic.
+
+### El tiempo de sesión siempre a la vista
+
+La sesión caduca, y perder un carrito armado es el peor error posible en este producto. El tiempo restante vive en la barra superior y, antes de que expire, un aviso ofrece continuar. Cancelar también pide confirmación.
+
+El costo es que un contador visible puede presionar al comprador. Por eso el aviso ofrece continuar en lugar de solo advertir.
+
+### El carrito vive junto al catálogo
+
+El comprador no está explorando, está armando un pedido. El carrito es un panel fijo con subtotal, IVA y total que se actualiza mientras agrega productos.
+
+El costo es menos espacio para el catálogo. A cambio, el comprador ve el total en todo momento, que es lo que revisa antes de transferir.
+
+### Diseñado para datos reales
+
+Probé el diseño con nombres de producto de cientos de caracteres, precios de doce dígitos y cantidades de siete. En el catálogo el nombre se trunca y se lee completo al pasar el cursor. En el carrito se muestra entero, porque ahí el comprador verifica lo que va a pedir.
+
+Diseñé también cada estado antes de pasar a desarrollo: carga, catálogo sin resultados, carrito vacío, error de sesión, cancelación, sesión por expirar y transferencia en proceso.
+
+## Pruebas
+
+Probamos con usuarios de los dos lados: el equipo interno del distribuidor y compradores del cliente. Hicimos pruebas de humo, de usabilidad y de navegación, y revisamos mapas de calor para ver dónde se concentraba la atención.
+
+La navegación no necesitó cambios. Los ajustes fueron visuales, y lo demás fue técnico, en la transferencia del carrito entre sistemas.
+
+## Resultado
+
+Las cotizaciones y órdenes de compra llegan al ERP al instante, y el tiempo de la cotización al pedido bajó cerca de 80%. El resto corresponde a la tramitación interna del pedido. El cliente cotiza y compra por su cuenta, desde su propio sistema.
+
+## Lo que aprendí
+
+**Lo que funcionó.** Definir el flujo y todos los estados durante el análisis se notó en las pruebas: nadie se perdió, y el equipo pudo concentrarse en la parte técnica.
+
+**Lo que haría distinto.** La validación con los compradores del cliente fue la más débil, porque no supimos cuántas personas participaron. En un siguiente ciclo mediría el uso real en producción, como el tiempo por pedido y las sesiones que expiran antes de transferir.

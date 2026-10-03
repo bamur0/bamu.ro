@@ -1,0 +1,66 @@
+---
+order: 2
+title: Quoting in a sales ERP
+summary: Improvements to an internal sales ERP's quoting module so edge cases get handled inside the system instead of outside it.
+client: B2B distribution ERP
+type: Product improvement
+year: "2024"
+role: UX/UI Designer and Analyst
+duration: 2 months
+team: Design and analysis led by me
+status: In production, continuously evolving
+cover: quote
+problem: The quoting tool didn't cover edge cases, so sales reps handled them outside the system, with no traceability.
+did: Found those isolated scenarios and designed the improvements that let the system absorb them, from stakeholder analysis to QA.
+impact: Quotes handled outside the system dropped by about 40%.
+---
+
+## Context
+
+The company moved its internal sales process from a legacy system to its own ERP. The full flow runs from quote to order processing: quoting, offer adjustments, order pre-processing, purchase-order adjustment validation and processing the customer's order.
+
+Quoting is the first step in that flow, and what happens there affects everything after it.
+
+## Who it's for
+
+Internal sales reps, who turn every customer request into a quote and spend a good part of their day on this screen. When the system didn't give them a path, they handled it outside. Not for lack of discipline: the customer was waiting.
+
+## The problem
+
+The system was already in use, but it didn't cover every real scenario. Changing payment terms, separating controlled products or quoting something outside the catalog ended up being done by hand. Every off-system quote meant no traceability and a risk for the order steps that follow.
+
+## My role
+
+I didn't design the quoting tool from scratch. My job was to find those isolated scenarios and design the improvements that let the system absorb them: stakeholder analysis, requirements, flows, interface, QA and rollout. I also worked on adapting the module to operate in Peru.
+
+Working on a system already in use has a clear limit: every improvement had to coexist with flows the teams knew by heart. Changing too much would have cost more than it solved.
+
+## The workspace
+
+Quoting starts with a customer email and a commercial history, not a blank screen. The tool brings together three panels: customer context with its commercial terms, the original request exactly as it arrived, and the quote being built. The first two collapse when the rep needs room to work the product list.
+
+Every search result shows availability, validity, lead time and linked quotes. When an item can't be added, the interface explains why and what to do, instead of just disabling the button.
+
+## What I improved
+
+### Changing payment terms without leaving the quote
+
+I designed the change inside the flow and compared two ways to validate it. A single check at the end is faster, but lets errors through until the last step. A check on every change gives more control, but adds friction to work that repeats many times a day.
+
+### Separating controlled products
+
+Controlled products follow different rules from everything else. The tool now flags them, shows how many of each type there are and lets reps split the quote instead of building another one by hand.
+
+### What can't be found doesn't block the quote
+
+Items that aren't in the catalog move to a research tab. Reps send what they have and follow up on the rest inside the same system.
+
+## Outcome
+
+Scenarios that used to be handled outside now have a path inside the system. Quotes handled off-system dropped by about 40%, and the ones that go through the system are traceable through to the order.
+
+## What I learned
+
+**What worked.** The quotes handled off-system turned out to be the best source of requirements: each one pointed to a specific gap in the system.
+
+**What I'd do differently.** The 40% is a team estimate. I'd propose measuring off-system quotes from inside the system itself, to track the impact of each improvement with data.

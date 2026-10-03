@@ -1,26 +1,280 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+  Tokens
+  - Neutrales con un solo acento (lima, heredado de la página anterior de bamu.ro).
+  - El acento se usa como relleno (marcador, foco, estados), nunca como color de texto sobre fondo claro.
+  - Radios: botones y chips en pill, superficies 14px, controles dentro de mockups 8px.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f4f4f3;
+  --surface: #fbfbfa;
+  --surface-2: #ebebe9;
+  --ink: #19191b;
+  --ink-2: #47474c;
+  --muted: #66666c;
+  --line: #deded9;
+  --accent: #c8f060;
+  --accent-ink: #1c2600;
+  --danger: #b42318;
+  --shadow: 0 1px 2px rgb(25 25 27 / 0.05);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #111112;
+  --surface: #18181a;
+  --surface-2: #232326;
+  --ink: #ededea;
+  --ink-2: #bdbdb7;
+  --muted: #94948f;
+  --line: #2c2c30;
+  --accent: #c8f060;
+  --accent-ink: #1c2600;
+  --danger: #f97066;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  /* Solo para estados de error o vencimiento dentro de los mockups */
+  --color-danger: var(--danger);
+  --font-sans: var(--font-onest);
+  --font-mono: var(--font-plex-mono);
+  --radius-surface: 14px;
+  --radius-control: 8px;
+  --shadow-soft: var(--shadow);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Marcador: subrayado grueso en el acento, para resaltar una idea dentro de un texto */
+.mark {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size: 100% 0.42em;
+  background-position: 0 88%;
+  padding-inline: 0.06em;
+}
+/* En oscuro, texto claro sobre lima no tiene contraste: el acento pasa al texto */
+[data-theme="dark"] .mark {
+  background-image: none;
+  color: var(--accent);
+}
+
+.link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line);
+  transition: text-decoration-color 160ms var(--ease-out-quint);
+}
+@media (hover: hover) {
+  .link:hover {
+    text-decoration-color: var(--ink);
+  }
+}
+
+/*
+  Entrada del hero en CSS: corre sin esperar a JavaScript, así el titular
+  (el LCP de la página) nunca queda oculto. Cada línea llega en secuencia
+  con --i para marcar el orden de lectura.
+*/
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+}
+.enter {
+  animation: enter 700ms var(--ease-out-quint) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 50ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .enter {
+    animation-name: fade;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Impresión: solo la hoja del CV, tamaño carta con márgenes de 0.75in */
+@page {
+  size: letter;
+  margin: 0.75in;
+}
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    min-height: 0 !important;
+  }
+  main > div {
+    padding: 0 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .cv-sheet {
+    max-width: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+  }
+  .cv-sheet section {
+    margin-top: 9pt;
+  }
+  .cv-sheet section:first-child {
+    margin-top: 0;
+  }
+  /* Los links se quedan subrayados en el PDF para que se reconozcan como links */
+  .cv-sheet a {
+    color: inherit;
+  }
+}
+
+/*
+  Intro de marca (ver components/intro.tsx). Línea de tiempo, ~2.3s:
+  0.0  aparece el nombre completo
+  0.7  se apagan las letras que no forman bamu.ro
+  1.0  se colapsan hasta dejar "BáMuRo"
+  1.55 el nombre cede el lugar a "bamu.ro"
+  2.0  la pantalla se retira y entra el hero
+*/
+.intro {
+  display: none;
+}
+html[data-intro="play"] .intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: intro-out 450ms var(--ease-out-quint) 2s forwards;
+}
+.intro-stage {
+  display: grid;
+  place-items: center;
+  font-size: clamp(28px, 7vw, 88px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+.intro-name,
+.intro-logo {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+.intro-name {
+  animation:
+    intro-in 500ms var(--ease-out-quint) both,
+    intro-fade 300ms ease-out 1.55s forwards;
+}
+.intro-word,
+.intro-drop,
+.intro-gap {
+  display: inline-block;
+}
+.intro-drop,
+.intro-gap {
+  overflow: hidden;
+  vertical-align: bottom;
+  max-width: 6em;
+  animation:
+    intro-dim 300ms ease-out 0.7s forwards,
+    intro-collapse 500ms var(--ease-out-quint) 1s forwards;
+}
+.intro-logo {
+  opacity: 0;
+  animation: intro-in 450ms var(--ease-out-quint) 1.6s forwards;
+}
+@keyframes intro-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes intro-dim {
+  to {
+    opacity: 0.25;
+  }
+}
+@keyframes intro-collapse {
+  to {
+    max-width: 0;
+    opacity: 0;
+  }
+}
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* Mientras corre la intro, el hero espera a que termine para entrar */
+html[data-intro="play"] .enter {
+  animation-delay: calc(var(--i, 0) * 70ms + 2.15s);
+}
+@media print {
+  .intro {
+    display: none !important;
+  }
 }

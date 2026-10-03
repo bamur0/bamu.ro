@@ -1,0 +1,82 @@
+---
+order: 3
+title: CMS de catálogo para proveedores
+summary: Un portal para que los proveedores actualicen su catálogo por su cuenta. Lo que antes tomaba días de correos entre husos horarios ahora llega al ERP al instante.
+client: Plataforma B2B de proveedores
+type: Producto nuevo
+year: "2024"
+role: Líder de diseño UX/UI
+duration: 3 meses
+team: Equipo de diseño de 2 personas, que lideré
+status: En producción, con 3 proveedores
+cover: catalog-cms
+problem: Un proveedor en la India enviaba sus cambios de catálogo por correo, con 12 horas de diferencia, y cada actualización tardaba días en llegar al ERP.
+did: Lideré el diseño UX/UI de un portal donde el proveedor administra su propio catálogo, y construí su sistema de diseño.
+impact: Los cambios llegan al ERP al instante. Arrancó con un proveedor y hoy lo usan tres.
+---
+
+## Contexto
+
+Uno de los proveedores principales opera desde la India, con 12 horas de diferencia. Cada actualización de su catálogo (precios, presentaciones, vigencia de la información, disponibilidad) llegaba por correo y alguien la capturaba a mano en el ERP. Entre la diferencia horaria y la captura manual, un cambio podía tardar días.
+
+Mientras tanto, los ejecutivos de venta cotizaban con información desactualizada: productos que ya estaban disponibles seguían apareciendo como descontinuados.
+
+## Para quién
+
+Para un equipo que conoce sus productos mejor que nadie, trabaja en inglés y dependía de que alguien al otro lado del mundo capturara cada cambio. Y, de forma indirecta, para los ejecutivos que cotizan con lo que hay en el ERP.
+
+## La propuesta
+
+En lugar de acelerar el ida y vuelta de correos, eliminarlo. Un portal donde el proveedor administra su propio catálogo y cada cambio llega al ERP automáticamente, sin intermediarios y sin depender de que los dos equipos coincidan en horario.
+
+## Mi rol
+
+Lideré el diseño UX/UI en un equipo de dos personas durante tres meses: investigación, user flow, mapeo de datos, sistema de diseño, interfaces, prototipo y pruebas, hasta la salida a producción.
+
+Antes de las pantallas mapeé el flujo del proveedor y las familias de productos del catálogo, con la especificación de cada dato. Después diseñé cada pantalla en tres resoluciones, de 1366 a 2560 px, con sus estados de carga, error y búsqueda sin resultados.
+
+## La vigencia como idea central
+
+En un catálogo de estándares de referencia, un producto con información vencida no se puede vender. Por eso el estado de cada producto organiza todo el portal: el catálogo se divide en vencidos, por vencer, en aprobación y descontinuados, y el inicio abre con lo que necesita atención.
+
+### Cada cambio deja rastro
+
+La información la editan dos partes, el proveedor y el distribuidor. Para que nadie tenga que escribir un correo preguntando quién cambió qué, cada producto guarda un historial con autor, fecha, hora y huso horario, y el valor anterior junto al nuevo.
+
+<Figure caption="Historial de cambios, recreado. Filtra por quién hizo el cambio.">
+  <ChangeHistory />
+</Figure>
+
+### Alta de producto sin salir del catálogo
+
+Agregar un producto abre un formulario sobre el catálogo, con los campos obligatorios marcados y los estados de carga, error y formulario incompleto ya diseñados. El proveedor no pierde el lugar donde estaba.
+
+## Pruebas
+
+No era posible probar con el proveedor, así que hicimos pruebas simuladas con dos usuarios internos que tomaron su rol. Medimos cuánto tardaban en dar de alta un catálogo y dónde se perdían al navegar.
+
+El hallazgo más importante fue el buscador. La primera versión buscaba dentro de filtros específicos, pero los usuarios esperaban algo como Google: escribir lo que sea y encontrarlo en todo el CMS. Lo rediseñamos como una búsqueda global sobre toda la base de datos. El resto fueron ajustes de navegación, interacción, color y traducción.
+
+## Un sistema de diseño para sumar proveedores
+
+El portal se diseñó para un proveedor, pero con la idea de abrirlo a cualquiera. Por eso construí un sistema de diseño propio, versionado y con changelog, en una librería de Figma separada del producto.
+
+Está organizado con Atomic Design: fundamentos, 7 familias de átomos, 15 de moléculas y 15 de organismos. Suma 599 variantes, porque cada componente incluye sus estados y no solo su versión ideal. Los colores viven en dos capas: 104 variables primitivas definen la paleta y 133 tokens semánticos le dan un rol a cada color, como `color/background/button/primary-normal`. Si un color cambia, cambia en un solo lugar.
+
+<Figure caption="Cifras del sistema original y su arquitectura de tokens, recreada. Elige una cadena.">
+  <DesignSystemSpecimen />
+</Figure>
+
+Construir el sistema tomó tiempo al inicio de un proyecto de tres meses. Es también lo que hoy permite sumar proveedores sin rediseñar.
+
+## Resultado
+
+Las actualizaciones dejaron de depender del horario: lo que el proveedor cambia se ve en el ERP al momento. Con el catálogo al día, los ejecutivos cotizan con información vigente y recuperan ventas, como productos que pasan de descontinuados a disponibles.
+
+La plataforma salió a producción con un proveedor y hoy la usan tres. Está lista para cualquier proveedor nuevo.
+
+## Lo que aprendí
+
+**Lo que funcionó.** La prueba más valiosa fue la más simple: ver a alguien buscar un producto. De ahí salió el buscador global, el cambio más grande del proyecto.
+
+**Lo que haría distinto.** Buscaría validar con el proveedor real desde el inicio, aunque fuera de forma asíncrona, con grabaciones o encuestas. Los ajustes de traducción aparecieron tarde y se habrían detectado antes.
