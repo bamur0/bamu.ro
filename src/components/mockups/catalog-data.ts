@@ -58,9 +58,9 @@ export const catalogUi = {
     filterSupplier: "Proveedor",
     filterDistributor: "Distribuidor",
     events: [
-      { who: "distributor", org: "Distribuidor", user: "catalogo.mx", date: "16 ago 2026, 20:08", changes: [["Descripción", "Ciprofloxacina estándar", "Ciprofloxacino, estándar primario"], ["Catálogo", "RS-1724-60", "RS-1724-006"]] },
-      { who: "supplier", org: "Proveedor", user: "proveedor.ana", date: "16 ago 2026, 18:30", changes: [["Vigencia de la información", "01 jun 2026", "30 jun 2027"]] },
-      { who: "supplier", org: "Proveedor", user: "proveedor.luis", date: "15 ago 2026, 15:28", changes: [["Contenedor", "Caja", "Blíster"]] },
+      { who: "distributor", org: "Distribuidor", user: "catalogo.mx", date: "16 ago 2026, 20:08 (UTC−6)", changes: [["Descripción", "Ciprofloxacina estándar", "Ciprofloxacino, estándar primario"], ["Catálogo", "RS-1724-60", "RS-1724-006"]] },
+      { who: "supplier", org: "Proveedor", user: "proveedor.ana", date: "16 ago 2026, 18:30 (UTC+5:30)", changes: [["Vigencia de la información", "01 jun 2026", "30 jun 2027"]] },
+      { who: "supplier", org: "Proveedor", user: "proveedor.luis", date: "15 ago 2026, 15:28 (UTC+5:30)", changes: [["Contenedor", "Caja", "Blíster"]] },
     ],
   },
   en: {
@@ -82,9 +82,9 @@ export const catalogUi = {
     filterSupplier: "Supplier",
     filterDistributor: "Distributor",
     events: [
-      { who: "distributor", org: "Distributor", user: "catalog.mx", date: "Aug 16, 2026, 20:08", changes: [["Description", "Ciprofloxacine standard", "Ciprofloxacin, primary standard"], ["Catalog", "RS-1724-60", "RS-1724-006"]] },
-      { who: "supplier", org: "Supplier", user: "supplier.ana", date: "Aug 16, 2026, 18:30", changes: [["Information valid until", "Jun 01, 2026", "Jun 30, 2027"]] },
-      { who: "supplier", org: "Supplier", user: "supplier.luis", date: "Aug 15, 2026, 15:28", changes: [["Container", "Box", "Blister"]] },
+      { who: "distributor", org: "Distributor", user: "catalog.mx", date: "Aug 16, 2026, 20:08 (UTC−6)", changes: [["Description", "Ciprofloxacine standard", "Ciprofloxacin, primary standard"], ["Catalog", "RS-1724-60", "RS-1724-006"]] },
+      { who: "supplier", org: "Supplier", user: "supplier.ana", date: "Aug 16, 2026, 18:30 (UTC+5:30)", changes: [["Information valid until", "Jun 01, 2026", "Jun 30, 2027"]] },
+      { who: "supplier", org: "Supplier", user: "supplier.luis", date: "Aug 15, 2026, 15:28 (UTC+5:30)", changes: [["Container", "Box", "Blister"]] },
     ],
   },
 };

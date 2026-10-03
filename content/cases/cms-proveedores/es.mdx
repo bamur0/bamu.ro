@@ -1,41 +1,42 @@
 ---
 order: 3
 title: CMS de catálogo para proveedores
-summary: Un portal hecho desde cero para que los proveedores mantengan vigente la información de su catálogo, con historial de cada cambio y un sistema de diseño propio.
+summary: Un portal para que los proveedores actualicen su catálogo por su cuenta. Lo que antes tomaba días de correos entre husos horarios ahora se refleja en el ERP al instante.
 client: Plataforma B2B de proveedores
 type: Producto nuevo
 year: "2024"
-role: UX/UI Designer
+role: Líder de diseño UX/UI
+duration: 3 meses
+team: Equipo de diseño de 2 personas, que lideré
+status: En producción, con 3 proveedores
 cover: catalog-cms
 ---
 
-<Pending>
-Faltan: duración, equipo y estado actual. Las decisiones de abajo las redacté a partir del archivo de Figma; revisa que el porqué sea correcto.
-</Pending>
-
 ## Contexto
 
-Los proveedores necesitaban actualizar su catálogo de productos sin depender de nadie más. Encabecé el diseño y desarrollo de un CMS desde cero para que esas actualizaciones se reflejaran en tiempo real.
+Uno de los proveedores principales de la empresa opera desde la India, con 12 horas de diferencia. Cada actualización de su catálogo (precios, presentaciones, vigencia de la información, disponibilidad) llegaba por correo y alguien la capturaba a mano en el ERP. Entre la diferencia horaria y la captura manual, un cambio podía tardar días en verse reflejado.
 
-<Pending>
-¿Cómo actualizaban el catálogo antes (Excel, correo, soporte)? ¿Cuánto tardaba? ¿Cuántos proveedores y productos maneja hoy?
-</Pending>
+Mientras tanto, los ejecutivos de venta cotizaban con información desactualizada: productos que ya estaban disponibles seguían apareciendo como descontinuados.
+
+## La propuesta
+
+En lugar de acelerar el ida y vuelta de correos, eliminarlo. Diseñamos un portal donde el proveedor administra su propio catálogo y cada cambio se refleja automáticamente en el ERP, sin intermediarios y sin depender de que los dos equipos coincidan en horario.
 
 ## Mi rol
 
-Gestioné el ciclo completo del producto: investigación, user flow, sistema de diseño, diseño de interfaces, prototipo y pruebas con usuarios.
+Lideré el diseño UX/UI en un equipo de dos personas durante tres meses: investigación, user flow, mapeo de datos, sistema de diseño, interfaces, prototipo y pruebas con usuarios, hasta la salida a producción.
 
 ## Ordenar antes de diseñar
 
-Antes de las pantallas mapeé el flujo completo del proveedor y las familias de productos del catálogo, junto con la especificación de cada dato. Ese mapa definió la estructura del alta de productos y del historial de cambios.
+Antes de las pantallas mapeé el flujo completo del proveedor y las familias de productos del catálogo, con la especificación de cada dato. Ese mapa definió cómo se estructuran el alta de productos y el historial de cambios.
 
 ## La vigencia como idea central
 
-En un catálogo de estándares de referencia, un producto con información vencida es un producto que no se puede vender. Por eso el estado de cada producto no es un dato más: organiza todo el portal. El catálogo se divide en vencidos, por vencer, en aprobación y descontinuados, y el inicio abre directamente con lo que necesita atención.
+En un catálogo de estándares de referencia, un producto con información vencida es un producto que no se puede vender. Por eso el estado de cada producto organiza todo el portal: el catálogo se divide en vencidos, por vencer, en aprobación y descontinuados, y el inicio abre directamente con lo que necesita atención.
 
 ### Cada cambio deja rastro
 
-La información la editan dos partes: el proveedor y el distribuidor. Para que nadie tenga que preguntar quién cambió qué, cada producto guarda un historial con autor, fecha y hora, y el valor anterior junto al nuevo.
+La información la editan dos partes: el proveedor y el distribuidor. Para que nadie tenga que escribir un correo preguntando quién cambió qué, cada producto guarda un historial con autor, fecha, hora y huso horario, y el valor anterior junto al nuevo.
 
 <Figure caption="Historial de cambios, recreado. Filtra por quién hizo el cambio.">
   <ChangeHistory />
@@ -43,28 +44,24 @@ La información la editan dos partes: el proveedor y el distribuidor. Para que n
 
 ### Alta de producto sin salir del catálogo
 
-Agregar un producto abre un formulario sobre el catálogo, con los campos obligatorios marcados y estados de carga, error y formulario incompleto diseñados. El proveedor no pierde el lugar donde estaba.
+Agregar un producto abre un formulario sobre el catálogo, con los campos obligatorios marcados y los estados de carga, error y formulario incompleto ya diseñados. El proveedor no pierde el lugar donde estaba.
+
+## Pruebas con usuarios
+
+No era posible probar directamente con el proveedor, así que hicimos pruebas simuladas con dos usuarios internos que tomaron su rol. Medimos cuánto tardaban en dar de alta un catálogo y dónde se perdían al navegar.
+
+El hallazgo más importante fue el buscador. La primera versión buscaba dentro de filtros específicos, pero los usuarios esperaban algo como Google: escribir lo que sea y encontrarlo en todo el CMS. Lo rediseñamos como una búsqueda global que consulta toda la base de datos. El resto de los ajustes fueron de navegación, interacción, color y traducción, ya que la interfaz la usa un equipo que trabaja en inglés.
 
 ## Todos los estados, en tres resoluciones
 
-Inicio de sesión con sus escenarios (incluida la sesión abierta en otro dispositivo), acuerdo de uso, inicio, catálogo, alta y edición, historial, carga, error y búsqueda sin resultados. Todo en tres resoluciones, de 1366 a 2560 px, y con un prototipo navegable para las pruebas.
-
-## Iteración
-
-La primera propuesta se descartó y el diseño siguió iterando, incluida una propuesta de buscador posterior.
-
-<Pending>
-¿Por qué se descartó la versión base? ¿Qué te dijeron las pruebas con usuarios y qué cambió?
-</Pending>
-
-## Sistema de diseño
-
-<Pending>
-¿Cuántos componentes y tokens tiene? ¿Vive en una librería de Figma aparte? Si es así, ábrela con el plugin para leerla.
-</Pending>
+Inicio de sesión con sus escenarios (incluida la sesión abierta en otro dispositivo), acuerdo de uso, inicio, catálogo, alta y edición, historial, carga, error y búsqueda sin resultados. Todo en tres resoluciones, de 1366 a 2560 px, más un prototipo navegable para las pruebas.
 
 ## Resultado
 
+Las actualizaciones dejaron de depender del horario: lo que el proveedor cambia se ve en el ERP al momento. Con el catálogo al día, los ejecutivos cotizan con información vigente y recuperan oportunidades de venta, como productos que pasan de descontinuados a disponibles.
+
+La plataforma salió a producción con un proveedor y hoy la usan tres. Está lista para incorporar a cualquier proveedor nuevo.
+
 <Pending>
-Impacto: tiempo para publicar un producto, solicitudes a soporte que se eliminaron, adopción por parte de los proveedores.
+¿Cuántos componentes y tokens tiene el sistema de diseño? ¿Vive en una librería de Figma aparte? Si es así, ábrela con el plugin para leerla.
 </Pending>

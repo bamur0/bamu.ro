@@ -1,41 +1,42 @@
 ---
 order: 3
 title: Supplier catalog CMS
-summary: A portal built from scratch so suppliers keep their catalog information current, with a history of every change and its own design system.
+summary: A portal where suppliers update their own catalog. What used to take days of emails across time zones now reaches the ERP instantly.
 client: B2B supplier platform
 type: New product
 year: "2024"
-role: UX/UI Designer
+role: UX/UI Design Lead
+duration: 3 months
+team: Two-person design team, which I led
+status: In production, used by 3 suppliers
 cover: catalog-cms
 ---
 
-<Pending>
-Missing: duration, team and current status. I wrote the decisions below from the Figma file; check that the reasoning is right.
-</Pending>
-
 ## Context
 
-Suppliers needed to update their product catalog without depending on anyone else. I led the design and development of a CMS from scratch so those updates would show up in real time.
+One of the company's main suppliers operates from India, 12 hours apart. Every catalog update (prices, pack sizes, information validity, availability) arrived by email and someone entered it into the ERP by hand. Between the time difference and manual entry, a single change could take days to show up.
 
-<Pending>
-How did they update the catalog before (spreadsheets, email, support)? How long did it take? How many suppliers and products does it handle today?
-</Pending>
+Meanwhile, sales reps were quoting with outdated information: products that were already available still showed as discontinued.
+
+## The proposal
+
+Instead of speeding up the email back-and-forth, remove it. We designed a portal where the supplier manages their own catalog and every change flows into the ERP automatically, with no middleman and no need for both teams to be online at the same time.
 
 ## My role
 
-I owned the full product cycle: research, user flow, design system, interface design, prototype and user testing.
+I led UX/UI design on a two-person team over three months: research, user flow, data mapping, design system, interfaces, prototype and user testing, through to release.
 
 ## Structure before screens
 
-Before any screens I mapped the supplier's full flow and the catalog's product families, along with a spec for every data field. That map shaped how product creation and change history were structured.
+Before any screens I mapped the supplier's full flow and the catalog's product families, with a spec for every data field. That map shaped how product creation and change history are structured.
 
 ## Validity as the core idea
 
-In a catalog of reference standards, a product with expired information is a product that can't be sold. So each product's status isn't just another field: it organizes the whole portal. The catalog splits into expired, expiring soon, awaiting approval and discontinued, and the home screen opens with whatever needs attention.
+In a catalog of reference standards, a product with expired information is a product that can't be sold. So each product's status organizes the whole portal: the catalog splits into expired, expiring soon, awaiting approval and discontinued, and the home screen opens with whatever needs attention.
 
 ### Every change leaves a trail
 
-Two parties edit the information: the supplier and the distributor. So nobody has to ask who changed what, every product keeps a history with author, date and time, and the old value next to the new one.
+Two parties edit the information: the supplier and the distributor. So nobody has to send an email asking who changed what, every product keeps a history with author, date, time and time zone, and the old value next to the new one.
 
 <Figure caption="Change history, recreated. Filter by who made the change.">
   <ChangeHistory />
@@ -43,28 +44,24 @@ Two parties edit the information: the supplier and the distributor. So nobody ha
 
 ### Adding a product without leaving the catalog
 
-Adding a product opens a form over the catalog, with required fields marked and loading, error and incomplete-form states designed. The supplier never loses their place.
+Adding a product opens a form over the catalog, with required fields marked and loading, error and incomplete-form states already designed. The supplier never loses their place.
+
+## User testing
+
+Testing directly with the supplier wasn't possible, so we ran simulated sessions with two internal users playing their role. We measured how long it took them to upload a catalog and where they got lost navigating.
+
+The biggest finding was search. The first version searched within specific filters, but users expected something like Google: type anything and find it across the whole CMS. We redesigned it as a global search over the entire database. The remaining fixes covered navigation, interaction, color and translation, since the interface is used by a team that works in English.
 
 ## Every state, in three resolutions
 
 Sign-in and its scenarios (including a session open on another device), terms of use, home, catalog, create and edit, history, loading, errors and empty search. All of it in three resolutions, from 1366 to 2560 px, plus a clickable prototype for testing.
 
-## Iteration
-
-The first proposal was discarded and the design kept iterating, including a later search proposal.
-
-<Pending>
-Why was the base version discarded? What did user testing tell you, and what changed?
-</Pending>
-
-## Design system
-
-<Pending>
-How many components and tokens does it have? Does it live in a separate Figma library? If so, open it with the plugin so I can read it.
-</Pending>
-
 ## Outcome
 
+Updates no longer depend on time zones: whatever the supplier changes shows up in the ERP right away. With the catalog current, sales reps quote with valid information and recover sales opportunities, such as products moving from discontinued back to available.
+
+The platform launched with one supplier and is now used by three. It's ready to onboard any new supplier.
+
 <Pending>
-Impact: time to publish a product, support requests eliminated, supplier adoption.
+How many components and tokens does the design system have? Does it live in a separate Figma library? If so, open it with the plugin so I can read it.
 </Pending>
