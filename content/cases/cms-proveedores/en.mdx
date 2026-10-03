@@ -1,7 +1,7 @@
 ---
 order: 3
 title: Supplier catalog CMS
-summary: A CMS built from scratch so suppliers can update their catalog in real time, with its own design system and user testing.
+summary: A portal built from scratch so suppliers keep their catalog information current, with a history of every change and its own design system.
 client: B2B supplier platform
 type: New product
 year: "2024"
@@ -10,7 +10,7 @@ cover: catalog-cms
 ---
 
 <Pending>
-Missing: duration, team, current status and the screens recreated from Figma.
+Missing: duration, team and current status. I wrote the decisions below from the Figma file; check that the reasoning is right.
 </Pending>
 
 ## Context
@@ -29,13 +29,25 @@ I owned the full product cycle: research, user flow, design system, interface de
 
 Before any screens I mapped the supplier's full flow and the catalog's product families, along with a spec for every data field. That map shaped how product creation and change history were structured.
 
-<PendingVisual label="User flow and product family mapping" />
+## Validity as the core idea
 
-## What was designed
+In a catalog of reference standards, a product with expired information is a product that can't be sold. So each product's status isn't just another field: it organizes the whole portal. The catalog splits into expired, expiring soon, awaiting approval and discontinued, and the home screen opens with whatever needs attention.
 
-Sign-in and its scenarios (including concurrent sessions), terms of use, dashboard, catalog, product creation and editing, change history, loading states and error pages. All of it in three resolutions, from 1366 to 2560 px, plus a clickable prototype for testing.
+### Every change leaves a trail
 
-<PendingVisual label="Dashboard, catalog and product creation" />
+Two parties edit the information: the supplier and the distributor. So nobody has to ask who changed what, every product keeps a history with author, date and time, and the old value next to the new one.
+
+<Figure caption="Change history, recreated. Filter by who made the change.">
+  <ChangeHistory />
+</Figure>
+
+### Adding a product without leaving the catalog
+
+Adding a product opens a form over the catalog, with required fields marked and loading, error and incomplete-form states designed. The supplier never loses their place.
+
+## Every state, in three resolutions
+
+Sign-in and its scenarios (including a session open on another device), terms of use, home, catalog, create and edit, history, loading, errors and empty search. All of it in three resolutions, from 1366 to 2560 px, plus a clickable prototype for testing.
 
 ## Iteration
 

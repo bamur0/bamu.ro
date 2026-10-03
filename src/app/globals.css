@@ -18,6 +18,7 @@
   --line: #deded9;
   --accent: #c8f060;
   --accent-ink: #1c2600;
+  --danger: #b42318;
   --shadow: 0 1px 2px rgb(25 25 27 / 0.04), 0 8px 24px -12px rgb(25 25 27 / 0.12);
   color-scheme: light;
 }
@@ -32,6 +33,7 @@
   --line: #2c2c30;
   --accent: #c8f060;
   --accent-ink: #1c2600;
+  --danger: #f97066;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
   color-scheme: dark;
 }
@@ -46,6 +48,8 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  /* Solo para estados de error o vencimiento dentro de los mockups */
+  --color-danger: var(--danger);
   --font-sans: var(--font-onest);
   --font-mono: var(--font-plex-mono);
   --radius-surface: 14px;

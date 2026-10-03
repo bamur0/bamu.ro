@@ -1,7 +1,7 @@
 ---
 order: 3
 title: CMS de catálogo para proveedores
-summary: Un CMS hecho desde cero para que los proveedores actualicen su catálogo en tiempo real, con sistema de diseño propio y pruebas con usuarios.
+summary: Un portal hecho desde cero para que los proveedores mantengan vigente la información de su catálogo, con historial de cada cambio y un sistema de diseño propio.
 client: Plataforma B2B de proveedores
 type: Producto nuevo
 year: "2024"
@@ -10,7 +10,7 @@ cover: catalog-cms
 ---
 
 <Pending>
-Faltan: duración, equipo, estado actual y las pantallas recreadas desde Figma.
+Faltan: duración, equipo y estado actual. Las decisiones de abajo las redacté a partir del archivo de Figma; revisa que el porqué sea correcto.
 </Pending>
 
 ## Contexto
@@ -29,13 +29,25 @@ Gestioné el ciclo completo del producto: investigación, user flow, sistema de 
 
 Antes de las pantallas mapeé el flujo completo del proveedor y las familias de productos del catálogo, junto con la especificación de cada dato. Ese mapa definió la estructura del alta de productos y del historial de cambios.
 
-<PendingVisual label="User flow y mapeo de familias de productos" />
+## La vigencia como idea central
 
-## Lo que se diseñó
+En un catálogo de estándares de referencia, un producto con información vencida es un producto que no se puede vender. Por eso el estado de cada producto no es un dato más: organiza todo el portal. El catálogo se divide en vencidos, por vencer, en aprobación y descontinuados, y el inicio abre directamente con lo que necesita atención.
 
-Inicio de sesión con sus escenarios (incluido el doble inicio de sesión), acuerdo de uso, dashboard, catálogo, alta y edición de productos, historial de cambios, estados de carga y páginas de error. Todo en tres resoluciones, de 1366 a 2560 px, y con un prototipo navegable para las pruebas.
+### Cada cambio deja rastro
 
-<PendingVisual label="Dashboard, catálogo y alta de producto" />
+La información la editan dos partes: el proveedor y el distribuidor. Para que nadie tenga que preguntar quién cambió qué, cada producto guarda un historial con autor, fecha y hora, y el valor anterior junto al nuevo.
+
+<Figure caption="Historial de cambios, recreado. Filtra por quién hizo el cambio.">
+  <ChangeHistory />
+</Figure>
+
+### Alta de producto sin salir del catálogo
+
+Agregar un producto abre un formulario sobre el catálogo, con los campos obligatorios marcados y estados de carga, error y formulario incompleto diseñados. El proveedor no pierde el lugar donde estaba.
+
+## Todos los estados, en tres resoluciones
+
+Inicio de sesión con sus escenarios (incluida la sesión abierta en otro dispositivo), acuerdo de uso, inicio, catálogo, alta y edición, historial, carga, error y búsqueda sin resultados. Todo en tres resoluciones, de 1366 a 2560 px, y con un prototipo navegable para las pruebas.
 
 ## Iteración
 
