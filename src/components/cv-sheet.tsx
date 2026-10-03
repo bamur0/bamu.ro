@@ -26,9 +26,18 @@ export function CvSheet({ cv }: { cv: Cv }) {
             <span key={c} className="whitespace-nowrap">
               {i > 0 && <span aria-hidden className="mr-2 text-neutral-400">|</span>}
               {c.includes("@") ? (
-                <a href={`mailto:${c}`}>{c}</a>
+                <a href={`mailto:${c}`} className="underline decoration-neutral-400 underline-offset-2 hover:decoration-neutral-900">
+                  {c}
+                </a>
               ) : c.includes(".") && !c.includes(",") ? (
-                <a href={`https://${c.startsWith("bamu") ? c : `www.${c}`}`}>{c}</a>
+                <a
+                  href={`https://${c.startsWith("bamu") ? c : `www.${c}`}`}
+                  className={`underline underline-offset-2 hover:decoration-neutral-900 ${
+                    c.startsWith("bamu") ? "font-semibold decoration-neutral-900" : "decoration-neutral-400"
+                  }`}
+                >
+                  {c}
+                </a>
               ) : (
                 c
               )}
