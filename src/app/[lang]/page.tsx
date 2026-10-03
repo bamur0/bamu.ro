@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getCases } from "@/lib/cases";
@@ -102,31 +103,51 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
       {/* Sobre mí */}
       <section id="about" className="mx-auto mt-28 grid max-w-6xl scroll-mt-24 gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
-        <Reveal className="md:col-span-7">
+        <Reveal className="md:col-span-4">
+          <Image
+            src="/img/roberto.jpg"
+            alt={dict.about.photoAlt}
+            width={720}
+            height={900}
+            sizes="(min-width: 768px) 360px, 100vw"
+            className="aspect-[4/5] w-full max-w-sm rounded-surface border border-line object-cover"
+          />
+        </Reveal>
+        <Reveal delay={0.06} className="md:col-span-7 md:col-start-6">
           <h2 className="text-3xl font-semibold tracking-tight text-ink">{dict.about.title}</h2>
           {dict.about.body.map((para) => (
             <p key={para.slice(0, 24)} className="mt-5 max-w-[60ch] text-[17px] leading-[1.7] text-ink-2">
               {para}
             </p>
           ))}
-        </Reveal>
-        <Reveal delay={0.08} className="space-y-7 md:col-span-4 md:col-start-9 md:pt-2">
-          <div>
-            <h3 className="font-mono text-xs text-muted">{dict.about.tools}</h3>
-            <p className="mt-2 leading-relaxed text-ink">{dict.about.toolsList}</p>
+          <Link
+            href={`/${lang}/cv/`}
+            className="mt-7 inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
+          >
+            {dict.about.cvLink}
+            <ArrowRight size={15} />
+          </Link>
+
+          <div className="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+            <div>
+              <h3 className="font-mono text-xs text-muted">{dict.about.tools}</h3>
+              <p className="mt-2 leading-relaxed text-ink">{dict.about.toolsList}</p>
+            </div>
+            <div>
+              <h3 className="font-mono text-xs text-muted">{lang === "es" ? "Idiomas" : "Languages"}</h3>
+              <p className="mt-2 text-ink">{dict.about.languages}</p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-mono text-xs text-muted">{lang === "es" ? "Idiomas" : "Languages"}</h3>
-            <p className="mt-2 text-ink">{dict.about.languages}</p>
-          </div>
-          <div className="rounded-surface border border-line bg-surface p-5">
-            <h3 className="font-medium text-ink">{dict.about.explorations}</h3>
-            <p className="mt-1.5 text-sm leading-relaxed text-ink-2">{dict.about.explorationsBody}</p>
+          <div className="mt-8 flex flex-col gap-3 rounded-surface border border-line bg-surface p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="font-medium text-ink">{dict.about.explorations}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-ink-2">{dict.about.explorationsBody}</p>
+            </div>
             <a
               href={site.behance}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-ink"
+              className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-ink"
             >
               <span className="link">{dict.about.explorationsLink}</span>
               <ArrowUpRight size={14} />

@@ -10,7 +10,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
     "rounded-full px-3 py-1.5 text-sm text-ink-2 transition-colors duration-150 hover:bg-surface-2 hover:text-ink";
 
   return (
-    <header className="sticky top-0 z-20 bg-bg/80 px-4 sm:px-6 backdrop-blur-md supports-[not(backdrop-filter:blur(0))]:bg-bg">
+    <header className="no-print sticky top-0 z-20 bg-bg/80 px-4 sm:px-6 backdrop-blur-md supports-[not(backdrop-filter:blur(0))]:bg-bg">
       <a
         href="#main"
         className="sr-only rounded-full bg-ink px-4 py-2 text-sm text-bg focus:not-sr-only focus:absolute focus:left-4 focus:top-3"
@@ -28,7 +28,10 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
           <Link href={`/${locale}/#about`} className={`${navLink} hidden sm:inline-flex`}>
             {dict.nav.about}
           </Link>
-          <Link href={`/${locale}/#contact`} className={navLink}>
+          <Link href={`/${locale}/cv/`} className={navLink}>
+            {dict.nav.cv}
+          </Link>
+          <Link href={`/${locale}/#contact`} className={`${navLink} hidden sm:inline-flex`}>
             {dict.nav.contact}
           </Link>
           <span aria-hidden className="mx-1.5 h-4 w-px bg-line" />

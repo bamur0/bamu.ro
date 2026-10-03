@@ -3,7 +3,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 
 export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
-    <footer className="mt-24 px-4 pb-10 sm:px-6">
+    <footer className="no-print mt-24 px-4 pb-10 sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>
           {dict.footer.rights}, {new Date().getFullYear()}
