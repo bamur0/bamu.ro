@@ -1,36 +1,34 @@
 ---
 order: 1
 title: Plataforma PunchOut B2B
-summary: Un catálogo conectado al sistema de compras del cliente. El comprador elige planta, arma su carrito con precios pactados y lo regresa como orden de compra.
+summary: Un catálogo conectado al sistema de compras del cliente para que arme y envíe sus propios pedidos. El tiempo de la cotización al pedido bajó alrededor de un 80%.
 client: Distribuidor de insumos de laboratorio
 type: Producto nuevo
 year: "2026"
-role: Analista y Product Designer
+role: Líder de proyecto, analista y Product Designer
 duration: 1 mes
-team: Diseño y análisis a mi cargo, con el equipo de desarrollo
+team: Lideré el proyecto como analista principal de negocio y sistemas, y product designer
 status: En producción
 cover: punchout
 ---
 
-<Pending>
-Redacté el porqué de cada decisión a partir de las pantallas en Figma. Revísalo y corrige lo que no coincida con lo que realmente pasó.
-</Pending>
-
 ## Contexto
 
-En una compra PunchOut el comprador nunca sale de su sistema de compras corporativo. Desde ahí "salta" al catálogo del proveedor, arma un pedido con sus precios negociados y regresa el carrito a su sistema, donde sigue el flujo de aprobación interno. No hay checkout ni pago: la sesión termina cuando el carrito se transfiere.
+Uno de los clientes corporativos del distribuidor compraba con un proceso manual: enviaba su solicitud, recibía una cotización, mandaba su orden de compra y todo ese ida y vuelta se administraba en el ERP del distribuidor. Cada pedido tardaba uno o dos días en estar listo para tramitarse.
 
-<Pending>
-¿Con qué sistema de compras se integra (SAP Ariba, Coupa, otro)? ¿Qué problema tenía el cliente antes de esta plataforma?
-</Pending>
+El cliente quería algo distinto: comprar desde su propio sistema de compras, sin depender de los tiempos del distribuidor.
 
-## El reto
+## La propuesta
 
-Diseñar y liberar en un mes un producto completo para un usuario que no es el cliente habitual del proveedor: un comprador corporativo que llega con prisa, dentro de una sesión con tiempo límite, frente a un catálogo lleno de datos técnicos (SKU, número CAS, presentación, normatividad y tiempo de entrega).
+Una plataforma PunchOut. Desde su sistema de compras, el comprador "salta" al catálogo del distribuidor, donde solo ve los productos y precios de su contrato. Ahí arma su pedido y lo regresa a su sistema, donde sigue su aprobación interna. La orden llega al ERP del distribuidor ya estructurada, lista para tramitarse sin inconsistencias. No hay checkout ni pago: la sesión termina cuando el carrito se transfiere.
 
 ## Mi rol
 
-Fui el único diseñador y analista del proyecto. Levanté requisitos, definí el flujo, diseñé la interfaz y todos sus estados, documenté el handoff con anotaciones por componente y acompañé el QA hasta producción.
+Lideré el proyecto de punta a punta en un mes, como analista principal de negocio y de sistemas y como product designer: levantamiento de requisitos, definición del flujo, diseño de la interfaz y de todos sus estados, documentación del handoff con anotaciones por componente y pruebas finales hasta producción.
+
+## El reto
+
+Diseñar para alguien que no es el usuario habitual del distribuidor: un comprador corporativo que llega con prisa, dentro de una sesión con tiempo límite, frente a un catálogo lleno de datos técnicos (SKU, número CAS, presentación, normatividad y tiempo de entrega).
 
 ## El flujo
 
@@ -62,16 +60,14 @@ Probé el diseño con nombres de producto de cientos de caracteres, precios de d
 
 Diseñé cada estado antes de pasar a desarrollo: carga con skeleton, catálogo sin resultados, carrito vacío, error de sesión, confirmación de cancelación, sesión por expirar y transferencia en proceso. Lo que no se diseña se termina improvisando en código.
 
-## Pruebas con usuarios
+## Pruebas
 
-<Pending>
-¿Qué método usaste, con cuántas personas y qué cambió en el diseño gracias a las pruebas?
-</Pending>
+Probamos con usuarios de los dos lados: el equipo interno del distribuidor y compradores del cliente. Hicimos pruebas de humo, de usabilidad y de navegación, y revisamos mapas de calor para ver dónde se concentraba la atención.
+
+Las pruebas confirmaron el flujo: nadie se perdió y la navegación no necesitó cambios. Los ajustes fueron visuales, y lo demás fue técnico, en la transferencia del carrito entre sistemas. Que un producto nuevo llegue a las pruebas casi sin cambios de navegación es el resultado de haber definido bien el flujo y los estados desde el análisis.
 
 ## Resultado
 
-La plataforma está en producción.
+La plataforma está en producción. Las cotizaciones y órdenes de compra ahora llegan al ERP al instante, y el tiempo de la cotización al pedido bajó alrededor de un 80%. Lo que queda corresponde a la tramitación interna del pedido.
 
-<Pending>
-Agrega resultados: tiempo para armar un pedido, pedidos transferidos, errores o tickets de soporte, o comentarios del cliente.
-</Pending>
+El cliente ya cotiza y compra por su cuenta, desde su propio sistema y sin depender de los tiempos del distribuidor.

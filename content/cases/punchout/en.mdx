@@ -1,36 +1,34 @@
 ---
 order: 1
 title: B2B PunchOut platform
-summary: A catalog connected to the customer's procurement system. Buyers pick a plant, build a cart with negotiated prices and send it back as a purchase order.
+summary: A catalog connected to the customer's procurement system so they build and send their own orders. Time from quote to order dropped by about 80%.
 client: Laboratory supplies distributor
 type: New product
 year: "2026"
-role: Analyst and Product Designer
+role: Project Lead, Analyst and Product Designer
 duration: 1 month
-team: Sole designer and analyst, with the engineering team
+team: Led the project as lead business and systems analyst, and product designer
 status: In production
 cover: punchout
 ---
 
-<Pending>
-I wrote the reasoning behind each decision from the Figma screens. Review it and fix anything that doesn't match what actually happened.
-</Pending>
-
 ## Context
 
-In a PunchOut purchase the buyer never leaves their corporate procurement system. From there they "punch out" to the supplier's catalog, build an order with their negotiated prices and send the cart back to their system, where internal approval continues. There is no checkout or payment: the session ends when the cart is transferred.
+One of the distributor's corporate customers bought through a manual process: they sent a request, received a quote, sent back a purchase order, and all that back-and-forth was managed in the distributor's ERP. Each order took one or two days to be ready for processing.
 
-<Pending>
-Which procurement system does it integrate with (SAP Ariba, Coupa, other)? What problem did the client have before this platform?
-</Pending>
+The customer wanted something different: to buy from their own procurement system, without waiting on the distributor.
 
-## The challenge
+## The proposal
 
-Design and ship a complete product in one month for someone who isn't the supplier's usual customer: a corporate buyer in a hurry, inside a time-limited session, facing a catalog full of technical data (SKU, CAS number, pack size, compliance and lead time).
+A PunchOut platform. From their procurement system, the buyer "punches out" to the distributor's catalog, where they only see the products and prices in their contract. There they build their order and send it back to their system, where internal approval continues. The order reaches the distributor's ERP already structured, ready to process with no inconsistencies. There's no checkout or payment: the session ends when the cart is transferred.
 
 ## My role
 
-I was the only designer and analyst on the project. I gathered requirements, defined the flow, designed the interface and every state, documented the handoff with per-component annotations, and supported QA through release.
+I led the project end to end in one month, as lead business and systems analyst and as product designer: requirements, flow definition, interface and state design, handoff documentation with per-component annotations, and final testing through release.
+
+## The challenge
+
+Design for someone who isn't the distributor's usual user: a corporate buyer in a hurry, inside a time-limited session, facing a catalog full of technical data (SKU, CAS number, pack size, compliance and lead time).
 
 ## The flow
 
@@ -62,16 +60,14 @@ I tested the design with product names hundreds of characters long, twelve-digit
 
 I designed each state before handoff: skeleton loading, empty catalog results, empty cart, session error, cancel confirmation, expiring session and transfer in progress. Whatever isn't designed ends up improvised in code.
 
-## User testing
+## Testing
 
-<Pending>
-What method did you use, with how many people, and what changed in the design because of testing?
-</Pending>
+We tested with users on both sides: the distributor's internal team and the customer's buyers. We ran smoke, usability and navigation tests, and reviewed heatmaps to see where attention landed.
+
+Testing confirmed the flow: nobody got lost and navigation needed no changes. The fixes were visual, and the rest was technical, in how the cart transfers between systems. A new product reaching testing with almost no navigation changes is the payoff of defining the flow and states properly during analysis.
 
 ## Outcome
 
-The platform is in production.
+The platform is in production. Quotes and purchase orders now reach the ERP instantly, and time from quote to order dropped by about 80%. What remains is the distributor's internal order processing.
 
-<Pending>
-Add results: time to build an order, transferred orders, errors or support tickets, or client feedback.
-</Pending>
+The customer now quotes and buys on their own, from their own system, without waiting on the distributor.
