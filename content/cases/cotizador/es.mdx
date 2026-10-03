@@ -10,7 +10,7 @@ cover: quote
 ---
 
 <Pending>
-Faltan: duración, equipo, estado actual y las pantallas recreadas. El archivo de Figma es pesado; lo leo en la siguiente pasada.
+Faltan: duración, equipo y estado actual. Las decisiones de abajo las redacté a partir de la versión 7 en Figma; revisa que el porqué sea correcto.
 </Pending>
 
 ## Contexto
@@ -25,14 +25,28 @@ La empresa ya cotizaba y levantaba pedidos en México con su ERP. Para abrir ope
 
 Lideré el diseño y el análisis UX/UI de punta a punta: entrevistas con stakeholders, levantamiento de requisitos, flujo del cotizador, diseño de interfaz, QA e implementación.
 
-## Iterar hasta que el sistema y el diseño coincidan
+## Un espacio de trabajo, no un formulario
 
-El cotizador pasó por siete versiones. Cada una se contrastó contra lo que el sistema realmente hacía, hasta llegar a una versión aprobada para Perú. Después vino un submódulo de fletes y la migración de todo el módulo al sistema de diseño del ERP.
+Cotizar no empieza en una pantalla en blanco: empieza con un correo del cliente y un historial comercial. Por eso el cotizador es un espacio de trabajo de tres paneles: el contexto del cliente, el requerimiento original tal como llegó y, a la derecha, el armado de la cotización. Los dos primeros se contraen cuando el ejecutivo necesita espacio para trabajar la lista de productos.
 
-<PendingVisual label="Flujo del cotizador y comparación de versiones" />
+### Las condiciones comerciales siempre a la vista
+
+Si el cliente acepta entregas parciales, quién factura, la moneda de la oferta y las condiciones de pago cambian cómo se debe cotizar. En lugar de esconderlas en otra pantalla, viven en el primer panel, junto al contacto que hizo la solicitud.
+
+### Un requerimiento, varias cotizaciones
+
+Un mismo requerimiento puede generar varias cotizaciones, cada una con su estado: nueva, guardada, enviada o con productos en investigación. Las pestañas superiores permiten saltar entre ellas sin perder el contexto del cliente.
+
+### El buscador explica, no solo filtra
+
+Cada resultado muestra su disponibilidad (disponible, en back order, no comercializable o descontinuado), vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, el diseño dice por qué y qué hacer, en lugar de simplemente deshabilitar el botón.
+
+### Parcial o total, y el flete al final
+
+Al cerrar, el ejecutivo decide si la cotización es parcial o total, el tipo de entrega y la configuración del flete. Los productos que no se encuentran pasan a una pestaña de investigación en lugar de bloquear el envío.
 
 <Pending>
-Dos o tres decisiones clave: qué opciones evaluaste, cuál elegiste y por qué. ¿Qué problema resolvía el submódulo de fletes?
+¿Qué problema resolvía el submódulo de fletes? ¿Qué cambió entre las versiones 1 y 7, y qué se descartó?
 </Pending>
 
 ## Del UI Kit al sistema de diseño

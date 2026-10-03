@@ -10,7 +10,7 @@ cover: quote
 ---
 
 <Pending>
-Missing: duration, team, current status and the recreated screens. The Figma file is heavy; I'll read it in the next pass.
+Missing: duration, team and current status. I wrote the decisions below from version 7 in Figma; check that the reasoning is right.
 </Pending>
 
 ## Context
@@ -25,14 +25,28 @@ What changed for Peru? For example: taxes (IGV), e-invoicing, currency, ID docum
 
 I led UX/UI design and analysis end to end: stakeholder interviews, requirements, the quoting flow, interface design, QA and rollout.
 
-## Iterating until the system and the design agree
+## A workspace, not a form
 
-The quoting tool went through seven versions. Each one was checked against what the system actually did, until we reached an approved version for Peru. Then came a freight submodule and the migration of the whole module to the ERP's design system.
+Quoting doesn't start on a blank screen: it starts with a customer email and a commercial history. So the tool is a three-panel workspace: customer context, the original request exactly as it arrived and, on the right, the quote being built. The first two collapse when the sales rep needs room to work the product list.
 
-<PendingVisual label="Quoting flow and version comparison" />
+### Commercial terms always in view
+
+Whether the customer accepts partial deliveries, who bills, the offer currency and payment terms all change how a quote should be built. Instead of hiding them on another screen, they live in the first panel, next to the contact who made the request.
+
+### One request, several quotes
+
+A single request can produce several quotes, each with its own status: new, saved, sent or with items under research. Tabs at the top switch between them without losing the customer context.
+
+### Search that explains, not just filters
+
+Every result shows availability (available, back order, not for sale or discontinued), validity, lead time and linked quotes. When an item can't be added, the design says why and what to do, instead of just disabling the button.
+
+### Partial or full, with freight at the end
+
+To close, the rep decides whether the quote is partial or full, the delivery type and the freight setup. Items that can't be found move to a research tab instead of blocking the quote.
 
 <Pending>
-Two or three key decisions: which options you weighed, which one you chose and why. What problem did the freight submodule solve?
+What problem did the freight submodule solve? What changed between versions 1 and 7, and what was discarded?
 </Pending>
 
 ## From UI kit to design system
