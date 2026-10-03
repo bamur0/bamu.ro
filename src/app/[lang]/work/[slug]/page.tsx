@@ -79,13 +79,25 @@ export default async function CasePage({ params }: PageProps<"/[lang]/work/[slug
             </div>
           ))}
         </dl>
+        <dl className="mt-8 grid gap-px overflow-hidden rounded-surface border border-line bg-line md:grid-cols-3">
+          {[
+            [dict.case.problem, c.problem],
+            [dict.case.did, c.did],
+            [dict.case.impact, c.impact],
+          ].map(([k, v]) => (
+            <div key={k} className="bg-surface p-5">
+              <dt className="text-sm font-medium text-ink">{k}</dt>
+              <dd className="mt-2 leading-relaxed text-ink-2">{v}</dd>
+            </div>
+          ))}
+        </dl>
         <Reveal className="mt-12">
           <CaseCover cover={c.cover} title={c.title} locale={lang} interactive />
           <p className="mt-3 max-w-2xl text-sm text-muted">{dict.case.nda}</p>
         </Reveal>
       </header>
 
-      <div className="mx-auto max-w-[680px] pt-8">{content}</div>
+      <div className="mx-auto max-w-[620px] pt-8">{content}</div>
 
       <nav className="mx-auto mt-24 max-w-6xl border-t border-line pt-8">
         <Link href={`/${lang}/work/${next.slug}/`} className="group flex items-end justify-between gap-6">

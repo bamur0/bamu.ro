@@ -32,42 +32,44 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <div className="px-4 sm:px-6">
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl pb-14 pt-14 md:pb-20 md:pt-24">
+      {/* Hero: ocupa toda la pantalla; el trabajo aparece al hacer scroll */}
+      <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl flex-col pb-10 pt-8 md:pb-14 md:pt-12">
         <p className="enter text-lg text-ink-2" style={{ "--i": 0 } as React.CSSProperties}>
           {dict.hero.greeting}
         </p>
-        <h1
-          className="enter mt-3 max-w-[18ch] text-[40px] font-semibold leading-[1.05] tracking-[-0.025em] text-ink text-balance sm:text-5xl md:text-6xl"
-          style={{ "--i": 1 } as React.CSSProperties}
-        >
-          {markLastWord(dict.hero.title)}
-        </h1>
-        <p
-          className="enter mt-6 max-w-[46ch] text-lg leading-relaxed text-ink-2 text-pretty"
+        <div className="flex flex-1 items-center py-12">
+          <h1
+            className="enter max-w-[15ch] text-[clamp(44px,8.2vw,116px)] font-semibold leading-[0.98] tracking-[-0.035em] text-ink text-balance"
+            style={{ "--i": 1 } as React.CSSProperties}
+          >
+            {markLastWord(dict.hero.title)}
+          </h1>
+        </div>
+        <div
+          className="enter grid gap-6 border-t border-line pt-6 md:grid-cols-[1fr_auto] md:items-end"
           style={{ "--i": 2 } as React.CSSProperties}
         >
-          {dict.hero.lead}
-        </p>
-        <div className="enter mt-8 flex flex-wrap gap-3" style={{ "--i": 3 } as React.CSSProperties}>
-          <Link
-            href={`/${lang}/#work`}
-            className="inline-flex h-11 items-center rounded-full bg-ink px-5 text-[15px] font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
-          >
-            {dict.hero.ctaWork}
-          </Link>
-          <Link
-            href={`/${lang}/#contact`}
-            className="inline-flex h-11 items-center rounded-full border border-line px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
-          >
-            {dict.hero.ctaContact}
-          </Link>
+          <p className="max-w-[46ch] text-lg leading-relaxed text-ink-2 text-pretty">{dict.hero.lead}</p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={`/${lang}/#work`}
+              className="inline-flex h-11 items-center rounded-full bg-ink px-5 text-[15px] font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
+            >
+              {dict.hero.ctaWork}
+            </Link>
+            <Link
+              href={`/${lang}/#contact`}
+              className="inline-flex h-11 items-center rounded-full border border-line px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
+            >
+              {dict.hero.ctaContact}
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Trabajo */}
       <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl scroll-mt-20">
-        <h2 id="work-title" className="sr-only">
+        <h2 id="work-title" className="mb-10 pt-16 text-3xl font-semibold tracking-tight text-ink md:mb-14 md:pt-24">
           {dict.work.title}
         </h2>
         <Reveal>

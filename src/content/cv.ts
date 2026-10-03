@@ -42,7 +42,7 @@ export const cv: Record<Locale, Cv> = {
       tools: "Herramientas:",
     },
     profile:
-      "Product Designer con más de 3 años diseñando productos digitales de punta a punta, de plataformas de compra a ERP y CMS. Combina análisis de negocio, diseño UX/UI, sistemas de diseño y QA para llevar requisitos complejos a productos en producción con impacto medible.",
+      "Product Designer con más de 3 años diseñando productos digitales de punta a punta, de plataformas de compra a ERP y CMS. Combina análisis de negocio, diseño UX/UI, sistemas de diseño y QA para convertir requisitos complejos en productos en producción con impacto medible.",
     roles: [
       {
         org: "RYNDEM Studios",
@@ -52,7 +52,7 @@ export const cv: Record<Locale, Cv> = {
             title: "Product Designer",
             dates: "2025 – Presente",
             bullets: [
-              "Lideré de punta a punta, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de la cotización al pedido",
+              "Lideré de punta a punta, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de un 80% el tiempo entre la cotización y el pedido",
               "Definí requisitos, flujos y criterios de aceptación con stakeholders de negocio y desarrollo, y acompañé cada producto hasta su salida a producción",
               "Integré herramientas de IA en el flujo de diseño para prototipado rápido, documentación y validación con desarrollo",
               "Colaboré con equipos de desarrollo y negocio bajo Agile/Scrum en planeación de sprints, revisiones de diseño y entregas iterativas",
@@ -62,11 +62,11 @@ export const cv: Record<Locale, Cv> = {
             title: "UX/UI Designer",
             dates: "2023 – 2024",
             bullets: [
-              "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, eliminando días de espera causados por una diferencia horaria de 12 horas; en producción con 3 proveedores",
+              "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, lo que eliminó días de espera causados por una diferencia horaria de 12 horas; en producción con 3 proveedores",
               "Construí el sistema de diseño del CMS con Atomic Design: 117 componentes con 599 variantes y 237 variables (104 primitivas y 133 tokens semánticos), versionado para escalar a nuevos proveedores",
-              "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de 40% las cotizaciones resueltas fuera del sistema",
+              "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de un 40% las cotizaciones resueltas fuera del sistema",
               "Participé en la adaptación del módulo de ventas del ERP para operar en Perú, desde las entrevistas con stakeholders hasta el QA y la implementación",
-              "Diseñé y ejecuté casos de prueba de QA con heurísticas de Nielsen y criterios de aceptación antes de cada liberación",
+              "Diseñé y ejecuté casos de prueba de QA basados en las heurísticas de Nielsen y en criterios de aceptación antes de cada liberación",
             ],
           },
         ],
@@ -77,8 +77,8 @@ export const cv: Record<Locale, Cv> = {
       ["Diseño y prototipado", "Figma, FigJam, Adobe Creative Cloud, Sketch, Zeplin"],
       ["Métodos", "Design Thinking, Lean UX, Atomic Design, design tokens, pruebas de usabilidad, QA testing, Agile/Scrum"],
       ["IA", "Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM, Figma AI, integraciones MCP"],
-      ["Gestión", "Notion, Jira, Trello, Asana"],
-      ["Idiomas", "Español (nativo), inglés (C1)"],
+      ["Gestión de proyectos", "Notion, Jira, Trello, Asana"],
+      ["Idiomas", "español (nativo), inglés (C1)"],
     ],
     education: [
       {
@@ -112,7 +112,7 @@ export const cv: Record<Locale, Cv> = {
             title: "Product Designer",
             dates: "2025 – Present",
             bullets: [
-              "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut quote-to-order time by about 80%",
+              "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut time from quote to order by about 80%",
               "Defined requirements, flows and acceptance criteria with business and engineering stakeholders, and took each product through to production",
               "Integrated AI tools into the design workflow for rapid prototyping, documentation and validation with engineering",
               "Partnered with engineering and business teams in Agile/Scrum on sprint planning, design reviews and iterative delivery",
@@ -126,7 +126,7 @@ export const cv: Record<Locale, Cv> = {
               "Built the CMS design system with Atomic Design: 117 components with 599 variants and 237 variables (104 primitives and 133 semantic tokens), versioned to scale to new suppliers",
               "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40%",
               "Contributed to adapting the ERP sales module for Peru, from stakeholder interviews through QA and rollout",
-              "Designed and ran QA test cases against Nielsen's heuristics and acceptance criteria before every release",
+              "Designed and ran QA test cases based on Nielsen's heuristics and acceptance criteria before every release",
             ],
           },
         ],
@@ -144,7 +144,7 @@ export const cv: Record<Locale, Cv> = {
       {
         school: "Universidad Iberoamericana Puebla",
         place: "Puebla, Mexico",
-        degree: "B.A. in Interaction Design and Animation",
+        degree: "Bachelor's Degree in Interaction Design and Animation",
         date: "May 2021",
       },
     ],

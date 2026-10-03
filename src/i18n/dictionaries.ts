@@ -15,19 +15,19 @@ const es = {
     switchLangShort: "EN",
     theme: "Cambiar tema",
     skip: "Saltar al contenido",
+    main: "Principal",
+    menu: "Menú",
+    closeMenu: "Cerrar menú",
   },
   hero: {
     greeting: "Hola, soy Roberto.",
     title: "Diseño productos complejos para que se sientan simples.",
-    lead: "Product designer en RYNDEM Studios. Llevo ERPs, plataformas de compra y CMS de la investigación al QA.",
+    lead: "Product designer en RYNDEM Studios. Trabajo en ERP, plataformas de compra y CMS, desde la investigación hasta el QA.",
     ctaWork: "Ver casos",
     ctaContact: "Escríbeme",
   },
   work: {
     title: "Casos seleccionados",
-    open: "Leer caso",
-    role: "Rol",
-    year: "Año",
   },
   process: {
     title: "Cómo trabajo",
@@ -50,15 +50,15 @@ const es = {
       },
       {
         name: "Uso IA donde acelera",
-        body: "Prototipado rápido, documentación y validación con desarrollo, con criterio humano en cada decisión.",
+        body: "Para prototipar rápido, documentar y validar con desarrollo. Las decisiones de diseño siguen siendo mías.",
       },
     ],
   },
   about: {
     title: "Sobre mí",
     body: [
-      "Soy licenciado en Diseño de Interacción y Animación por la Ibero Puebla. Desde 2023 diseño productos empresariales en RYNDEM Studios, casi siempre de punta a punta: requisitos, UX, UI, sistema de diseño y QA.",
-      "Me gusta el trabajo donde la complejidad es real: reglas fiscales, catálogos enormes, flujos con muchos actores. Mi trabajo es que nada de eso se le note a quien usa el producto.",
+      "Estudié Diseño de Interacción y Animación en la Ibero Puebla. En 2023 entré a RYNDEM Studios como UX/UI Designer y desde 2025 soy Product Designer. Casi siempre trabajo de punta a punta: requisitos, UX, UI, sistema de diseño y QA.",
+      "Me gusta el trabajo donde la complejidad es real: condiciones comerciales, catálogos enormes, flujos con muchos actores. Mi trabajo es que nada de eso se le note a quien usa el producto.",
     ],
     tools: "Herramientas",
     toolsList: "Figma, FigJam, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
@@ -71,9 +71,7 @@ const es = {
   },
   cv: {
     title: "CV",
-    lead: "Mi experiencia en una hoja, en formato Harvard. Lista para descargar en PDF.",
     download: "Descargar PDF",
-    hint: "En el diálogo de impresión, elige “Guardar como PDF”.",
   },
   contact: {
     title: "¿Hablamos?",
@@ -90,6 +88,9 @@ const es = {
     status: "Estado",
     next: "Siguiente caso",
     pending: "Pendiente",
+    problem: "El problema",
+    did: "Lo que hice",
+    impact: "Resultado",
     nda: "Las pantallas de este caso están recreadas con un sistema neutro para respetar la confidencialidad del cliente. La estructura, los flujos y las decisiones son los originales.",
   },
   footer: {
@@ -117,19 +118,19 @@ const en: Dictionary = {
     switchLangShort: "ES",
     theme: "Toggle theme",
     skip: "Skip to content",
+    main: "Main",
+    menu: "Menu",
+    closeMenu: "Close menu",
   },
   hero: {
     greeting: "Hi, I'm Roberto.",
     title: "I design complex products so they feel simple.",
-    lead: "Product designer at RYNDEM Studios. I take ERPs, procurement platforms and CMS from research to QA.",
+    lead: "Product designer at RYNDEM Studios, working on ERPs, procurement platforms and CMS from research through QA.",
     ctaWork: "See work",
     ctaContact: "Email me",
   },
   work: {
     title: "Selected work",
-    open: "Read case",
-    role: "Role",
-    year: "Year",
   },
   process: {
     title: "How I work",
@@ -152,15 +153,15 @@ const en: Dictionary = {
       },
       {
         name: "AI where it speeds things up",
-        body: "Rapid prototyping, documentation and dev validation, with human judgment on every decision.",
+        body: "To prototype fast, document and validate with engineering. The design decisions stay mine.",
       },
     ],
   },
   about: {
     title: "About",
     body: [
-      "I hold a degree in Interaction Design and Animation from Ibero Puebla. Since 2023 I've designed enterprise products at RYNDEM Studios, usually end to end: requirements, UX, UI, design system and QA.",
-      "I like work where the complexity is real: tax rules, huge catalogs, flows with many actors. My job is making sure none of it shows for the people using the product.",
+      "I studied Interaction Design and Animation at Ibero Puebla. I joined RYNDEM Studios in 2023 as a UX/UI Designer and have been a Product Designer since 2025. I usually work end to end: requirements, UX, UI, design system and QA.",
+      "I like work where the complexity is real: commercial terms, huge catalogs, flows with many actors. My job is making sure none of it shows for the people using the product.",
     ],
     tools: "Tools",
     toolsList: "Figma, FigJam, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
@@ -173,9 +174,7 @@ const en: Dictionary = {
   },
   cv: {
     title: "Resume",
-    lead: "My experience on one page, in Harvard format. Ready to download as a PDF.",
     download: "Download PDF",
-    hint: "In the print dialog, choose “Save as PDF”.",
   },
   contact: {
     title: "Let's talk",
@@ -192,6 +191,9 @@ const en: Dictionary = {
     status: "Status",
     next: "Next case",
     pending: "Pending",
+    problem: "The problem",
+    did: "What I did",
+    impact: "Outcome",
     nda: "Screens in this case are recreated with a neutral system to respect client confidentiality. The structure, flows and decisions are the original ones.",
   },
   footer: {

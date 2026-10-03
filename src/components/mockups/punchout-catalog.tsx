@@ -22,6 +22,8 @@ import type { Locale } from "@/i18n/config";
 import { getProducts, money, ui, type Product } from "./punchout-data";
 import { ScaledFrame } from "./scaled-frame";
 
+const scrollHint = { es: "Desliza para recorrer la pantalla completa.", en: "Swipe to explore the full screen." };
+
 const W = 1120;
 const H = 720;
 
@@ -62,18 +64,18 @@ export function PunchoutCatalog({
   const tab = interactive ? 0 : -1;
 
   return (
-    <ScaledFrame width={W} height={H} label={label} interactive={interactive}>
+    <ScaledFrame width={W} height={H} label={label} interactive={interactive} scrollHint={scrollHint[locale]}>
       <div className="flex h-full flex-col bg-bg text-[13px] text-ink" {...(!interactive && { inert: true })}>
         {/* Barra superior */}
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-line bg-surface px-6">
           <div className="flex items-center gap-2.5">
-            <span className="grid size-6 place-items-center rounded-[6px] bg-ink text-[11px] font-semibold text-bg">C</span>
+            <span className="grid size-6 place-items-center rounded-[6px] bg-ink text-[12px] font-semibold text-bg">C</span>
             <span className="font-medium">{t.vendor}</span>
           </div>
           <div className="flex items-center gap-3 text-ink-2">
-            <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px]">{locale.toUpperCase()}</span>
+            <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[12px]">{locale.toUpperCase()}</span>
             <span>{t.buyer}</span>
-            <span className="grid size-7 place-items-center rounded-full bg-surface-2 text-[11px] font-medium text-ink">CC</span>
+            <span className="grid size-7 place-items-center rounded-full bg-surface-2 text-[12px] font-medium text-ink">CC</span>
           </div>
         </div>
 
@@ -97,7 +99,7 @@ export function PunchoutCatalog({
           {/* Catálogo */}
           <div className="flex min-w-0 flex-1 flex-col gap-4">
             <div className="flex items-center justify-between gap-3">
-              <h3 className="text-[17px] font-semibold tracking-tight">{t.products}</h3>
+              <p className="text-[17px] font-semibold tracking-tight">{t.products}</p>
               <div className="flex items-center gap-2">
                 <span className="flex h-8 w-36 items-center justify-between rounded-control border border-line bg-surface px-2.5 text-ink-2">
                   {t.brand}
@@ -120,12 +122,12 @@ export function PunchoutCatalog({
                     </div>
                     <div className="mt-2.5 flex flex-1 flex-col gap-0.5">
                       <p className="truncate font-medium leading-tight">{p.name}</p>
-                      <p className="text-[11px] text-muted">{p.size}</p>
+                      <p className="text-[12px] text-muted">{p.size}</p>
                       <p className="mt-1 text-[15px] font-semibold tracking-tight">{money(p.price)}</p>
-                      <p className="font-mono text-[10.5px] text-ink-2">
+                      <p className="font-mono text-[11.5px] text-ink-2">
                         SKU {p.sku} &nbsp; CAS {p.cas}
                       </p>
-                      <p className="mt-auto flex items-center gap-1 text-[11px] text-ink-2">
+                      <p className="mt-auto flex items-center gap-1 text-[12px] text-ink-2">
                         <Truck size={13} />
                         {t.eta(p.days)}
                       </p>
@@ -159,7 +161,7 @@ export function PunchoutCatalog({
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
               <div>
                 <p className="font-semibold">{t.cart}</p>
-                <p className="text-[11px] text-muted">{t.items(count)}</p>
+                <p className="text-[12px] text-muted">{t.items(count)}</p>
               </div>
               <ShoppingCart size={18} className="text-ink-2" />
             </div>
@@ -175,7 +177,7 @@ export function PunchoutCatalog({
                     className="flex h-full flex-col items-center justify-center text-center"
                   >
                     <p className="font-medium">{t.emptyTitle}</p>
-                    <p className="mt-1 max-w-[180px] text-[11px] text-muted">{t.empty}</p>
+                    <p className="mt-1 max-w-[180px] text-[12px] text-muted">{t.empty}</p>
                   </motion.div>
                 ) : (
                   lines.map((p) => (
@@ -190,7 +192,7 @@ export function PunchoutCatalog({
                     >
                       <div className="min-w-0 flex-1">
                         <p className="truncate font-medium">{p.name}</p>
-                        <p className="text-[11px] text-muted">
+                        <p className="text-[12px] text-muted">
                           {cart[p.id]} × {money(p.price)}
                         </p>
                       </div>

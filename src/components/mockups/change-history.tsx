@@ -72,7 +72,7 @@ export function ChangeHistory({ locale }: { locale: Locale }) {
               className="relative grid grid-cols-[32px_1fr] gap-3"
             >
               <span
-                className={`relative z-10 grid size-8 place-items-center rounded-full border text-[11px] font-semibold ${
+                className={`relative z-10 grid size-8 place-items-center rounded-full border text-[12px] font-semibold ${
                   e.who === "supplier" ? "border-transparent bg-ink text-bg" : "border-line bg-surface text-ink"
                 }`}
               >

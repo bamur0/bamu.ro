@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Cotizador de un ERP de ventas
-summary: Mejoras al cotizador de un ERP de venta interna para que los casos especiales, como cambios en condiciones de pago o productos controlados, se resuelvan dentro del sistema y no por fuera.
+summary: Mejoras al cotizador de un ERP de venta interna para que los casos especiales se resuelvan dentro del sistema y no por fuera.
 client: ERP de distribución B2B
 type: Mejora de producto
 year: "2024"
@@ -10,44 +10,57 @@ duration: 2 meses
 team: Diseño y análisis a mi cargo
 status: En producción, en evolución continua
 cover: quote
+problem: El cotizador no cubría los casos especiales, así que los ejecutivos los resolvían fuera del sistema, sin trazabilidad.
+did: Identifiqué esos escenarios aislados y diseñé las mejoras para que el sistema los absorbiera, del análisis con stakeholders al QA.
+impact: Las cotizaciones resueltas fuera del sistema bajaron cerca de 40%.
 ---
 
 ## Contexto
 
 La empresa migró su proceso de venta interna de un sistema heredado a un ERP propio. El flujo completo va de la cotización a la tramitación del pedido: cotización, ajustes de oferta, pre-tramitación, validación de ajustes a la orden de compra y tramitación de la orden del cliente.
 
-El cotizador es la primera pieza de ese flujo. Ahí los ejecutivos de venta convierten cada solicitud que manda un cliente en una cotización con productos, precios, condiciones y tiempos de entrega.
+El cotizador es la primera pieza de ese flujo, y lo que pasa ahí afecta todo lo que sigue.
+
+## Para quién
+
+Para los ejecutivos de venta interna, que convierten cada solicitud de un cliente en una cotización y pasan buena parte del día en esta pantalla. Cuando el sistema no les daba un camino, lo resolvían por fuera. No por falta de disciplina: el cliente estaba esperando.
 
 ## El problema
 
-El sistema ya estaba en uso, pero no cubría todos los escenarios reales. Cuando una cotización necesitaba algo fuera de lo común, como cambiar las condiciones de pago, separar productos controlados o cotizar algo que no estaba en el catálogo, los ejecutivos la resolvían por fuera del sistema. Cada caso por fuera era una cotización sin trazabilidad y un riesgo para los pasos siguientes del pedido.
+El sistema ya estaba en uso, pero no cubría todos los escenarios reales. Cambiar las condiciones de pago, separar productos controlados o cotizar algo fuera del catálogo terminaba resolviéndose a mano. Cada cotización por fuera era una cotización sin trazabilidad y un riesgo para los pasos siguientes del pedido.
 
 ## Mi rol
 
-No diseñé el cotizador desde cero. Mi trabajo fue identificar esos escenarios aislados y diseñar las mejoras para que el sistema los absorbiera: análisis con stakeholders, requisitos, flujos, interfaz, QA e implementación. También participé en la adaptación del módulo para operar en Perú. Estas mejoras tomaron dos meses, pero el ERP sigue creciendo: es un sistema de varios módulos que suma funcionalidades de forma continua.
+No diseñé el cotizador desde cero. Mi trabajo fue encontrar esos escenarios aislados y diseñar las mejoras para que el sistema los absorbiera: análisis con stakeholders, requisitos, flujos, interfaz, QA e implementación. También participé en la adaptación del módulo para operar en Perú.
+
+Trabajar sobre un sistema en uso tiene un límite claro: cada mejora tenía que convivir con flujos que los equipos ya conocían de memoria. Cambiar demasiado habría costado más de lo que resolvía.
 
 ## El espacio de trabajo
 
-Cotizar empieza con un correo del cliente y un historial comercial, no con una pantalla en blanco. Por eso el cotizador es un espacio de trabajo de tres paneles: el contexto del cliente con sus condiciones comerciales, el requerimiento original tal como llegó y, a la derecha, el armado de la cotización. Los dos primeros se contraen cuando el ejecutivo necesita espacio para trabajar la lista de productos.
+Cotizar empieza con un correo del cliente y un historial comercial, no con una pantalla en blanco. El cotizador reúne tres paneles: el contexto del cliente con sus condiciones comerciales, el requerimiento original tal como llegó y el armado de la cotización. Los dos primeros se contraen cuando el ejecutivo necesita espacio para trabajar la lista de productos.
+
+Cada resultado de búsqueda muestra disponibilidad, vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, la interfaz explica por qué y qué hacer, en lugar de solo deshabilitar el botón.
 
 ## Lo que mejoré
 
 ### Cambiar condiciones de pago sin salir de la cotización
 
-Antes, cambiar las condiciones de pago de una cotización obligaba a resolverlo por fuera. Diseñé el cambio dentro del flujo y comparé dos formas de validarlo: una verificación única al final o una verificación en cada cambio, para equilibrar control y velocidad.
+Diseñé el cambio dentro del flujo y comparé dos formas de validarlo. Una verificación única al final es más rápida, pero deja pasar errores hasta el último paso. Una verificación en cada cambio da más control, pero agrega fricción a un trabajo que se repite muchas veces al día.
 
 ### Separar productos controlados
 
-Los productos controlados siguen reglas distintas a los demás. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar una aparte a mano.
-
-### Un buscador que explica, no solo filtra
-
-Cada resultado muestra su disponibilidad (disponible, en back order, no comercializable o descontinuado), vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, el diseño dice por qué y qué hacer, en lugar de solo deshabilitar el botón.
+Los productos controlados siguen reglas distintas a los demás. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar otra a mano.
 
 ### Lo que no se encuentra no bloquea la cotización
 
-Los productos que no están en el catálogo pasan a una pestaña de investigación. El ejecutivo puede enviar lo que sí tiene y dar seguimiento a lo demás dentro del mismo sistema.
+Los productos que no están en el catálogo pasan a una pestaña de investigación. El ejecutivo envía lo que sí tiene y da seguimiento a lo demás dentro del mismo sistema.
 
 ## Resultado
 
-El sistema está en producción y los escenarios que antes se resolvían por fuera ahora tienen un camino dentro de él. Las cotizaciones que se resolvían por fuera bajaron alrededor de un 40%, y las que ahora pasan por el sistema tienen trazabilidad completa hasta el pedido.
+Los escenarios que antes se resolvían por fuera ahora tienen un camino dentro del sistema. Las cotizaciones resueltas por fuera bajaron cerca de 40%, y las que pasan por el sistema quedan trazadas hasta el pedido.
+
+## Lo que aprendí
+
+**Lo que funcionó.** Las cotizaciones que se hacían por fuera resultaron ser la mejor fuente de requisitos: cada una señalaba un hueco concreto del sistema.
+
+**Lo que haría distinto.** El 40% es una estimación del equipo. Propondría medir desde el propio sistema cuántas cotizaciones se resuelven por fuera, para seguir el impacto de cada mejora con datos.

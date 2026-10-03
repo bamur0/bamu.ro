@@ -1,7 +1,7 @@
 ---
 order: 1
 title: B2B PunchOut platform
-summary: A catalog connected to the customer's procurement system so they build and send their own orders. Time from quote to order dropped by about 80%.
+summary: A catalog connected to the customer's procurement system, so they build and send their own orders without waiting on the distributor.
 client: Laboratory supplies distributor
 type: New product
 year: "2026"
@@ -10,64 +10,73 @@ duration: 1 month
 team: Led the project as lead business and systems analyst, and product designer
 status: In production
 cover: punchout
+problem: Every order from a corporate customer took one or two days to move through request, quote, purchase order and handling in the ERP.
+did: Led the project end to end in one month, from business and systems analysis to interface design, every state and final testing.
+impact: Time from quote to order dropped by about 80%. The platform is in production.
 ---
 
 ## Context
 
-One of the distributor's corporate customers bought through a manual process: they sent a request, received a quote, sent back a purchase order, and all that back-and-forth was managed in the distributor's ERP. Each order took one or two days to be ready for processing.
+One of the distributor's corporate customers bought through a manual back-and-forth: they sent a request, got a quote, sent back a purchase order, and everything was managed in the distributor's ERP. Each order took one or two days to be ready for processing.
 
-The customer wanted something different: to buy from their own procurement system, without waiting on the distributor.
+The customer wanted to buy from their own procurement system, on their own schedule.
+
+## Who it's for
+
+A corporate buyer who isn't the distributor's usual user. They arrive from their own system, in a hurry, inside a session that expires, facing a catalog full of technical data: SKU, CAS number, pack size, compliance and lead time.
+
+On the other side was the distributor's team, who needed every order to reach the ERP complete and consistent.
 
 ## The proposal
 
-A PunchOut platform. From their procurement system, the buyer "punches out" to the distributor's catalog, where they only see the products and prices in their contract. There they build their order and send it back to their system, where internal approval continues. The order reaches the distributor's ERP already structured, ready to process with no inconsistencies. There's no checkout or payment: the session ends when the cart is transferred.
-
-## My role
-
-I led the project end to end in one month, as lead business and systems analyst and as product designer: requirements, flow definition, interface and state design, handoff documentation with per-component annotations, and final testing through release.
-
-## The challenge
-
-Design for someone who isn't the distributor's usual user: a corporate buyer in a hurry, inside a time-limited session, facing a catalog full of technical data (SKU, CAS number, pack size, compliance and lead time).
+A PunchOut platform. From their procurement system, the buyer enters the distributor's catalog, where they only see the products and prices in their contract. They build their order and send it back to their system, where internal approval continues. The order reaches the ERP already structured. There's no checkout or payment: the session ends when the cart is transferred.
 
 ## The flow
 
-Session check, privacy notice, plant selection, catalog, cart and transfer. Six steps, and in none of them does the buyer have to guess what comes next.
+Session check, privacy notice, plant selection, catalog, cart and transfer.
 
-<Figure caption="Plant selection. Try it: the address sets the order's delivery type.">
+<Figure caption="Plant selection, recreated. Pick one: the address sets the order's delivery type.">
   <PlantPicker />
 </Figure>
 
-## Key decisions
+## Decisions and what they cost
 
 ### Plant comes before the catalog
 
-One corporate customer has several plants, each with its own address and delivery type (partial or full). Choosing it on entry makes it clear from the start where the order is going, and that context stays visible at the top for the whole session, with the option to change it.
+One customer has several plants, each with its own address and delivery type, partial or full. Choosing it on entry makes it clear from the start where the order is going, and that context stays visible for the whole session.
+
+The cost is one more step before seeing products. It's worth it: an order sent to the wrong address costs far more than a click.
 
 ### Session time always in view
 
-PunchOut sessions expire. Losing a built cart is the worst possible error in this product, so the remaining time lives in the top bar and, before it runs out, a notice offers to continue. Ending the session also asks for confirmation.
+Sessions expire, and losing a built cart is the worst possible error in this product. The remaining time lives in the top bar and, before it runs out, a notice offers to continue. Ending the session also asks for confirmation.
+
+The cost is that a visible countdown can pressure the buyer. That's why the notice offers to continue instead of just warning.
 
 ### The cart lives next to the catalog
 
-The buyer isn't browsing: they're building an order. So the cart isn't another page but a fixed panel with subtotal, VAT and total that updates as products are added.
+The buyer isn't browsing, they're building an order. The cart is a fixed panel with subtotal, VAT and total that updates as products are added.
 
-### Designed for real data, not pretty data
+The cost is less room for the catalog. In return, the buyer always sees the total, which is what they check before transferring.
 
-I tested the design with product names hundreds of characters long, twelve-digit prices and seven-digit quantities. In the catalog the name is truncated and readable in full on hover; in the cart it's shown whole, because that's where the buyer checks what they're about to order.
+### Designed for real data
 
-## Every state
+I tested the design with product names hundreds of characters long, twelve-digit prices and seven-digit quantities. In the catalog the name is truncated and readable in full on hover. In the cart it's shown whole, because that's where the buyer checks what they're about to order.
 
-I designed each state before handoff: skeleton loading, empty catalog results, empty cart, session error, cancel confirmation, expiring session and transfer in progress. Whatever isn't designed ends up improvised in code.
+I also designed every state before handoff: loading, empty results, empty cart, session error, cancellation, expiring session and transfer in progress.
 
 ## Testing
 
 We tested with users on both sides: the distributor's internal team and the customer's buyers. We ran smoke, usability and navigation tests, and reviewed heatmaps to see where attention landed.
 
-Testing confirmed the flow: nobody got lost and navigation needed no changes. The fixes were visual, and the rest was technical, in how the cart transfers between systems. A new product reaching testing with almost no navigation changes is the payoff of defining the flow and states properly during analysis.
+Navigation needed no changes. The fixes were visual, and the rest was technical, in how the cart transfers between systems.
 
 ## Outcome
 
-The platform is in production. Quotes and purchase orders now reach the ERP instantly, and time from quote to order dropped by about 80%. What remains is the distributor's internal order processing.
+Quotes and purchase orders now reach the ERP instantly, and time from quote to order dropped by about 80%. What remains is internal order processing. The customer quotes and buys on their own, from their own system.
 
-The customer now quotes and buys on their own, from their own system, without waiting on the distributor.
+## What I learned
+
+**What worked.** Defining the flow and every state during analysis showed up in testing: nobody got lost, and the team could focus on the technical side.
+
+**What I'd do differently.** Validation with the customer's buyers was the weakest part, since we never knew how many people took part. Next time I'd measure real usage in production, such as time per order and sessions that expire before transfer.

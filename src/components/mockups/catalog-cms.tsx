@@ -7,6 +7,8 @@ import type { Locale } from "@/i18n/config";
 import { catalogUi, getCatalogRows, type InfoStatus } from "./catalog-data";
 import { ScaledFrame } from "./scaled-frame";
 
+const scrollHint = { es: "Desliza para recorrer la pantalla completa.", en: "Swipe to explore the full screen." };
+
 const W = 1280;
 const H = 720;
 
@@ -30,16 +32,16 @@ export function CatalogCms({ locale, interactive = false, label }: { locale: Loc
   const tabIndex = interactive ? 0 : -1;
 
   return (
-    <ScaledFrame width={W} height={H} label={label} interactive={interactive}>
+    <ScaledFrame width={W} height={H} label={label} interactive={interactive} scrollHint={scrollHint[locale]}>
       <div className="flex h-full flex-col bg-bg text-[12.5px] text-ink" {...(!interactive && { inert: true })}>
         <div className="flex h-11 shrink-0 items-center justify-between border-b border-line bg-surface px-6">
           <div className="flex items-center gap-2.5">
-            <span className="grid size-6 place-items-center rounded-[6px] bg-ink text-[11px] font-semibold text-bg">P</span>
+            <span className="grid size-6 place-items-center rounded-[6px] bg-ink text-[12px] font-semibold text-bg">P</span>
             <span className="font-medium">{t.app}</span>
           </div>
           <div className="flex items-center gap-2 text-ink-2">
             <span>{t.supplier}</span>
-            <span className="grid size-7 place-items-center rounded-full bg-surface-2 text-[11px] font-medium text-ink">PR</span>
+            <span className="grid size-7 place-items-center rounded-full bg-surface-2 text-[12px] font-medium text-ink">PR</span>
           </div>
         </div>
 
@@ -70,7 +72,7 @@ export function CatalogCms({ locale, interactive = false, label }: { locale: Loc
                     className={`relative flex items-center gap-1.5 px-3 pb-2.5 pt-1 transition-colors ${active ? "font-medium text-ink" : "text-ink-2 hover:text-ink"}`}
                   >
                     {t.tabs[k]}
-                    <span className="rounded-full bg-surface-2 px-1.5 text-[11px] tabular-nums text-ink-2">{count(k)}</span>
+                    <span className="rounded-full bg-surface-2 px-1.5 text-[12px] tabular-nums text-ink-2">{count(k)}</span>
                     {active && (
                       <motion.span
                         layoutId={`${label}-tab`}
@@ -93,7 +95,7 @@ export function CatalogCms({ locale, interactive = false, label }: { locale: Loc
           </div>
 
           <div className="min-h-0 flex-1 overflow-hidden rounded-[10px] border border-line bg-surface">
-            <div className="grid grid-cols-[minmax(0,3.2fr)_1.5fr_1.1fr_0.7fr_1.1fr_1fr_36px] items-center gap-3 border-b border-line bg-surface-2/60 px-4 py-2.5 text-[11.5px] font-medium text-ink-2">
+            <div className="grid grid-cols-[minmax(0,3.2fr)_1.5fr_1.1fr_0.7fr_1.1fr_1fr_36px] items-center gap-3 border-b border-line bg-surface-2/60 px-4 py-2.5 text-[12px] font-medium text-ink-2">
               {t.cols.map((c) => (
                 <span key={c} className="truncate">
                   {c}
@@ -119,17 +121,17 @@ export function CatalogCms({ locale, interactive = false, label }: { locale: Loc
                       className="grid grid-cols-[minmax(0,3.2fr)_1.5fr_1.1fr_0.7fr_1.1fr_1fr_36px] items-center gap-3 border-b border-line px-4 py-2.5 last:border-0"
                     >
                       <span className="flex min-w-0 items-center gap-2">
-                        <span className={`shrink-0 rounded-full border px-1.5 py-px text-[10.5px] font-medium ${statusStyle[r.status]}`}>
+                        <span className={`shrink-0 rounded-full border px-1.5 py-px text-[11.5px] font-medium ${statusStyle[r.status]}`}>
                           {r.status === "current" && <Check size={10} weight="bold" className="-mt-px mr-0.5 inline" />}
                           {t.status[r.status]}
                         </span>
                         <span className="truncate">{r.name}</span>
                       </span>
                       <span className={`tabular-nums ${r.status === "expired" ? "font-medium text-danger" : "text-ink-2"}`}>{r.expires}</span>
-                      <span className="font-mono text-[11.5px] text-ink-2">{r.cat}</span>
+                      <span className="font-mono text-[12px] text-ink-2">{r.cat}</span>
                       <span className="text-ink-2">{r.qty}</span>
                       <span className="truncate text-ink-2">{r.container}</span>
-                      <span className="font-mono text-[11.5px] text-ink-2">{r.cas}</span>
+                      <span className="font-mono text-[12px] text-ink-2">{r.cas}</span>
                       <span className="grid size-7 place-items-center rounded-[6px] text-muted" aria-label={t.edit}>
                         <PencilSimple size={14} />
                       </span>
@@ -139,7 +141,7 @@ export function CatalogCms({ locale, interactive = false, label }: { locale: Loc
               </AnimatePresence>
             </ul>
           </div>
-          <p className="text-[11.5px] text-muted">{t.showing(visible.length, 1200)}</p>
+          <p className="text-[12px] text-muted">{t.showing(visible.length, 1200)}</p>
         </div>
       </div>
     </ScaledFrame>

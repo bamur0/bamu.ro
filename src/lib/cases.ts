@@ -19,6 +19,10 @@ export type CaseMeta = {
   team?: string;
   status?: string;
   cover: "punchout" | "quote" | "catalog-cms";
+  /** Resumen de 10 segundos: el problema, lo que hice y el resultado */
+  problem: string;
+  did: string;
+  impact: string;
 };
 
 export type CaseFile = CaseMeta & { body: string };

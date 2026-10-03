@@ -19,7 +19,7 @@
   --accent: #c8f060;
   --accent-ink: #1c2600;
   --danger: #b42318;
-  --shadow: 0 1px 2px rgb(25 25 27 / 0.04), 0 8px 24px -12px rgb(25 25 27 / 0.12);
+  --shadow: 0 1px 2px rgb(25 25 27 / 0.05);
   color-scheme: light;
 }
 
@@ -34,7 +34,7 @@
   --accent: #c8f060;
   --accent-ink: #1c2600;
   --danger: #f97066;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
   color-scheme: dark;
 }
 
@@ -174,5 +174,107 @@ body {
   /* Los links se quedan subrayados en el PDF para que se reconozcan como links */
   .cv-sheet a {
     color: inherit;
+  }
+}
+
+/*
+  Intro de marca (ver components/intro.tsx). Línea de tiempo, ~2.3s:
+  0.0  aparece el nombre completo
+  0.7  se apagan las letras que no forman bamu.ro
+  1.0  se colapsan hasta dejar "BáMuRo"
+  1.55 el nombre cede el lugar a "bamu.ro"
+  2.0  la pantalla se retira y entra el hero
+*/
+.intro {
+  display: none;
+}
+html[data-intro="play"] .intro {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  animation: intro-out 450ms var(--ease-out-quint) 2s forwards;
+}
+.intro-stage {
+  display: grid;
+  place-items: center;
+  font-size: clamp(28px, 7vw, 88px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+.intro-name,
+.intro-logo {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+.intro-name {
+  animation:
+    intro-in 500ms var(--ease-out-quint) both,
+    intro-fade 300ms ease-out 1.55s forwards;
+}
+.intro-word,
+.intro-drop,
+.intro-gap {
+  display: inline-block;
+}
+.intro-drop,
+.intro-gap {
+  overflow: hidden;
+  vertical-align: bottom;
+  max-width: 6em;
+  animation:
+    intro-dim 300ms ease-out 0.7s forwards,
+    intro-collapse 500ms var(--ease-out-quint) 1s forwards;
+}
+.intro-logo {
+  opacity: 0;
+  animation: intro-in 450ms var(--ease-out-quint) 1.6s forwards;
+}
+@keyframes intro-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes intro-dim {
+  to {
+    opacity: 0.25;
+  }
+}
+@keyframes intro-collapse {
+  to {
+    max-width: 0;
+    opacity: 0;
+  }
+}
+@keyframes intro-fade {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* Mientras corre la intro, el hero espera a que termine para entrar */
+html[data-intro="play"] .enter {
+  animation-delay: calc(var(--i, 0) * 70ms + 2.15s);
+}
+@media print {
+  .intro {
+    display: none !important;
   }
 }

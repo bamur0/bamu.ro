@@ -7,6 +7,7 @@ import { site } from "@/lib/site";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Intro, introScript } from "@/components/intro";
 import "../globals.css";
 
 const onest = Onest({ subsets: ["latin"], variable: "--font-onest", display: "swap" });
@@ -53,7 +54,11 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
 
   return (
     <html lang={lang} suppressHydrationWarning className={`${onest.variable} ${plexMono.variable} antialiased`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      </head>
       <body className="min-h-dvh">
+        <Intro />
         <Providers>
           <SiteHeader locale={lang} dict={dict} />
           <main id="main">{children}</main>

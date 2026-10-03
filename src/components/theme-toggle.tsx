@@ -22,7 +22,7 @@ export function ThemeToggle({ label }: { label: string }) {
       aria-label={label}
       title={label}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative grid size-9 place-items-center overflow-hidden rounded-full text-ink-2 transition-colors duration-150 hover:bg-surface-2 hover:text-ink active:scale-[0.96]"
+      className="relative grid size-11 place-items-center sm:size-9 overflow-hidden rounded-full text-ink-2 transition-colors duration-150 hover:bg-surface-2 hover:text-ink active:scale-[0.96]"
     >
       {mounted && (
         <AnimatePresence mode="popLayout" initial={false}>
