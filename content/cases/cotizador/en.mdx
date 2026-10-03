@@ -1,64 +1,55 @@
 ---
 order: 2
-title: ERP quoting for a new market
-summary: Adapting an ERP's quoting and ordering module to operate in Peru, from stakeholder requirements to QA and rollout.
-client: Enterprise distribution ERP
-type: Regional adaptation
+title: Quoting in a sales ERP
+summary: Improvements to the quoting module of an internal sales ERP so edge cases, like payment-term changes or controlled products, get handled inside the system instead of outside it.
+client: B2B distribution ERP
+type: Product improvement
 year: "2024"
 role: UX/UI Designer
+status: In production
 cover: quote
 ---
 
 <Pending>
-Missing: duration, team and current status. I wrote the decisions below from version 7 in Figma; check that the reasoning is right.
+Missing duration and team. Also confirm the outcome figure: did about 20% of the quotes handled outside the system move into it?
 </Pending>
 
 ## Context
 
-The company already quoted and took orders in Mexico with its ERP. To open operations in Peru, the sales module had to work with different rules without breaking what teams in Mexico already relied on.
+The company moved its internal sales process from a legacy system to its own ERP. The full flow runs from quote to order processing: quoting, offer adjustments, order pre-processing, purchase-order adjustment validation and processing the customer's order.
 
-<Pending>
-What changed for Peru? For example: taxes (IGV), e-invoicing, currency, ID documents (RUC, DNI), freight. What is MUPA?
-</Pending>
+Quoting is the first step in that flow. It's where sales reps turn each customer request into a quote with products, prices, terms and lead times.
+
+## The problem
+
+The system was already in use, but it didn't cover every real scenario. When a quote needed something unusual, like changing payment terms, separating controlled products or quoting an item not in the catalog, reps handled it outside the system. Every off-system quote meant no traceability and a risk for the order steps that follow.
 
 ## My role
 
-I led UX/UI design and analysis end to end: stakeholder interviews, requirements, the quoting flow, interface design, QA and rollout.
+I didn't design the quoting tool from scratch. My job was to find those isolated scenarios and design the improvements that let the system absorb them: stakeholder analysis, requirements, flows, interface, QA and rollout. I also worked on adapting the module to operate in Peru.
 
-## A workspace, not a form
+## The workspace
 
-Quoting doesn't start on a blank screen: it starts with a customer email and a commercial history. So the tool is a three-panel workspace: customer context, the original request exactly as it arrived and, on the right, the quote being built. The first two collapse when the sales rep needs room to work the product list.
+Quoting starts with a customer email and a commercial history, not a blank screen. So the tool is a three-panel workspace: customer context with its commercial terms, the original request exactly as it arrived and, on the right, the quote being built. The first two collapse when the rep needs room to work the product list.
 
-### Commercial terms always in view
+## What I improved
 
-Whether the customer accepts partial deliveries, who bills, the offer currency and payment terms all change how a quote should be built. Instead of hiding them on another screen, they live in the first panel, next to the contact who made the request.
+### Changing payment terms without leaving the quote
 
-### One request, several quotes
+Changing a quote's payment terms used to force a workaround outside the system. I designed the change inside the flow and compared two ways to validate it: a single check at the end or a check on every change, to balance control and speed.
 
-A single request can produce several quotes, each with its own status: new, saved, sent or with items under research. Tabs at the top switch between them without losing the customer context.
+### Separating controlled products
+
+Controlled products follow different rules from everything else. The tool now flags them, shows how many of each type there are and lets reps split the quote instead of building a separate one by hand.
 
 ### Search that explains, not just filters
 
 Every result shows availability (available, back order, not for sale or discontinued), validity, lead time and linked quotes. When an item can't be added, the design says why and what to do, instead of just disabling the button.
 
-### Partial or full, with freight at the end
+### What can't be found doesn't block the quote
 
-To close, the rep decides whether the quote is partial or full, the delivery type and the freight setup. Items that can't be found move to a research tab instead of blocking the quote.
-
-<Pending>
-What problem did the freight submodule solve? What changed between versions 1 and 7, and what was discarded?
-</Pending>
-
-## From UI kit to design system
-
-<Pending>
-Describe migrating the quoting tool from the UI kit to the design system: which components were unified and what engineering gained.
-</Pending>
+Items that aren't in the catalog move to a research tab. Reps can send what they have and follow up on the rest inside the same system.
 
 ## Outcome
 
-The redesign sped up quoting and ordering for the new region.
-
-<Pending>
-Any rough numbers? Time to create a quote before and after, quotes per month, users in Peru.
-</Pending>
+The system is in production, and scenarios that used to be handled outside it now have a path inside it. About 20% of the quotes that used to be handled off-system moved into it, with full traceability through to the order.

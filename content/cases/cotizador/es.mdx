@@ -1,64 +1,55 @@
 ---
 order: 2
-title: Cotizador ERP para un nuevo mercado
-summary: Adaptación del módulo de cotización y pedidos de un ERP para operar en Perú, del levantamiento de requisitos con stakeholders al QA e implementación.
-client: ERP empresarial de distribución
-type: Adaptación regional
+title: Cotizador de un ERP de ventas
+summary: Mejoras al cotizador de un ERP de venta interna para que los casos especiales, como cambios en condiciones de pago o productos controlados, se resuelvan dentro del sistema y no por fuera.
+client: ERP de distribución B2B
+type: Mejora de producto
 year: "2024"
 role: UX/UI Designer
+status: En producción
 cover: quote
 ---
 
 <Pending>
-Faltan: duración, equipo y estado actual. Las decisiones de abajo las redacté a partir de la versión 7 en Figma; revisa que el porqué sea correcto.
+Faltan duración y equipo. Confirma también la cifra del resultado: ¿alrededor del 20% de las cotizaciones que se hacían por fuera pasaron al sistema?
 </Pending>
 
 ## Contexto
 
-La empresa ya cotizaba y levantaba pedidos en México con su ERP. Para abrir operación en Perú, el módulo de ventas tenía que funcionar con otras reglas sin romper lo que ya usaban los equipos en México.
+La empresa migró su proceso de venta interna de un sistema heredado a un ERP propio. El flujo completo va de la cotización a la tramitación del pedido: cotización, ajustes de oferta, pre-tramitación, validación de ajustes a la orden de compra y tramitación de la orden del cliente.
 
-<Pending>
-¿Qué cambió para Perú? Por ejemplo: impuestos (IGV), facturación electrónica, moneda, documentos de identidad (RUC, DNI), fletes. ¿Qué es MUPA?
-</Pending>
+El cotizador es la primera pieza de ese flujo. Ahí los ejecutivos de venta convierten cada solicitud que manda un cliente en una cotización con productos, precios, condiciones y tiempos de entrega.
+
+## El problema
+
+El sistema ya estaba en uso, pero no cubría todos los escenarios reales. Cuando una cotización necesitaba algo fuera de lo común, como cambiar las condiciones de pago, separar productos controlados o cotizar algo que no estaba en el catálogo, los ejecutivos la resolvían por fuera del sistema. Cada caso por fuera era una cotización sin trazabilidad y un riesgo para los pasos siguientes del pedido.
 
 ## Mi rol
 
-Lideré el diseño y el análisis UX/UI de punta a punta: entrevistas con stakeholders, levantamiento de requisitos, flujo del cotizador, diseño de interfaz, QA e implementación.
+No diseñé el cotizador desde cero. Mi trabajo fue identificar esos escenarios aislados y diseñar las mejoras para que el sistema los absorbiera: análisis con stakeholders, requisitos, flujos, interfaz, QA e implementación. También participé en la adaptación del módulo para operar en Perú.
 
-## Un espacio de trabajo, no un formulario
+## El espacio de trabajo
 
-Cotizar no empieza en una pantalla en blanco: empieza con un correo del cliente y un historial comercial. Por eso el cotizador es un espacio de trabajo de tres paneles: el contexto del cliente, el requerimiento original tal como llegó y, a la derecha, el armado de la cotización. Los dos primeros se contraen cuando el ejecutivo necesita espacio para trabajar la lista de productos.
+Cotizar empieza con un correo del cliente y un historial comercial, no con una pantalla en blanco. Por eso el cotizador es un espacio de trabajo de tres paneles: el contexto del cliente con sus condiciones comerciales, el requerimiento original tal como llegó y, a la derecha, el armado de la cotización. Los dos primeros se contraen cuando el ejecutivo necesita espacio para trabajar la lista de productos.
 
-### Las condiciones comerciales siempre a la vista
+## Lo que mejoré
 
-Si el cliente acepta entregas parciales, quién factura, la moneda de la oferta y las condiciones de pago cambian cómo se debe cotizar. En lugar de esconderlas en otra pantalla, viven en el primer panel, junto al contacto que hizo la solicitud.
+### Cambiar condiciones de pago sin salir de la cotización
 
-### Un requerimiento, varias cotizaciones
+Antes, cambiar las condiciones de pago de una cotización obligaba a resolverlo por fuera. Diseñé el cambio dentro del flujo y comparé dos formas de validarlo: una verificación única al final o una verificación en cada cambio, para equilibrar control y velocidad.
 
-Un mismo requerimiento puede generar varias cotizaciones, cada una con su estado: nueva, guardada, enviada o con productos en investigación. Las pestañas superiores permiten saltar entre ellas sin perder el contexto del cliente.
+### Separar productos controlados
 
-### El buscador explica, no solo filtra
+Los productos controlados siguen reglas distintas a los demás. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar una aparte a mano.
 
-Cada resultado muestra su disponibilidad (disponible, en back order, no comercializable o descontinuado), vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, el diseño dice por qué y qué hacer, en lugar de simplemente deshabilitar el botón.
+### Un buscador que explica, no solo filtra
 
-### Parcial o total, y el flete al final
+Cada resultado muestra su disponibilidad (disponible, en back order, no comercializable o descontinuado), vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, el diseño dice por qué y qué hacer, en lugar de solo deshabilitar el botón.
 
-Al cerrar, el ejecutivo decide si la cotización es parcial o total, el tipo de entrega y la configuración del flete. Los productos que no se encuentran pasan a una pestaña de investigación en lugar de bloquear el envío.
+### Lo que no se encuentra no bloquea la cotización
 
-<Pending>
-¿Qué problema resolvía el submódulo de fletes? ¿Qué cambió entre las versiones 1 y 7, y qué se descartó?
-</Pending>
-
-## Del UI Kit al sistema de diseño
-
-<Pending>
-Cuenta cómo fue migrar el cotizador del UI Kit al sistema de diseño: qué componentes se unificaron y qué ganó desarrollo.
-</Pending>
+Los productos que no están en el catálogo pasan a una pestaña de investigación. El ejecutivo puede enviar lo que sí tiene y dar seguimiento a lo demás dentro del mismo sistema.
 
 ## Resultado
 
-El rediseño aceleró los procesos de cotización y pedido para la nueva región.
-
-<Pending>
-¿Tienes algún número aproximado? Tiempo para crear una cotización antes y después, cotizaciones al mes, usuarios en Perú.
-</Pending>
+El sistema está en producción y los escenarios que antes se resolvían por fuera ahora tienen un camino dentro de él. Alrededor de un 20% de las cotizaciones que se llevaban fuera del sistema pasaron a hacerse dentro, con trazabilidad completa hacia el pedido.

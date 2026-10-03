@@ -12,20 +12,21 @@ export type QuoteProduct = {
   days: number | null;
   note?: string;
   blocked?: string;
+  controlled?: boolean;
 };
 
 const products: Record<Locale, QuoteProduct[]> = {
   es: [
     { id: "q1", name: "Ácido ascórbico, estándar primario", detail: "200 mg · Químico · Vigente al 17/nov", availability: "available", price: 134, days: 6, note: "1 cotización vinculada" },
-    { id: "q2", name: "Ácido cítrico, estándar de referencia", detail: "500 mg · Químico · Vigente al 17/nov", availability: "backorder", price: 96.5, days: 21, note: "Disponible a partir del 30/dic" },
-    { id: "q3", name: "Ácido bórico grado reactivo", detail: "250 g · Químico · Vigente al 02/dic", availability: "available", price: 41.2, days: 4, blocked: "No se puede agregar: el cliente no tiene configurada la familia de este producto. Solicítalo a Finanzas." },
+    { id: "q2", name: "Ácido cítrico, estándar de referencia", detail: "500 mg · Químico · Vigente al 17/nov", availability: "backorder", price: 96.5, days: 21, note: "Disponible a partir del 30/dic" , controlled: true },
+    { id: "q3", name: "Ácido bórico grado reactivo", detail: "250 g · Químico · Vigente al 02/dic", availability: "available", price: 41.2, days: 4, blocked: "No se puede agregar: el cliente no tiene configurada la familia de este producto. Solicítalo a Finanzas." , controlled: true },
     { id: "q4", name: "Ácido acetilsalicílico, publicación técnica", detail: "Impreso · Publicación", availability: "notForSale", price: null, days: null, note: "Consulta disponibilidad con tu ejecutivo" },
     { id: "q5", name: "Ácido fólico, estándar secundario", detail: "100 mg · Biológico", availability: "discontinued", price: null, days: null, note: "Alternativa sugerida: LS-6610" },
   ],
   en: [
     { id: "q1", name: "Ascorbic acid, primary standard", detail: "200 mg · Chemical · Valid until Nov 17", availability: "available", price: 134, days: 6, note: "1 linked quote" },
-    { id: "q2", name: "Citric acid, reference standard", detail: "500 mg · Chemical · Valid until Nov 17", availability: "backorder", price: 96.5, days: 21, note: "Available from Dec 30" },
-    { id: "q3", name: "Boric acid, reagent grade", detail: "250 g · Chemical · Valid until Dec 2", availability: "available", price: 41.2, days: 4, blocked: "Can't be added: this customer has no setup for this product family. Request it from Finance." },
+    { id: "q2", name: "Citric acid, reference standard", detail: "500 mg · Chemical · Valid until Nov 17", availability: "backorder", price: 96.5, days: 21, note: "Available from Dec 30" , controlled: true },
+    { id: "q3", name: "Boric acid, reagent grade", detail: "250 g · Chemical · Valid until Dec 2", availability: "available", price: 41.2, days: 4, blocked: "Can't be added: this customer has no setup for this product family. Request it from Finance." , controlled: true },
     { id: "q4", name: "Acetylsalicylic acid, technical publication", detail: "Print · Publication", availability: "notForSale", price: null, days: null, note: "Check availability with your sales rep" },
     { id: "q5", name: "Folic acid, secondary standard", detail: "100 mg · Biological", availability: "discontinued", price: null, days: null, note: "Suggested alternative: LS-6610" },
   ],
@@ -79,6 +80,9 @@ export const quoteUi = {
     add: "Agregar",
     added: "Agregado",
     inQuote: (n: number) => `${n} en cotización`,
+    controlledTag: "Controlado",
+    footer: (n: number, c: number) => [`${n} productos`, `${c} controlados`, `${n - c} no controlados`],
+    split: "Dividir por controlados",
     collapse: "Contraer panel",
     expand: "Expandir panel",
   },
@@ -129,6 +133,9 @@ export const quoteUi = {
     add: "Add",
     added: "Added",
     inQuote: (n: number) => `${n} in quote`,
+    controlledTag: "Controlled",
+    footer: (n: number, c: number) => [`${n} items`, `${c} controlled`, `${n - c} not controlled`],
+    split: "Split by controlled",
     collapse: "Collapse panel",
     expand: "Expand panel",
   },

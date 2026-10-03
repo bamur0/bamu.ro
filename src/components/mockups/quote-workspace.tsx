@@ -254,6 +254,9 @@ export function QuoteWorkspace({
                             {t.status[p.availability]}
                           </span>
                           <span className="truncate font-medium">{p.name}</span>
+                          {p.controlled && (
+                            <span className="shrink-0 rounded-[4px] bg-surface-2 px-1 py-px font-mono text-[10px] text-ink-2">{t.controlledTag}</span>
+                          )}
                         </div>
                         <p className="mt-0.5 text-[11.5px] text-ink-2">{p.detail}</p>
                         {p.note && <p className="mt-0.5 text-[11.5px] text-muted">{p.note}</p>}
@@ -298,6 +301,14 @@ export function QuoteWorkspace({
                   );
                 })}
               </ul>
+              <div className="flex items-center justify-between text-[11.5px] text-ink-2">
+                <div className="flex gap-4">
+                  {t.footer(products.length, products.filter((p) => p.controlled).length).map((f) => (
+                    <span key={f}>{f}</span>
+                  ))}
+                </div>
+                <span className="rounded-control border border-line px-2.5 py-1 font-medium text-ink">{t.split}</span>
+              </div>
             </div>
           </section>
         </div>
