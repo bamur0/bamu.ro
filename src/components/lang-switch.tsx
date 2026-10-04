@@ -39,6 +39,8 @@ export function LangSwitch({ to, label, short }: { to: Locale; label: string; sh
     try {
       sessionStorage.setItem(KEY, String(max > 0 ? window.scrollY / max : 0));
     } catch {}
+    // Recordar la elección: al volver a bamu.ro se abre en este idioma (functions/index.js)
+    document.cookie = `lang=${to}; path=/; max-age=31536000; samesite=lax`;
     router.push(href + window.location.hash, { scroll: false });
   }
 
