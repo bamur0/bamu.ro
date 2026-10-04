@@ -24,7 +24,8 @@ export type Cv = {
   roles: CvRole[];
   skills: [string, string][];
   education: { school: string; place: string; degree: string; date: string }[];
-  certifications: { name: string; issuer: string; date: string }[];
+  /** Una línea bajo Educación */
+  certificationsLine: string;
 };
 
 const contact = ["Cuernavaca, Morelos, México", "r.bamuro@gmail.com", "linkedin.com/in/robertobmz", "bamu.ro"];
@@ -100,9 +101,9 @@ export const cv: Record<Locale, Cv> = {
         degree: "Licenciatura en Diseño de Interacción y Animación, titulado",
         date: "Mayo 2021",
       },
-      { school: "Coursera", place: "en línea", degree: "Certificado Microsoft UX Design", date: "2025" },
     ],
-    certifications: [{ name: "Microsoft UX Design", issuer: "Coursera", date: "2025" }],
+    certificationsLine:
+      "Microsoft UX Design, certificado profesional (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens, master class (Interaction Design Foundation, 2024)",
   },
   en: {
     name: "Roberto Báez Muñoz",
@@ -174,8 +175,8 @@ export const cv: Record<Locale, Cv> = {
         degree: "Bachelor's Degree in Interaction Design and Animation",
         date: "May 2021",
       },
-      { school: "Coursera", place: "online", degree: "Microsoft UX Design Certificate", date: "2025" },
     ],
-    certifications: [{ name: "Microsoft UX Design", issuer: "Coursera", date: "2025" }],
+    certificationsLine:
+      "Microsoft UX Design Professional Certificate (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens master class (Interaction Design Foundation, 2024)",
   },
 };

@@ -100,6 +100,10 @@ export function CvSheet({ cv }: { cv: Cv }) {
               <p className="italic">{e.degree}</p>
             </div>
           ))}
+          <p className="mt-1.5">
+            <span className="font-semibold">{cv.headings.certifications}: </span>
+            {cv.certificationsLine}
+          </p>
         </Section>
 
       </div>
