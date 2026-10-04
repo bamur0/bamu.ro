@@ -57,12 +57,14 @@ const es = {
   about: {
     title: "Sobre mí",
     body: [
-      "Estudié Diseño de Interacción y Animación en la Ibero Puebla. En 2023 entré a RYNDEM Studios como UX/UI Designer y desde 2025 soy Product Designer. Casi siempre trabajo de punta a punta: requisitos, UX, UI, sistema de diseño y QA.",
+      "Estudié Diseño de Interacción y Animación en la Ibero Puebla. En 2021 hice mis prácticas profesionales en diseño UX/UI, en 2023 entré a RYNDEM Studios como UX/UI Designer y desde 2025 soy Product Designer. Casi siempre trabajo de punta a punta: requisitos, UX, UI, sistema de diseño y QA.",
       "Me gusta el trabajo donde la complejidad es real: condiciones comerciales, catálogos enormes, flujos con muchos actores. Mi trabajo es que nada de eso se le note a quien usa el producto.",
     ],
     tools: "Herramientas",
-    toolsList: "Figma, FigJam, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+    toolsList: "Figma, FigJam, HTML, CSS, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
     languages: "Español nativo, inglés C1",
+    certifications: "Certificaciones",
+    verify: "Verificar",
     explorations: "Exploraciones académicas",
     explorationsBody: "Propuestas de la universidad para watchOS, una app de farmacia y un producto IoT.",
     explorationsLink: "Ver en Behance",
@@ -160,12 +162,14 @@ const en: Dictionary = {
   about: {
     title: "About",
     body: [
-      "I studied Interaction Design and Animation at Ibero Puebla. I joined RYNDEM Studios in 2023 as a UX/UI Designer and have been a Product Designer since 2025. I usually work end to end: requirements, UX, UI, design system and QA.",
+      "I studied Interaction Design and Animation at Ibero Puebla. I did my UX/UI design internship in 2021, joined RYNDEM Studios in 2023 as a UX/UI Designer and have been a Product Designer since 2025. I usually work end to end: requirements, UX, UI, design system and QA.",
       "I like work where the complexity is real: commercial terms, huge catalogs, flows with many actors. My job is making sure none of it shows for the people using the product.",
     ],
     tools: "Tools",
-    toolsList: "Figma, FigJam, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+    toolsList: "Figma, FigJam, HTML, CSS, Notion, Jira, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
     languages: "Native Spanish, C1 English",
+    certifications: "Certifications",
+    verify: "Verify",
     explorations: "Academic explorations",
     explorationsBody: "University concepts for watchOS, a pharmacy app and an IoT product.",
     explorationsLink: "See on Behance",

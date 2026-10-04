@@ -6,6 +6,7 @@ import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getCases } from "@/lib/cases";
 import { site } from "@/lib/site";
+import { certifications } from "@/content/certifications";
 import { CaseCard } from "@/components/case-card";
 import { Reveal } from "@/components/reveal";
 import { CopyEmail } from "@/components/copy-email";
@@ -139,6 +140,31 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               <h3 className="font-mono text-xs text-muted">{lang === "es" ? "Idiomas" : "Languages"}</h3>
               <p className="mt-2 text-ink">{dict.about.languages}</p>
             </div>
+          </div>
+          <div className="mt-8">
+            <h3 className="font-mono text-xs text-muted">{dict.about.certifications}</h3>
+            <ul className="mt-2 divide-y divide-line">
+              {certifications[lang].map((c) => (
+                <li key={c.name} className="flex items-start justify-between gap-4 py-3">
+                  <div>
+                    <p className="font-medium text-ink">{c.name}</p>
+                    <p className="mt-0.5 text-sm text-ink-2">
+                      {c.issuer}, {c.date}
+                    </p>
+                  </div>
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${dict.about.verify}: ${c.name}`}
+                    className="inline-flex min-h-11 shrink-0 items-center gap-1 text-sm text-ink-2 hover:text-ink sm:min-h-0"
+                  >
+                    <span className="link">{dict.about.verify}</span>
+                    <ArrowUpRight size={13} />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="mt-8 flex flex-col gap-3 rounded-surface border border-line bg-surface p-5 sm:flex-row sm:items-center sm:justify-between">
             <div>

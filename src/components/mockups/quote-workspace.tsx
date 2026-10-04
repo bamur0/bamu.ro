@@ -20,7 +20,10 @@ import { money } from "./punchout-data";
 import { getQuoteProducts, quoteUi, type Availability } from "./quote-data";
 import { ScaledFrame } from "./scaled-frame";
 
-const scrollHint = { es: "Desliza para recorrer la pantalla completa.", en: "Swipe to explore the full screen." };
+const expand = {
+  es: { open: "Explorar pantalla", close: "Cerrar" },
+  en: { open: "Explore screen", close: "Close" },
+};
 
 const W = 1280;
 const H = 760;
@@ -67,7 +70,7 @@ export function QuoteWorkspace({
     setAdded((a) => (a.includes(id) ? a.filter((x) => x !== id) : [...a, id]));
 
   return (
-    <ScaledFrame width={W} height={H} label={label} interactive={interactive} scrollHint={scrollHint[locale]}>
+    <ScaledFrame width={W} height={H} label={label} interactive={interactive} expandLabel={expand[locale].open} closeLabel={expand[locale].close}>
       <div className="flex h-full flex-col bg-bg text-[12.5px] text-ink" {...(!interactive && { inert: true })}>
         {/* Barra superior */}
         <div className="flex h-11 shrink-0 items-center justify-between border-b border-line bg-surface px-5">

@@ -53,7 +53,7 @@ export function CvSheet({ cv }: { cv: Cv }) {
 
         <Section title={cv.headings.experience}>
           {cv.roles.map((r) => (
-            <div key={r.org}>
+            <div key={r.org} className="mt-3 first:mt-0">
               <p>
                 <span className="font-semibold">{r.org}</span>, {r.place}
               </p>
@@ -90,7 +90,7 @@ export function CvSheet({ cv }: { cv: Cv }) {
 
         <Section title={cv.headings.education}>
           {cv.education.map((e) => (
-            <div key={e.school}>
+            <div key={e.school} className="mt-1.5 first:mt-0">
               <div className="flex flex-wrap justify-between gap-x-4">
                 <p>
                   <span className="font-semibold">{e.school}</span>, {e.place}
@@ -100,18 +100,12 @@ export function CvSheet({ cv }: { cv: Cv }) {
               <p className="italic">{e.degree}</p>
             </div>
           ))}
+          <p className="mt-1.5">
+            <span className="font-semibold">{cv.headings.certifications}: </span>
+            {cv.certificationsLine}
+          </p>
         </Section>
 
-        <Section title={cv.headings.certifications}>
-          {cv.certifications.map((c) => (
-            <div key={c.name} className="flex flex-wrap justify-between gap-x-4">
-              <p>
-                <span className="font-semibold">{c.name}</span>, {c.issuer}
-              </p>
-              <p>{c.date}</p>
-            </div>
-          ))}
-        </Section>
       </div>
     </article>
   );

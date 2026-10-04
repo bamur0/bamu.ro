@@ -22,7 +22,10 @@ import type { Locale } from "@/i18n/config";
 import { getProducts, money, ui, type Product } from "./punchout-data";
 import { ScaledFrame } from "./scaled-frame";
 
-const scrollHint = { es: "Desliza para recorrer la pantalla completa.", en: "Swipe to explore the full screen." };
+const expand = {
+  es: { open: "Explorar pantalla", close: "Cerrar" },
+  en: { open: "Explore screen", close: "Close" },
+};
 
 const W = 1120;
 const H = 720;
@@ -64,7 +67,7 @@ export function PunchoutCatalog({
   const tab = interactive ? 0 : -1;
 
   return (
-    <ScaledFrame width={W} height={H} label={label} interactive={interactive} scrollHint={scrollHint[locale]}>
+    <ScaledFrame width={W} height={H} label={label} interactive={interactive} expandLabel={expand[locale].open} closeLabel={expand[locale].close}>
       <div className="flex h-full flex-col bg-bg text-[13px] text-ink" {...(!interactive && { inert: true })}>
         {/* Barra superior */}
         <div className="flex h-12 shrink-0 items-center justify-between border-b border-line bg-surface px-6">
