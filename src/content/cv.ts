@@ -88,7 +88,7 @@ export const cv: Record<Locale, Cv> = {
       },
     ],
     skills: [
-      ["Diseño y prototipado", "Figma, FigJam, Adobe Creative Cloud, Sketch, Zeplin"],
+      ["Diseño y prototipado", "Figma, FigJam, Adobe Creative Cloud, Sketch, Zeplin, HTML, CSS"],
       ["Métodos", "Design Thinking, Lean UX, Atomic Design, design tokens, pruebas de usabilidad, QA testing, Agile/Scrum"],
       ["IA", "Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM, Figma AI, integraciones MCP"],
       ["Gestión de proyectos", "Notion, Jira, Trello, Asana"],
@@ -162,7 +162,7 @@ export const cv: Record<Locale, Cv> = {
       },
     ],
     skills: [
-      ["Design and prototyping", "Figma, FigJam, Adobe Creative Cloud, Sketch, Zeplin"],
+      ["Design and prototyping", "Figma, FigJam, Adobe Creative Cloud, Sketch, Zeplin, HTML, CSS"],
       ["Methods", "Design Thinking, Lean UX, Atomic Design, design tokens, usability testing, QA testing, Agile/Scrum"],
       ["AI", "Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM, Figma AI, MCP integrations"],
       ["Project tools", "Notion, Jira, Trello, Asana"],
