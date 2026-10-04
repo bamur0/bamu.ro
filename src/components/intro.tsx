@@ -1,7 +1,9 @@
 /**
- * Intro de marca: "Báez Muñoz Roberto" se reduce a las dos primeras letras de
- * cada palabra y se convierte en bamu.ro. Solo CSS: corre sin esperar a JavaScript.
- * Se muestra una vez por sesión (ver introScript) y nunca con movimiento reducido ni al imprimir.
+ * Intro de marca: aparece bamu.ro y, debajo, "Báez Muñoz Roberto" con las dos
+ * primeras letras de cada palabra resaltadas, para explicar el nombre. Luego la
+ * pantalla sube como una cortina mientras entra el hero.
+ * Solo CSS (transform y opacity): corre sin esperar a JavaScript.
+ * Una vez por sesión (ver introScript); nunca con movimiento reducido ni al imprimir.
  */
 const words = [
   ["Bá", "ez"],
@@ -13,17 +15,16 @@ export function Intro() {
   return (
     <div className="intro" aria-hidden="true">
       <div className="intro-stage">
+        <p className="intro-logo">
+          bamu<span className="intro-dot">.ro</span>
+        </p>
         <p className="intro-name">
-          {words.map(([keep, drop], i) => (
-            <span key={keep} className="intro-word">
+          {words.map(([keep, rest], i) => (
+            <span key={keep} className="intro-word" style={{ "--w": i } as React.CSSProperties}>
               <span className="intro-keep">{keep}</span>
-              <span className="intro-drop">{drop}</span>
-              {i < words.length - 1 && <span className="intro-gap">{"\u00A0"}</span>}
+              {rest}
             </span>
           ))}
-        </p>
-        <p className="intro-logo">
-          bamu<span className="text-muted">.ro</span>
         </p>
       </div>
     </div>

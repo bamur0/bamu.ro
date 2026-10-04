@@ -178,12 +178,13 @@ body {
 }
 
 /*
-  Intro de marca (ver components/intro.tsx). Línea de tiempo, ~2.3s:
-  0.0  aparece el nombre completo
-  0.7  se apagan las letras que no forman bamu.ro
-  1.0  se colapsan hasta dejar "BáMuRo"
-  1.55 el nombre cede el lugar a "bamu.ro"
-  2.0  la pantalla se retira y entra el hero
+  Intro de marca (ver components/intro.tsx). Línea de tiempo, ~2.55s:
+  0.05  entra bamu.ro
+  0.30  entran "Báez", "Muñoz", "Roberto", una tras otra
+  0.75  se subrayan las letras que forman el nombre
+  0.95–1.90  pausa de lectura
+  1.90  el contenido se retira
+  1.95  la pantalla sube como cortina; el hero entra a la vez
 */
 .intro {
   display: none;
@@ -195,81 +196,83 @@ html[data-intro="play"] .intro {
   display: grid;
   place-items: center;
   background: var(--bg);
-  animation: intro-out 450ms var(--ease-out-quint) 2s forwards;
+  animation: intro-curtain 600ms cubic-bezier(0.76, 0, 0.24, 1) 1.95s forwards;
 }
 .intro-stage {
   display: grid;
-  place-items: center;
-  font-size: clamp(28px, 7vw, 88px);
+  justify-items: center;
+  gap: 0.9rem;
+  padding-inline: 1rem;
+  animation: intro-leave 250ms ease-in 1.9s forwards;
+}
+.intro-logo {
+  font-size: clamp(56px, 12vw, 136px);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--ink);
+  animation: intro-rise 550ms var(--ease-out-quint) 50ms both;
 }
-.intro-name,
-.intro-logo {
-  grid-area: 1 / 1;
-  white-space: nowrap;
+.intro-dot {
+  color: var(--muted);
 }
 .intro-name {
-  animation:
-    intro-in 500ms var(--ease-out-quint) both,
-    intro-fade 300ms ease-out 1.55s forwards;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.4em;
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--muted);
 }
-.intro-word,
-.intro-drop,
-.intro-gap {
+.intro-word {
   display: inline-block;
+  animation: intro-rise 400ms var(--ease-out-quint) both;
+  animation-delay: calc(300ms + var(--w, 0) * 90ms);
 }
-.intro-drop,
-.intro-gap {
-  overflow: hidden;
-  vertical-align: bottom;
-  max-width: 6em;
-  animation:
-    intro-dim 300ms ease-out 0.7s forwards,
-    intro-collapse 500ms var(--ease-out-quint) 1s forwards;
+.intro-keep {
+  position: relative;
+  color: var(--ink);
+  font-weight: 600;
 }
-.intro-logo {
-  opacity: 0;
-  animation: intro-in 450ms var(--ease-out-quint) 1.6s forwards;
+/* Subrayado en el acento que se dibuja de izquierda a derecha */
+.intro-keep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 0.14em;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: intro-underline 350ms var(--ease-out-quint) forwards;
+  animation-delay: calc(750ms + var(--w, 0) * 90ms);
 }
-@keyframes intro-in {
+@keyframes intro-rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    filter: none;
+    transform: translateY(14px);
   }
 }
-@keyframes intro-dim {
+@keyframes intro-underline {
   to {
-    opacity: 0.25;
+    transform: scaleX(1);
   }
 }
-@keyframes intro-collapse {
-  to {
-    max-width: 0;
-    opacity: 0;
-  }
-}
-@keyframes intro-fade {
+@keyframes intro-leave {
   to {
     opacity: 0;
-    transform: translateY(-6px);
+    transform: translateY(-12px);
   }
 }
-@keyframes intro-out {
+@keyframes intro-curtain {
   to {
-    opacity: 0;
+    transform: translateY(-100%);
     visibility: hidden;
   }
 }
-/* Mientras corre la intro, el hero espera a que termine para entrar */
+/* El hero entra mientras la cortina sube, sin tiempo muerto */
 html[data-intro="play"] .enter {
   animation-delay: calc(var(--i, 0) * 70ms + 2.15s);
 }
