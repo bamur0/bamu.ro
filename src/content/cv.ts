@@ -28,7 +28,7 @@ export type Cv = {
   certificationsLine: string;
 };
 
-const contact = ["Cuernavaca, Morelos, México", "r.bamuro@gmail.com", "linkedin.com/in/robertobmz", "bamu.ro"];
+const contact = ["Cuernavaca, Morelos, México", "hello@bamu.ro", "linkedin.com/in/robertobmz", "bamu.ro"];
 
 export const cv: Record<Locale, Cv> = {
   es: {
