@@ -42,7 +42,7 @@ export const cv: Record<Locale, Cv> = {
       tools: "Herramientas:",
     },
     profile:
-      "Product Designer con más de 3 años diseñando productos digitales de punta a punta, de plataformas de compra a ERP y CMS. Combina análisis de negocio, diseño UX/UI, sistemas de diseño y QA para convertir requisitos complejos en productos en producción con impacto medible.",
+      "Product Designer con experiencia en UX/UI desde 2021 y más de 3 años diseñando productos digitales de punta a punta: plataformas de compra, ERP y CMS. Combina análisis de negocio, diseño, sistemas de diseño y QA para convertir requisitos complejos en productos con impacto medible.",
     roles: [
       {
         org: "RYNDEM Studios",
@@ -52,10 +52,9 @@ export const cv: Record<Locale, Cv> = {
             title: "Product Designer",
             dates: "2025 – Presente",
             bullets: [
-              "Lideré de punta a punta, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de un 80% el tiempo entre la cotización y el pedido",
+              "Lideré, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de un 80% el tiempo de cotización a pedido",
               "Definí requisitos, flujos y criterios de aceptación con stakeholders de negocio y desarrollo, y acompañé cada producto hasta su salida a producción",
-              "Integré herramientas de IA en el flujo de diseño para prototipado rápido, documentación y validación con desarrollo",
-              "Colaboré con equipos de desarrollo y negocio bajo Agile/Scrum en planeación de sprints, revisiones de diseño y entregas iterativas",
+              "Integré herramientas de IA en el flujo de diseño para prototipar, documentar y validar con desarrollo, en equipos Agile/Scrum con planeación de sprints y revisiones de diseño",
             ],
           },
           {
@@ -65,12 +64,26 @@ export const cv: Record<Locale, Cv> = {
               "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, lo que eliminó días de espera causados por una diferencia horaria de 12 horas; en producción con 3 proveedores",
               "Construí el sistema de diseño del CMS con Atomic Design: 117 componentes con 599 variantes y 237 variables (104 primitivas y 133 tokens semánticos), versionado para escalar a nuevos proveedores",
               "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de un 40% las cotizaciones resueltas fuera del sistema",
-              "Participé en la adaptación del módulo de ventas del ERP para operar en Perú, desde las entrevistas con stakeholders hasta el QA y la implementación",
+              "Participé en la adaptación del módulo de ventas del ERP para Perú, de las entrevistas con stakeholders al QA",
               "Diseñé y ejecuté casos de prueba de QA basados en las heurísticas de Nielsen y en criterios de aceptación antes de cada liberación",
             ],
           },
         ],
         tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+      },
+      {
+        org: "EMECE",
+        place: "Remoto",
+        positions: [
+          {
+            title: "Prácticas profesionales en Diseño UX/UI",
+            dates: "2021",
+            bullets: [
+              "Diseñé de forma remota interfaces y materiales digitales para distintos clientes, entre ellos AMBA (sector de blindajes)",
+            ],
+          },
+        ],
+        tools: "Photoshop, Illustrator",
       },
     ],
     skills: [
@@ -87,6 +100,7 @@ export const cv: Record<Locale, Cv> = {
         degree: "Licenciatura en Diseño de Interacción y Animación, titulado",
         date: "Mayo 2021",
       },
+      { school: "Coursera", place: "en línea", degree: "Certificado Microsoft UX Design", date: "2025" },
     ],
     certifications: [{ name: "Microsoft UX Design", issuer: "Coursera", date: "2025" }],
   },
@@ -102,7 +116,7 @@ export const cv: Record<Locale, Cv> = {
       tools: "Tools:",
     },
     profile:
-      "Product Designer with 3+ years designing digital products end to end, from procurement platforms to ERP and CMS. Combines business analysis, UX/UI design, design systems and QA to turn complex requirements into shipped products with measurable impact.",
+      "Product Designer with UX/UI design experience since 2021 and 3+ years designing digital products end to end, from procurement platforms to ERP and CMS. Combines business analysis, UX/UI design, design systems and QA to turn complex requirements into shipped products with measurable impact.",
     roles: [
       {
         org: "RYNDEM Studios",
@@ -114,8 +128,7 @@ export const cv: Record<Locale, Cv> = {
             bullets: [
               "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut time from quote to order by about 80%",
               "Defined requirements, flows and acceptance criteria with business and engineering stakeholders, and took each product through to production",
-              "Integrated AI tools into the design workflow for rapid prototyping, documentation and validation with engineering",
-              "Partnered with engineering and business teams in Agile/Scrum on sprint planning, design reviews and iterative delivery",
+              "Integrated AI tools into the design workflow to prototype, document and validate with engineering, within Agile/Scrum teams running sprint planning and design reviews",
             ],
           },
           {
@@ -125,12 +138,26 @@ export const cv: Record<Locale, Cv> = {
               "Led UX/UI design of a CMS that lets international suppliers sync their catalog with the ERP in real time, removing days of delay caused by a 12-hour time difference; in production with 3 suppliers",
               "Built the CMS design system with Atomic Design: 117 components with 599 variants and 237 variables (104 primitives and 133 semantic tokens), versioned to scale to new suppliers",
               "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40%",
-              "Contributed to adapting the ERP sales module for Peru, from stakeholder interviews through QA and rollout",
+              "Contributed to adapting the ERP sales module for Peru, from stakeholder interviews through QA",
               "Designed and ran QA test cases based on Nielsen's heuristics and acceptance criteria before every release",
             ],
           },
         ],
         tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+      },
+      {
+        org: "EMECE",
+        place: "Remote",
+        positions: [
+          {
+            title: "UX/UI Design Intern",
+            dates: "2021",
+            bullets: [
+              "Designed interfaces and digital materials remotely for several clients, including AMBA (armoring industry)",
+            ],
+          },
+        ],
+        tools: "Photoshop, Illustrator",
       },
     ],
     skills: [
@@ -147,6 +174,7 @@ export const cv: Record<Locale, Cv> = {
         degree: "Bachelor's Degree in Interaction Design and Animation",
         date: "May 2021",
       },
+      { school: "Coursera", place: "online", degree: "Microsoft UX Design Certificate", date: "2025" },
     ],
     certifications: [{ name: "Microsoft UX Design", issuer: "Coursera", date: "2025" }],
   },
