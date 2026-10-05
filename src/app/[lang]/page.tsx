@@ -31,8 +31,28 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const cases = await getCases(lang);
   const [featured, ...rest] = cases;
 
+  // Datos estructurados: ayudan a Google a asociar el nombre con el sitio y los perfiles
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.name,
+    jobTitle: "Product Designer",
+    url: `${site.url}/${lang}/`,
+    image: `${site.url}/img/roberto.webp`,
+    email: `mailto:${site.email}`,
+    address: { "@type": "PostalAddress", addressLocality: "Cuernavaca", addressRegion: "Morelos", addressCountry: "MX" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Universidad Iberoamericana Puebla" },
+    knowsAbout: ["Product Design", "UX Design", "UI Design", "UX Research", "Design Systems", "Design Tokens", "Prototyping", "Figma"],
+    knowsLanguage: ["es", "en"],
+    sameAs: [site.linkedin, site.behance],
+  };
+
   return (
     <div className="px-4 sm:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
+      />
       {/* Hero: ocupa toda la pantalla; el trabajo aparece al hacer scroll */}
       <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl flex-col pb-10 pt-8 md:pb-14 md:pt-12">
         <p className="enter text-lg text-ink-2" style={{ "--i": 0 } as React.CSSProperties}>
@@ -108,7 +128,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <section id="about" className="mx-auto mt-28 grid max-w-6xl scroll-mt-24 gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
         <Reveal className="md:col-span-4">
           <Image
-            src="/img/roberto.jpg"
+            src="/img/roberto.webp"
             alt={dict.about.photoAlt}
             width={720}
             height={900}

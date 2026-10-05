@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, Onest } from "next/font/google";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { site } from "@/lib/site";
+import { languagesFor, openGraphFor } from "@/lib/seo";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -34,17 +35,9 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     description: dict.meta.description,
     alternates: {
       canonical: `/${lang}/`,
-      languages: { es: "/es/", en: "/en/" },
+      languages: languagesFor((l) => `/${l}/`),
     },
-    openGraph: {
-      title: dict.meta.title,
-      description: dict.meta.description,
-      url: `/${lang}/`,
-      siteName: "bamu.ro",
-      locale: lang === "es" ? "es_MX" : "en_US",
-      type: "website",
-      images: [{ url: `/og/og-${lang}-2x.png`, width: 2400, height: 1260, alt: dict.meta.title }],
-    },
+    openGraph: openGraphFor(lang, { title: dict.meta.title, description: dict.meta.description, path: `/${lang}/` }),
     twitter: { card: "summary_large_image" },
   };
 }

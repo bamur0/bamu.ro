@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languagesFor, openGraphFor } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -12,7 +13,13 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/cv">): Pro
   const dict = getDictionary(lang);
   return {
     title: dict.cv.title,
-    alternates: { canonical: `/${lang}/cv/`, languages: { es: "/es/cv/", en: "/en/cv/" } },
+    description: dict.cv.description,
+    alternates: { canonical: `/${lang}/cv/`, languages: languagesFor((l) => `/${l}/cv/`) },
+    openGraph: openGraphFor(lang, {
+      title: `${dict.cv.title} · Roberto Báez`,
+      description: dict.cv.description,
+      path: `/${lang}/cv/`,
+    }),
   };
 }
 

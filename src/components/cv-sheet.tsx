@@ -20,7 +20,7 @@ export function CvSheet({ cv }: { cv: Cv }) {
       className={`${garamond.className} cv-sheet mx-auto w-full max-w-[816px] rounded-[4px] bg-[#fffffe] px-6 py-8 text-[14px] leading-[1.35] text-neutral-900 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(0_0_0/0.25)] sm:px-[72px] sm:py-[64px] sm:text-[15px]`}
     >
       <header className="text-center">
-        <h1 className="text-[1.9em] font-semibold leading-tight">{cv.name}</h1>
+        <p className="text-[1.9em] font-semibold leading-tight">{cv.name}</p>
         <p className="mt-1 flex flex-wrap justify-center gap-x-2 text-[0.95em]">
           {cv.contact.map((c, i) => (
             <span key={c} className="whitespace-nowrap">
