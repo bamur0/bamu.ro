@@ -43,7 +43,9 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
       siteName: "bamu.ro",
       locale: lang === "es" ? "es_MX" : "en_US",
       type: "website",
+      images: [{ url: `/og/og-${lang}.png`, width: 1200, height: 630, alt: dict.meta.title }],
     },
+    twitter: { card: "summary_large_image" },
   };
 }
 
