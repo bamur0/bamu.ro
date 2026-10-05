@@ -31,5 +31,9 @@ export function Intro() {
   );
 }
 
-/** Corre antes del primer pintado: decide si la intro se reproduce en esta sesión. */
-export const introScript = `try{var d=document.documentElement;if(sessionStorage.getItem("intro")||matchMedia("(prefers-reduced-motion: reduce)").matches){d.dataset.intro="seen"}else{sessionStorage.setItem("intro","1");d.dataset.intro="play"}}catch(e){document.documentElement.dataset.intro="seen"}`;
+/**
+ * Corre antes del primer pintado: decide si la intro se reproduce en esta sesión.
+ * No se reproduce si el visitante llega desde LinkedIn (suele ser un reclutador con poco
+ * tiempo) y, cuando se reproduce, un toque, clic o tecla la salta.
+ */
+export const introScript = `try{var d=document.documentElement,fromLinkedIn=/(^|\\.)(linkedin\\.com|lnkd\\.in)$/.test(document.referrer?new URL(document.referrer).hostname:"");if(sessionStorage.getItem("intro")||fromLinkedIn||matchMedia("(prefers-reduced-motion: reduce)").matches){d.dataset.intro="seen"}else{sessionStorage.setItem("intro","1");d.dataset.intro="play";var skip=function(){d.dataset.intro="seen";["pointerdown","keydown"].forEach(function(t){removeEventListener(t,skip,true)})};["pointerdown","keydown"].forEach(function(t){addEventListener(t,skip,true)})}}catch(e){document.documentElement.dataset.intro="seen"}`;

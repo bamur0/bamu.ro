@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { languagesFor, openGraphFor } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -26,8 +27,14 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/work/[slug
     description: c.summary,
     alternates: {
       canonical: `/${lang}/work/${slug}/`,
-      languages: { es: `/es/work/${slug}/`, en: `/en/work/${slug}/` },
+      languages: languagesFor((l) => `/${l}/work/${slug}/`),
     },
+    openGraph: openGraphFor(lang, {
+      title: `${c.title} · Roberto Báez`,
+      description: c.summary,
+      path: `/${lang}/work/${slug}/`,
+      type: "article",
+    }),
   };
 }
 

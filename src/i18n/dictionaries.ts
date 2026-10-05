@@ -2,7 +2,7 @@ import type { Locale } from "./config";
 
 const es = {
   meta: {
-    title: "Roberto Báez · Product Designer",
+    title: "Roberto Báez · Product Designer y UX/UI en México",
     description:
       "Product designer en México. Diseño productos digitales de punta a punta, del levantamiento de requisitos al QA.",
   },
@@ -22,7 +22,7 @@ const es = {
   hero: {
     greeting: "Hola, soy Roberto.",
     title: "Diseño productos complejos para que se sientan simples.",
-    lead: "Product designer en RYNDEM Studios. Trabajo en ERP, plataformas de compra y CMS, desde la investigación hasta el QA.",
+    lead: "Product designer en RYNDEM Studios. Diseño productos digitales de punta a punta, de la investigación y el prototipado al design system y el QA.",
     ctaWork: "Ver casos",
     ctaContact: "Escríbeme",
   },
@@ -73,6 +73,7 @@ const es = {
   },
   cv: {
     title: "CV",
+    description: "CV de Roberto Báez, Product Designer y UX/UI Designer en México: experiencia, habilidades, educación y certificaciones.",
     download: "Descargar PDF",
   },
   contact: {
@@ -107,7 +108,7 @@ export type Dictionary = typeof es;
 
 const en: Dictionary = {
   meta: {
-    title: "Roberto Báez · Product Designer",
+    title: "Roberto Báez · Product Designer & UX/UI in Mexico",
     description:
       "Product designer based in Mexico. I design digital products end to end, from requirements to QA.",
   },
@@ -127,7 +128,7 @@ const en: Dictionary = {
   hero: {
     greeting: "Hi, I'm Roberto.",
     title: "I design complex products so they feel simple.",
-    lead: "Product designer at RYNDEM Studios, working on ERPs, procurement platforms and CMS from research through QA.",
+    lead: "Product designer at RYNDEM Studios. I design digital products end to end, from research and prototyping to design systems and QA.",
     ctaWork: "See work",
     ctaContact: "Email me",
   },
@@ -178,6 +179,7 @@ const en: Dictionary = {
   },
   cv: {
     title: "Resume",
+    description: "Resume of Roberto Báez, Product Designer and UX/UI Designer based in Mexico: experience, skills, education and certifications.",
     download: "Download PDF",
   },
   contact: {
