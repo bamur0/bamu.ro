@@ -11,6 +11,7 @@ team: Design and analysis led by me
 status: In production, continuously evolving
 tint: "#4a68b8"
 cover: quote
+note: The cover is recreated with a neutral system. The screens inside the case are the original Figma ones, in Spanish, with brand, customers and data replaced with fictional ones.
 problem: The quoting tool didn't cover edge cases, so sales reps handled them outside the system, with no traceability.
 did: Found those isolated scenarios and designed the improvements that let the system absorb them, from stakeholder analysis to QA.
 impact: Quotes handled outside the system dropped by about 40%.
@@ -42,19 +43,38 @@ Quoting starts with a customer email and a commercial history, not a blank scree
 
 Every search result shows availability, validity, lead time and linked quotes. When an item can't be added, the interface explains why and what to do, instead of just disabling the button.
 
+<Figure caption="The workspace: customer context, the original request and the quote being built.">
+  <Screen src="/work/cotizador/cot-espacio-trabajo.webp" w={1366} h={1024} full alt="Quoting tool with three panels: customer, request and product list" />
+</Figure>
+
 ## What I improved
 
 ### Changing payment terms without leaving the quote
 
 I designed the change inside the flow and compared two ways to validate it. A single check at the end is faster, but lets errors through until the last step. A check on every change gives more control, but adds friction to work that repeats many times a day.
 
+<Figure caption="The two options I compared: one code per change (left) or a single code that authorizes changes until the quote is sent (right).">
+  <ScreenPair>
+    <Screen src="/work/cotizador/cot-pago-por-cambio.webp" w={1244} h={912} alt="Modal to change payment terms asking to generate an authorization code" />
+    <Screen src="/work/cotizador/cot-pago-unica.webp" w={1244} h={1104} alt="Modal to enter the authorization code sent by email" />
+  </ScreenPair>
+</Figure>
+
 ### Separating controlled products
 
 Controlled products follow different rules from everything else. The tool now flags them, shows how many of each type there are and lets reps split the quote instead of building another one by hand.
 
+<Figure caption="The rule, documented next to the screen: controlled products and publications don't mix in the same quote.">
+  <Screen src="/work/cotizador/cot-controlados.webp" w={1568} h={1160} alt="Warning that controlled products and publications can't be mixed, with the rule's notes" />
+</Figure>
+
 ### What can't be found doesn't block the quote
 
 Items that aren't in the catalog move to a research tab. Reps send what they have and follow up on the rest inside the same system.
+
+<Figure caption="Products under research live in their own tab, with the answer for each search.">
+  <Screen src="/work/cotizador/cot-investigacion.webp" w={1552} h={1080} alt="Products under research tab with their status and answer" />
+</Figure>
 
 ## Outcome
 

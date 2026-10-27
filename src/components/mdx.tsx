@@ -62,9 +62,10 @@ export function getMdxComponents(locale: Locale): MDXComponents {
     DesignSystemSpecimen: () => <DesignSystemSpecimen locale={locale} />,
     ClassifyMenu: () => <ClassifyMenu locale={locale} />,
     FlowCompare: () => <FlowCompare locale={locale} />,
-    Screen: ({ src, alt, w, h }: { src: string; alt: string; w?: number; h?: number }) =>
+    // `full`: pantalla exportada a 1x que va a todo el ancho; sin él, w/h son de un recorte a 2x
+    Screen: ({ src, alt, w, h, full }: { src: string; alt: string; w?: number; h?: number; full?: boolean }) =>
       w && h ? (
-        <ScreenShot src={src} alt={alt} locale={locale} width={w} height={h} retina />
+        <ScreenShot src={src} alt={alt} locale={locale} width={w} height={h} retina={!full} />
       ) : (
         <ScreenShot src={src} alt={alt} locale={locale} {...SCREEN} />
       ),
