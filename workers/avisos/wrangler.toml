@@ -1,0 +1,9 @@
+# Se despliega aparte del sitio: npx wrangler deploy (desde esta carpeta)
+name = "bamu-avisos"
+main = "index.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+preview_urls = false
+
+[[send_email]]
+name = "AVISO"

@@ -108,10 +108,15 @@ async function recordRequest(env, request, email, lang) {
   };
   if (!env.CASE_REQUESTS) {
     console.log("case-request", JSON.stringify(entry));
-    return;
+  } else {
+    // Clave ordenable por fecha; el valor completo va también en metadata para leerlo desde el listado
+    await env.CASE_REQUESTS.put(`${entry.at}:${email}`, JSON.stringify(entry), { metadata: entry });
   }
-  // Clave ordenable por fecha; el valor completo va también en metadata para leerlo desde el listado
-  await env.CASE_REQUESTS.put(`${entry.at}:${email}`, JSON.stringify(entry), { metadata: entry });
+  // Aviso por correo a través del Worker bamu-avisos (Service binding NOTIFY), si está enlazado
+  if (env.NOTIFY) {
+    const path = new URL(request.url).pathname;
+    await env.NOTIFY.fetch("https://bamu-avisos/", { method: "POST", body: JSON.stringify({ ...entry, path }) });
+  }
 }
 
 export async function onRequest(context) {
