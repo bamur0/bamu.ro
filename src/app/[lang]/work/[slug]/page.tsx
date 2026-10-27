@@ -91,7 +91,7 @@ export default async function CasePage({ params }: PageProps<"/[lang]/work/[slug
 
       <div className="px-4 sm:px-6">
         <Reveal className="mx-auto -mt-32 max-w-6xl md:-mt-44">
-          <CaseCover cover={c.cover} title={c.title} locale={lang} interactive />
+          <CaseCover cover={c.cover} image={c.coverImage} title={c.title} locale={lang} interactive />
           <p className="mt-3 max-w-2xl text-sm text-muted">{c.note ?? dict.case.nda}</p>
         </Reveal>
 

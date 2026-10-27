@@ -1,0 +1,112 @@
+---
+order: 2
+title: Twelve tax scenarios, one flow
+summary: A module to issue credit notes with Mexico's tax authority. I designed a three-step wizard where the system resolves the tax data and people only decide what's actually theirs to decide.
+client: B2B distribution ERP
+type: New module
+year: "2026"
+role: Analyst and Product Designer
+status: In development
+tint: "#8a5a83"
+cover: image
+coverImage: /work/notas-credito/nc-cover.webp
+locked: true
+note: These are the original Figma screens, in Spanish. Brand, customers, people and data were replaced with fictional ones; the PDF in the preview is a sample document.
+problem: A credit note is a tax document whose data depends on the original invoice, the reason, and whether the invoice was already paid. Once it's stamped with the tax authority, it can't be corrected.
+did: I designed the whole module in high fidelity, from browsing to stamping and sending, for twelve tax scenarios and in three screen sizes.
+impact: All twelve scenarios run through the same three-step flow. From one scenario to another the data changes, not the structure of the screens.
+---
+
+<Pending>Confirm role, duration, team and status for this module; add the outcome if there is one, and write What I learned.</Pending>
+
+## Context
+
+A credit note corrects an invoice that was already issued: a return, a product that wasn't delivered, a discount. In Mexico it's an outgoing tax document stamped with the tax authority (SAT), and nearly all of its data (payment form, relation type, taxes, currency) depends on the invoice it corrects.
+
+A mistake in that data can't be fixed later. Once stamped, the note is final: it can't be edited or cancelled from the system.
+
+## Who it's for
+
+The team that handles collections for prepaid customers. Each person sees only the customers in their portfolio, browses their notes by customer and issues new ones from there.
+
+## Twelve scenarios, one flow
+
+The tax scenarios look like twelve different processes: physical return, undelivered product, data entry error, negotiated or post-payment discount, partially paid invoice, invoice in dollars, invoice at zero VAT, money refunded to the customer. I designed just one.
+
+The wizard has three steps: find the invoice, enter the data, confirm. From one scenario to another, the data reaching the screen changes, not the screen. That made it possible to document all twelve without multiplying the design.
+
+## Decisions and their cost
+
+### The system handles the tax side
+
+**The problem.** Payment method, payment form and relation type come from tax rules. Asking people for them means asking them to know the rules, and to get it wrong when they don't.
+
+**The decision.** People choose the reason for the note; the system resolves the rest and shows it as data, not as a field. Currency, exchange rate and taxes are inherited from the original invoice: if it was issued at zero VAT, so is the note.
+
+**What it costs.** Someone who knows a rule well can't adjust it by hand. An exception means changing the rule in the system, not the entry.
+
+<Figure caption="People choose the reason and what happens to the excess; the system resolves relation type and payment form.">
+  <Screen src="/work/notas-credito/nc-excedente.webp" w={1568} h={358} alt="Credit note data: reason and excess destination as fields, the rest as calculated data" />
+</Figure>
+
+### The excess, the only extra decision
+
+**The problem.** When the note is larger than what the customer still owes, there's money left over, and someone has to decide what happens to it.
+
+**The decision.** The question only appears when there's an excess. Kept as credit, the note is born with a balance for the next purchase; refunded, the person records how the money was returned. Continuing is blocked until there's an answer.
+
+**What it costs.** The screen changes depending on the invoice data. In exchange, the decision shows up exactly where it's needed, and not before.
+
+### Line items, not amounts
+
+**The problem.** Typing an amount by hand is the easiest way to get a note that corrects specific products wrong.
+
+**The decision.** The invoice's line items are listed with their original quantity and price. You check the item, then enter the quantity; the price can't be edited. If the issue was the price and not the quantity, the right reason is a discount, entered separately.
+
+<Figure caption="Quantity only unlocks once the line item is checked. Price and taxes come from the original invoice.">
+  <Screen src="/work/notas-credito/nc-partidas.webp" w={1568} h={495} alt="Line items table with one item checked and its quantity entered" />
+</Figure>
+
+### A block that warns early
+
+**The problem.** A note can't be issued against an invoice made out to the generic public tax ID. Finding that out at stamping time means losing all the data entry.
+
+**The decision.** The invoice stays in the list and can be selected, because it's the one the person is looking for; selecting it shows the warning and blocks continuing. The block arrives at the first step, not the last.
+
+<Figure caption="The warning appears when the invoice is selected, in the wizard's first step.">
+  <Screen src="/work/notas-credito/nc-rfc-generico.webp" w={1568} h={358} alt="Warning that a note can't be issued against an invoice to the generic tax ID" />
+</Figure>
+
+### Reviewing isn't stamping
+
+**The problem.** Stamping is irreversible, and a button that says "confirm" doesn't make clear whether something was already issued.
+
+**The decision.** I split the two actions. "Review and confirm" only opens a preview of the document as it will be issued; it doesn't use a folio number or issue anything. "Stamp credit note" is the only action that issues, and the screen warns beforehand that it's irreversible.
+
+<Figure caption="The preview shows the document before it's issued. The PDF in the image is a sample.">
+  <Screen src="/work/notas-credito/nc-previsualizacion.webp" w={1498} h={1498} alt="Preview of the credit note document before stamping" />
+</Figure>
+
+### An error that says what to do
+
+**The problem.** Stamping can fail for two reasons with different ways out: the stamping service didn't respond, or the tax authority rejected the document.
+
+**The decision.** The message says which one happened and what to check. If the service didn't respond, you can retry; if the data was rejected, it has to be fixed first. Sending by email comes after and separately: the note exists even if the email fails.
+
+<Figure caption="The error names the cause and what to check before retrying.">
+  <Screen src="/work/notas-credito/nc-error-timbrado.webp" w={1028} h={744} alt="Stamping error message with the cause and the action to retry" />
+</Figure>
+
+## How I worked
+
+- **Canonical data.** Each scenario uses the data from the agreements document with the client, so the screens also work to validate the rules.
+- **Three sizes without multiplying.** At 2560 there are all twelve scenarios. At 1920 and 1366 only the ones that change the design: line-item entry, manual entry and money refund. The rest only change data.
+- **Documentation inside the screen.** Each rule is annotated next to the screen where it applies, with its requirement criterion.
+
+## Outcome
+
+<Pending>Outcome of the module, if there is one.</Pending>
+
+## What I learned
+
+<Pending>Write in your own words.</Pending>

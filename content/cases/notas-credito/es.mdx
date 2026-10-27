@@ -1,0 +1,112 @@
+---
+order: 2
+title: Doce casos fiscales, un solo flujo
+summary: Un módulo para emitir notas de crédito ante el SAT. Diseñé un asistente de tres pasos donde el sistema resuelve los datos fiscales y la persona solo decide lo que le toca.
+client: ERP de distribución B2B
+type: Módulo nuevo
+year: "2026"
+role: Analista y Product Designer
+status: En desarrollo
+tint: "#8a5a83"
+cover: image
+coverImage: /work/notas-credito/nc-cover.webp
+locked: true
+note: Las pantallas son las originales de Figma. La marca, los clientes, las personas y los datos se sustituyeron por ficticios; el PDF de la previsualización es un documento de ejemplo.
+problem: Una nota de crédito es un comprobante fiscal cuyos datos dependen de la factura origen, del motivo y de si la factura ya se cobró. Una vez timbrada ante el SAT, no se puede corregir.
+did: Diseñé el módulo completo en alta fidelidad, de la consulta al timbrado y el envío, para doce casos fiscales y en tres tamaños de pantalla.
+impact: Los doce casos se resuelven con el mismo flujo de tres pasos. Entre un caso y otro cambian los datos, no la estructura de las pantallas.
+---
+
+<Pending>Confirmar rol, duración, equipo y estado de este módulo; agregar el resultado si ya lo hay, y escribir Lo que aprendí.</Pending>
+
+## Contexto
+
+Una nota de crédito corrige una factura ya emitida: una devolución, un producto que no se entregó, un descuento. En México es un comprobante fiscal de egreso que se timbra ante el SAT, y casi todos sus datos (forma de pago, tipo de relación, impuestos, moneda) dependen de la factura que corrige.
+
+Un error en esos datos no se arregla después. Una vez timbrada, la nota queda fija: no se edita ni se cancela desde el sistema.
+
+## Para quién
+
+Para el equipo que lleva la cobranza de los clientes prepago. Cada persona ve solo los clientes de su cartera, consulta sus notas por cliente y emite las nuevas desde ahí.
+
+## Doce casos, un flujo
+
+Los casos fiscales parecen doce procesos distintos: devolución física, producto no entregado, error de captura, descuento negociado o posterior al pago, factura parcialmente cobrada, factura en dólares, factura con IVA a tasa cero, devolución del dinero al cliente. Diseñé uno solo.
+
+El asistente tiene tres pasos: buscar la factura, capturar los datos y confirmar. Entre un caso y otro cambian los datos que llegan a la pantalla, no la pantalla. Eso hizo posible documentar los doce casos sin multiplicar el diseño.
+
+## Decisiones y lo que costaron
+
+### El sistema resuelve lo fiscal
+
+**El problema.** El método de pago, la forma de pago y el tipo de relación salen de reglas fiscales. Pedírselos a la persona es pedirle que se sepa las reglas, y que se equivoque cuando no.
+
+**La decisión.** La persona elige el motivo de la nota; el resto lo resuelve el sistema y se muestra como dato, no como campo. La moneda, el tipo de cambio y los impuestos se heredan de la factura origen: si la factura se emitió a tasa cero, la nota también.
+
+**Lo que cuesta.** Quien conoce bien una regla no puede ajustarla a mano. Una excepción obliga a cambiar la regla en el sistema, no la captura.
+
+<Figure caption="El motivo y el destino del excedente los elige la persona; el tipo de relación y la forma de pago los resuelve el sistema.">
+  <Screen src="/work/notas-credito/nc-excedente.webp" w={1568} h={358} alt="Datos de la nota de crédito: motivo y destino del excedente como campos, el resto como datos calculados" />
+</Figure>
+
+### El excedente, la única decisión extra
+
+**El problema.** Cuando la nota supera lo que el cliente todavía debe, sobra dinero, y alguien tiene que decidir qué pasa con él.
+
+**La decisión.** La pregunta solo aparece cuando hay excedente. Si se deja como saldo a favor, la nota nace con saldo disponible para la siguiente compra; si se devuelve al cliente, se captura cómo se le devolvió. El botón para continuar se bloquea mientras no haya respuesta.
+
+**Lo que cuesta.** La pantalla cambia según los datos de la factura. Lo compensa que la decisión aparece justo donde se necesita, y no antes.
+
+### Capturar por partidas, no por importe
+
+**El problema.** Escribir un importe a mano es la forma más fácil de equivocarse en una nota que corrige productos concretos.
+
+**La decisión.** Se listan las partidas de la factura con su cantidad y su precio original. Se marca la partida y luego se captura la cantidad; el precio no se edita. Si el problema fue el precio y no la cantidad, el motivo correcto es un descuento, que se captura aparte.
+
+<Figure caption="La cantidad solo se habilita al marcar la partida. El precio y los impuestos vienen de la factura origen.">
+  <Screen src="/work/notas-credito/nc-partidas.webp" w={1568} h={495} alt="Tabla de partidas con una partida marcada y su cantidad capturada" />
+</Figure>
+
+### Un bloqueo que avisa a tiempo
+
+**El problema.** No se puede emitir una nota contra una factura al RFC genérico de público en general. Si eso se descubre al timbrar, ya se perdió todo el trabajo de captura.
+
+**La decisión.** La factura sigue en el listado y se puede elegir, porque es la que la persona está buscando; al elegirla aparece el aviso y no se puede continuar. El bloqueo llega en el primer paso, no en el último.
+
+<Figure caption="El aviso aparece al elegir la factura, en el primer paso del asistente.">
+  <Screen src="/work/notas-credito/nc-rfc-generico.webp" w={1568} h={358} alt="Aviso de que no se puede emitir una nota sobre una factura al RFC genérico" />
+</Figure>
+
+### Revisar no es timbrar
+
+**El problema.** Timbrar es irreversible, y un botón que dice "confirmar" no deja claro si ya se emitió algo o no.
+
+**La decisión.** Separé las dos acciones. "Revisar y confirmar" solo abre la previsualización del documento tal como quedará; no consume folio ni emite nada. "Timbrar nota de crédito" es la única acción que emite, y la pantalla avisa antes de que es irreversible.
+
+<Figure caption="La previsualización muestra el documento antes de emitirlo. El PDF de la imagen es un ejemplo.">
+  <Screen src="/work/notas-credito/nc-previsualizacion.webp" w={1498} h={1498} alt="Previsualización del documento de la nota de crédito antes de timbrar" />
+</Figure>
+
+### Un error que dice qué hacer
+
+**El problema.** El timbrado puede fallar por dos razones con salidas distintas: el servicio de timbrado no respondió, o el SAT rechazó el comprobante.
+
+**La decisión.** El mensaje dice cuál de las dos pasó y qué revisar. Si el servicio no respondió, se puede reintentar; si el SAT rechazó los datos, primero hay que corregirlos. El envío por correo va después y por separado: la nota ya existe aunque el correo falle.
+
+<Figure caption="El error nombra la causa y lo que hay que revisar antes de reintentar.">
+  <Screen src="/work/notas-credito/nc-error-timbrado.webp" w={1028} h={744} alt="Mensaje de error de timbrado con la causa y la acción para reintentar" />
+</Figure>
+
+## Cómo lo trabajé
+
+- **Datos canónicos.** Cada caso usa los datos del documento de acuerdos con el cliente, así que las pantallas también sirven para validar las reglas.
+- **Tres tamaños sin multiplicar.** En 2560 están los doce casos. En 1920 y 1366 van solo los que cambian el diseño: captura por partidas, captura manual y devolución del dinero. Los demás solo cambian datos.
+- **La documentación dentro de la pantalla.** Cada regla va anotada junto a la pantalla donde aplica, con su criterio de requisitos.
+
+## Resultado
+
+<Pending>Resultado del módulo, si ya lo hay.</Pending>
+
+## Lo que aprendí
+
+<Pending>Escribir con tus palabras.</Pending>

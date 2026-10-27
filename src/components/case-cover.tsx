@@ -7,11 +7,8 @@ import { QuoteWorkspace } from "./mockups/quote-workspace";
 import { CatalogCms } from "./mockups/catalog-cms";
 import { ScreenShot } from "./screen-shot";
 
-const inbox = {
-  src: "/work/correos-recibidos/cr-06-detalle.webp",
-  width: 1568,
-  height: 882,
-};
+/** Las portadas de imagen son pantallas exportadas de Figma, todas en 16:9 */
+const IMAGE_COVER = { width: 1568, height: 882 };
 
 const pendingLabel = {
   es: "Recreación de pantallas en proceso",
@@ -63,11 +60,13 @@ export function LockedCover({ label, badge }: { label: string; badge: string }) 
 
 export function CaseCover({
   cover,
+  image,
   title,
   locale,
   interactive = false,
 }: {
   cover: CaseMeta["cover"];
+  image?: string;
   title: string;
   locale: Locale;
   interactive?: boolean;
@@ -79,17 +78,17 @@ export function CaseCover({
       return <QuoteWorkspace locale={locale} label={title} interactive={interactive} />;
     case "catalog-cms":
       return <CatalogCms locale={locale} label={title} interactive={interactive} />;
-    case "inbox":
+    case "image":
+      if (!image) break;
       // Dentro de la tarjeta (que ya es un enlace) va como imagen; en el caso se abre a pantalla completa
       return interactive ? (
-        <ScreenShot {...inbox} alt={title} locale={locale} priority />
+        <ScreenShot src={image} {...IMAGE_COVER} alt={title} locale={locale} priority />
       ) : (
         <div className="overflow-hidden rounded-surface border border-line bg-surface shadow-soft">
           {/* eslint-disable-next-line @next/next/no-img-element -- export estático */}
-          <img {...inbox} alt={title} loading="lazy" decoding="async" className="block h-auto w-full" />
+          <img src={image} {...IMAGE_COVER} alt={title} loading="lazy" decoding="async" className="block h-auto w-full" />
         </div>
       );
-    default:
-      return <PendingVisual label={pendingLabel[locale]} />;
   }
+  return <PendingVisual label={pendingLabel[locale]} />;
 }

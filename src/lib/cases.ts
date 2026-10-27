@@ -18,7 +18,9 @@ export type CaseMeta = {
   duration?: string;
   team?: string;
   status?: string;
-  cover: "punchout" | "quote" | "catalog-cms" | "inbox";
+  cover: "punchout" | "quote" | "catalog-cms" | "image";
+  /** Ruta de la portada cuando cover es "image" (pantalla exportada, 16:9) */
+  coverImage?: string;
   /** Color del caso: tiñe su tarjeta y la banda del encabezado (ver .tint-panel) */
   tint: string;
   /** Sustituye la nota de confidencialidad por defecto */

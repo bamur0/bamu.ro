@@ -22,7 +22,7 @@ export function CaseCard({ item, locale }: { item: CaseMeta; locale: Locale }) {
           {item.locked ? (
             <LockedCover label={item.title} badge={dict.case.locked} />
           ) : (
-            <CaseCover cover={item.cover} title={item.title} locale={locale} />
+            <CaseCover cover={item.cover} image={item.coverImage} title={item.title} locale={locale} />
           )}
         </div>
       </div>
