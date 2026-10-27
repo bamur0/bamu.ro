@@ -64,23 +64,23 @@ function page(lang, { invalid = false, email = "" } = {}) {
 <meta name="robots" content="noindex">
 <title>${escape(t.title)} · Roberto Báez</title>
 <style>
-  :root { --bg:#f4f4f3; --surface:#fbfbfa; --surface-2:#ebebe9; --ink:#19191b; --ink-2:#47474c; --muted:#66666c; --line:#deded9; --danger:#b42318; color-scheme: light dark; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#111112; --surface:#18181a; --surface-2:#232326; --ink:#ededea; --ink-2:#bdbdb7; --muted:#94948f; --line:#2c2c30; --danger:#f97066; } }
+  :root { --bg:#f4ede1; --surface:#faf6ee; --surface-2:#ebe2d3; --ink:#2b1e1b; --ink-2:#5a4842; --muted:#76655c; --line:#e0d5c4; --accent:#7c1f30; --accent-ink:#fbf3e7; --danger:#b42318; --ridge:rgb(92 58 40 / 0.035); color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1b1513; --surface:#231b19; --surface-2:#2e2421; --ink:#f3eadf; --ink-2:#cdbfb1; --muted:#a29384; --line:#3b2f2b; --accent:#d77a88; --accent-ink:#2a0c12; --danger:#f97066; --ridge:rgb(255 236 220 / 0.025); } }
   * { box-sizing: border-box; }
-  body { margin:0; min-height:100dvh; display:grid; place-items:center; padding:16px; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body { margin:0; min-height:100dvh; display:grid; place-items:center; padding:16px; background:var(--bg) repeating-linear-gradient(90deg, transparent 0, var(--ridge) 3.5px, transparent 7px); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
   main { width:100%; max-width:400px; }
   a { color:var(--ink-2); font-size:14px; text-decoration:none; }
   a:hover { color:var(--ink); }
   h1 { margin:28px 0 8px; font-size:26px; line-height:1.15; letter-spacing:-0.02em; }
   p { margin:0; color:var(--ink-2); }
-  .card { margin-top:24px; padding:20px; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+  .card { margin-top:24px; padding:20px; border:1px solid var(--line); border-radius:18px; background:var(--surface); }
   label { display:block; font-size:14px; font-weight:500; }
-  input { width:100%; height:44px; margin-top:8px; padding:0 12px; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); font:inherit; }
-  input:focus { outline:2px solid var(--ink); outline-offset:1px; }
+  input { width:100%; height:44px; margin-top:8px; padding:0 12px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); font:inherit; }
+  input:focus { outline:2px solid var(--accent); outline-offset:1px; }
   .trap { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
   .error { margin-top:8px; color:var(--danger); font-size:14px; }
   .note { margin-top:12px; font-size:13px; color:var(--muted); }
-  button { display:grid; place-items:center; width:100%; height:44px; margin-top:16px; border:0; border-radius:8px; background:var(--ink); color:var(--bg); font:inherit; font-size:16px; font-weight:500; cursor:pointer; }
+  button { display:grid; place-items:center; width:100%; height:44px; margin-top:16px; border:0; border-radius:999px; background:var(--accent); color:var(--accent-ink); font:inherit; font-size:16px; font-weight:500; cursor:pointer; }
   button:active { transform:scale(0.98); }
 </style>
 </head>

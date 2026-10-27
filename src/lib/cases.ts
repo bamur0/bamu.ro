@@ -19,6 +19,8 @@ export type CaseMeta = {
   team?: string;
   status?: string;
   cover: "punchout" | "quote" | "catalog-cms" | "inbox";
+  /** Color del caso: tiñe su tarjeta y la banda del encabezado (ver .tint-panel) */
+  tint: string;
   /** Sustituye la nota de confidencialidad por defecto */
   note?: string;
   /** Detrás de un correo (Cloudflare Pages Function); fuera del sitemap y sin pantallas en la tarjeta */

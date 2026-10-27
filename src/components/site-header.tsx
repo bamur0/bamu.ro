@@ -23,7 +23,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         {dict.nav.skip}
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between">
-        <Link href={`/${locale}/`} className="flex min-h-11 items-center text-[15px] font-semibold tracking-tight text-ink">
+        <Link href={`/${locale}/`} className="font-display flex min-h-11 items-center text-[19px] text-ink">
           bamu<span className="text-muted">.ro</span>
         </Link>
         <div className="flex items-center gap-0.5">

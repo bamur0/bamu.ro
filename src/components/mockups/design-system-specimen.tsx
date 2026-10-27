@@ -25,13 +25,13 @@ const stats = {
 // (color/{rol}/{componente}/{estado}), pintadas con la paleta neutra de este sitio.
 const chains = {
   es: [
-    { primitive: "color/greyscale/900", token: "color/background/button/primary-normal", component: "Botón primario", swatch: "#19191b", kind: "button" },
-    { primitive: "color/lime/300", token: "color/background/chip/accent", component: "Chip por vencer", swatch: "#c8f060", kind: "chip" },
+    { primitive: "color/ink/900", token: "color/background/button/primary-normal", component: "Botón primario", swatch: "#1d222c", kind: "button" },
+    { primitive: "color/cobalt/700", token: "color/background/chip/accent", component: "Chip por vencer", swatch: "#2c4b9b", kind: "chip" },
     { primitive: "color/red/700", token: "color/text/accent/red", component: "Fecha vencida", swatch: "#b42318", kind: "date" },
   ],
   en: [
-    { primitive: "color/greyscale/900", token: "color/background/button/primary-normal", component: "Primary button", swatch: "#19191b", kind: "button" },
-    { primitive: "color/lime/300", token: "color/background/chip/accent", component: "Expiring chip", swatch: "#c8f060", kind: "chip" },
+    { primitive: "color/ink/900", token: "color/background/button/primary-normal", component: "Primary button", swatch: "#1d222c", kind: "button" },
+    { primitive: "color/cobalt/700", token: "color/background/chip/accent", component: "Expiring chip", swatch: "#2c4b9b", kind: "chip" },
     { primitive: "color/red/700", token: "color/text/accent/red", component: "Expired date", swatch: "#b42318", kind: "date" },
   ],
 } as const;

@@ -1,8 +1,8 @@
 // Worker bamu-avisos: manda un correo a Roberto cada vez que alguien pide acceso a un
 // caso privado. Solo lo llama la Pages Function del sitio por Service binding (NOTIFY);
-// no tiene ruta pública. Envía con el binding de Email Service (AVISO), solo a Roberto.
+// no tiene ruta pública. Envía con el binding de Email Service (AVISO), solo a hello@bamu.ro.
 const FROM = "avisos@bamu.ro";
-const TO = "r.bamuro@gmail.com";
+const TO = "hello@bamu.ro"; // Email Routing lo reenvía al Gmail personal
 
 const worker = {
   async fetch(request, env) {

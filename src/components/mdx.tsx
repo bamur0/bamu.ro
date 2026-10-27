@@ -9,6 +9,7 @@ import { DesignSystemSpecimen } from "./mockups/design-system-specimen";
 import { ClassifyMenu } from "./mockups/classify-menu";
 import { FlowCompare } from "./mockups/flow-compare";
 import { ScreenShot } from "./screen-shot";
+import { slugify } from "@/lib/slug";
 
 /** Pantalla completa exportada de Figma (16:9). Los recortes pasan su tamaño y van a 2x. */
 const SCREEN = { width: 1568, height: 882 };
@@ -28,7 +29,7 @@ function Pending({ children, label }: { children: React.ReactNode; label: string
 
 function Figure({ children, caption }: { children: React.ReactNode; caption?: string }) {
   return (
-    <figure className="my-12 md:-mx-16 lg:-mx-32">
+    <figure className="my-12 md:-mx-16 lg:-mx-32 xl:-mx-0">
       {children}
       {caption && <figcaption className="mt-3 text-center text-sm text-muted">{caption}</figcaption>}
     </figure>
@@ -38,7 +39,16 @@ function Figure({ children, caption }: { children: React.ReactNode; caption?: st
 export function getMdxComponents(locale: Locale): MDXComponents {
   const dict = getDictionary(locale);
   return {
-    h2: (props) => <h2 className="mb-4 mt-16 text-2xl font-semibold tracking-tight text-ink md:text-[28px]" {...props} />,
+    // El id alimenta el índice lateral del caso (CaseToc)
+    h2: ({ children, ...props }) => (
+      <h2
+        id={typeof children === "string" ? slugify(children) : undefined}
+        className="font-display mb-4 mt-16 scroll-mt-24 text-[28px] text-ink md:text-[32px]"
+        {...props}
+      >
+        {children}
+      </h2>
+    ),
     h3: (props) => <h3 className="mb-2 mt-10 text-lg font-semibold tracking-tight text-ink" {...props} />,
     p: (props) => <p className="my-4 text-[17px] leading-[1.7] text-ink-2" {...props} />,
     ul: (props) => <ul className="my-4 list-disc space-y-2 pl-5 text-[17px] leading-[1.7] text-ink-2 marker:text-muted" {...props} />,
@@ -63,7 +73,7 @@ export function getMdxComponents(locale: Locale): MDXComponents {
       <div className="grid items-start gap-4 md:grid-cols-2">{children}</div>
     ),
     PendingVisual: ({ label }: { label: string }) => (
-      <div className="my-12 md:-mx-16 lg:-mx-32">
+      <div className="my-12 md:-mx-16 lg:-mx-32 xl:-mx-0">
         <PendingVisual label={label} />
       </div>
     ),

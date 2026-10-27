@@ -3,39 +3,60 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
-  Tokens
-  - Neutrales con un solo acento (lima, heredado de la página anterior de bamu.ro).
-  - El acento se usa como relleno (marcador, foco, estados), nunca como color de texto sobre fondo claro.
-  - Radios: botones y chips en pill, superficies 14px, controles dentro de mockups 8px.
+  Tokens · "talavera sobre papel"
+  - Base hueso, tinta casi negra de tono frío y un solo acento cobalto (el azul de la
+    talavera poblana). Los casos toman los otros colores de la talavera: barro, ocre,
+    nopal y cobalto suave, todos a la misma intensidad para que se lean como familia.
+  - Cada caso trae su --tint; los paneles lo mezclan con la superficie (.tint-panel).
+  - Titulares en Bricolage Grotesque, lectura en Onest y etiquetas en Plex Mono,
+    como una ficha técnica.
+  - Fondo con textura de cartón corrugado muy sutil (--texture) y un grano fino.
+  - Radios: botones y chips en pill, superficies 18px, controles dentro de mockups 10px.
+  - Contraste AA verificado en ambos temas (muted sobre bg: 4.8 claro, 6.5 oscuro).
 */
 :root {
-  --bg: #f4f4f3;
-  --surface: #fbfbfa;
-  --surface-2: #ebebe9;
-  --ink: #19191b;
-  --ink-2: #47474c;
-  --muted: #66666c;
-  --line: #deded9;
-  --accent: #c8f060;
-  --accent-ink: #1c2600;
+  --bg: #f5f3ee;
+  --surface: #fcfbf8;
+  --surface-2: #eae7e0;
+  --ink: #1d222c;
+  --ink-2: #474d59;
+  --muted: #666b76;
+  --line: #e0ddd5;
+  --accent: #2c4b9b;
+  --accent-ink: #f7f8fd;
+  --accent-soft: #dfe5f4;
+  --tint-mix: 26%;
   --danger: #b42318;
-  --shadow: 0 1px 2px rgb(25 25 27 / 0.05);
+  --shadow: 0 1px 2px rgb(29 34 44 / 0.05), 0 8px 24px -12px rgb(29 34 44 / 0.14);
+  --ridge: rgb(60 55 45 / 0.03);
+  --grain: 0.05;
   color-scheme: light;
 }
 
 [data-theme="dark"] {
-  --bg: #111112;
-  --surface: #18181a;
-  --surface-2: #232326;
-  --ink: #ededea;
-  --ink-2: #bdbdb7;
-  --muted: #94948f;
-  --line: #2c2c30;
-  --accent: #c8f060;
-  --accent-ink: #1c2600;
+  --bg: #121419;
+  --surface: #191c22;
+  --surface-2: #23272f;
+  --ink: #ecebe6;
+  --ink-2: #c4c5c9;
+  --muted: #959aa4;
+  --line: #2b2f38;
+  --accent: #93a9ec;
+  --accent-ink: #0f1834;
+  --accent-soft: #243055;
   --danger: #f97066;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+  --ridge: rgb(220 228 255 / 0.022);
+  --grain: 0.07;
+  --tint-mix: 15%;
   color-scheme: dark;
+}
+
+/* Corrugado: una estría suave cada 7px. El grano va aparte, en body::after */
+:root,
+[data-theme="dark"] {
+  --texture:
+    repeating-linear-gradient(90deg, transparent 0, var(--ridge) 3.5px, transparent 7px);
 }
 
 @theme inline {
@@ -48,12 +69,14 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
   /* Solo para estados de error o vencimiento dentro de los mockups */
   --color-danger: var(--danger);
   --font-sans: var(--font-onest);
   --font-mono: var(--font-plex-mono);
-  --radius-surface: 14px;
-  --radius-control: 8px;
+  --font-display: var(--font-bricolage);
+  --radius-surface: 18px;
+  --radius-control: 10px;
   --shadow-soft: var(--shadow);
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -63,12 +86,45 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* El fondo liso va en html; body queda transparente para que la textura (z-index -1) se vea */
 body {
-  background: var(--bg);
+  position: relative;
+  background: transparent;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-feature-settings: "ss01", "cv11";
   text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--texture);
+}
+/* El grano va en su propia capa para poder bajarle la opacidad sin tocar las estrías */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .23 0 0 0 0 .16 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: var(--grain);
+}
+
+/* Titulares: Bricolage a peso medio, con su tamaño óptico automático */
+.font-display {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Panel teñido con el color del caso (--tint en línea); en oscuro la mezcla baja */
+.tint-panel {
+  background: color-mix(in oklab, var(--tint) var(--tint-mix), var(--surface));
 }
 
 ::selection {
@@ -82,18 +138,13 @@ body {
   border-radius: 4px;
 }
 
-/* Marcador: subrayado grueso en el acento, para resaltar una idea dentro de un texto */
+/* Marcador: subrayado grueso en el cobalto suave, para resaltar una idea dentro de un texto */
 .mark {
-  background-image: linear-gradient(var(--accent), var(--accent));
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
   background-repeat: no-repeat;
   background-size: 100% 0.42em;
   background-position: 0 88%;
   padding-inline: 0.06em;
-}
-/* En oscuro, texto claro sobre lima no tiene contraste: el acento pasa al texto */
-[data-theme="dark"] .mark {
-  background-image: none;
-  color: var(--accent);
 }
 
 .link {
