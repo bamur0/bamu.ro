@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import type { Locale } from "@/i18n/config";
 import type { CaseMeta } from "@/lib/cases";
-import { CaseCover } from "./case-cover";
+import { getDictionary } from "@/i18n/dictionaries";
+import { CaseCover, LockedCover } from "./case-cover";
 
 export function CaseCard({
   item,
@@ -14,9 +15,14 @@ export function CaseCard({
   featured?: boolean;
 }) {
   return (
-    <Link href={`/${locale}/work/${item.slug}/`} className="group block">
+    // Sin prefetch en los protegidos: la función de Cloudflare respondería 401 al payload
+    <Link href={`/${locale}/work/${item.slug}/`} prefetch={item.locked ? false : undefined} className="group block">
       <div className="transition-transform duration-300 ease-out-quint group-hover:-translate-y-1">
-        <CaseCover cover={item.cover} title={item.title} locale={locale} />
+        {item.locked ? (
+          <LockedCover label={item.title} badge={getDictionary(locale).case.locked} />
+        ) : (
+          <CaseCover cover={item.cover} title={item.title} locale={locale} />
+        )}
       </div>
       <div className={`mt-5 flex items-start justify-between gap-6 ${featured ? "md:mt-6" : ""}`}>
         <div className="min-w-0">
@@ -30,6 +36,7 @@ export function CaseCard({
           </p>
           <p className="mt-3 font-mono text-xs text-muted">
             {item.role}, {item.year}
+            {item.locked && <> · {getDictionary(locale).case.locked}</>}
           </p>
         </div>
         <span className="mt-1 grid size-10 shrink-0 place-items-center rounded-full border border-line text-ink transition-[transform,background-color] duration-300 ease-out-quint group-hover:rotate-45 group-hover:bg-surface-2">

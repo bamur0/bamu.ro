@@ -6,6 +6,12 @@ import { PlantPicker } from "./mockups/plant-picker";
 import { PendingVisual } from "./mockups/pending-visual";
 import { ChangeHistory } from "./mockups/change-history";
 import { DesignSystemSpecimen } from "./mockups/design-system-specimen";
+import { ClassifyMenu } from "./mockups/classify-menu";
+import { FlowCompare } from "./mockups/flow-compare";
+import { ScreenShot } from "./screen-shot";
+
+/** Pantalla completa exportada de Figma (16:9). Los recortes pasan su tamaño y van a 2x. */
+const SCREEN = { width: 1568, height: 882 };
 
 /** Nota de contenido faltante. Se ve en la vista previa para saber qué falta; se borra antes de publicar. */
 function Pending({ children, label }: { children: React.ReactNode; label: string }) {
@@ -44,6 +50,18 @@ export function getMdxComponents(locale: Locale): MDXComponents {
     PlantPicker: () => <PlantPicker locale={locale} />,
     ChangeHistory: () => <ChangeHistory locale={locale} />,
     DesignSystemSpecimen: () => <DesignSystemSpecimen locale={locale} />,
+    ClassifyMenu: () => <ClassifyMenu locale={locale} />,
+    FlowCompare: () => <FlowCompare locale={locale} />,
+    Screen: ({ src, alt, w, h }: { src: string; alt: string; w?: number; h?: number }) =>
+      w && h ? (
+        <ScreenShot src={src} alt={alt} locale={locale} width={w} height={h} retina />
+      ) : (
+        <ScreenShot src={src} alt={alt} locale={locale} {...SCREEN} />
+      ),
+    /** Dos recortes lado a lado en escritorio, uno debajo de otro en móvil */
+    ScreenPair: ({ children }: { children: React.ReactNode }) => (
+      <div className="grid items-start gap-4 md:grid-cols-2">{children}</div>
+    ),
     PendingVisual: ({ label }: { label: string }) => (
       <div className="my-12 md:-mx-16 lg:-mx-32">
         <PendingVisual label={label} />

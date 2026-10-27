@@ -45,3 +45,5 @@ AGENTS.md
 SETUP_GUIDE.md
 .claude/
 .mcp.json
+# Cloudflare (wrangler pages dev)
+.wrangler

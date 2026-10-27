@@ -1,0 +1,129 @@
+---
+order: 1
+title: When automatic classification gets it wrong
+summary: An MVP where customer emails arrive classified and turn into tasks with an owner. I designed how people see that classification and how they correct it without leaving their work.
+client: B2B distribution ERP
+type: MVP
+year: "2026"
+role: Analyst and Product Designer
+duration: 2 weeks
+team: Front-end and back-end development, QA and PM
+status: MVP in development
+cover: inbox
+locked: true
+note: These are the original Figma screens, in Spanish. Brand, customers, people and data were replaced with fictional ones.
+problem: Emails were sorted into separate inboxes by type. There was no single place to see what came in, how it was classified and who was handling it.
+did: I took part in defining the business rules with the team and the client, and designed the MVP in high fidelity, from the inbox to correcting the classification from each task, with every state and in three sizes.
+impact: It's in development, so there are no metrics yet. Development and QA received 85 screens with each rule documented on the screen where it applies.
+---
+
+## Before and now
+
+Before, each email was classified and ended up in an inbox by type: one for quotes, another for orders. To know what a customer had sent, you had to check several inboxes.
+
+With the MVP, every email lands in a single inbox. The system reads each email and its attachments, classifies it and creates whatever **tasks** are needed, each one in its module and with its owner. An email with three topics creates three.
+
+<Figure>
+  <FlowCompare />
+</Figure>
+
+Automatic classification doesn't always get it right. My job was to design how people live with it: see it, trust it just enough, and correct it when it's wrong.
+
+## My role
+
+I was the module's analyst and product designer. We defined the business rules in sessions between the team and the client; I took part in them, turned them into screens, and worked with front-end and back-end development, QA and the PM through delivery. All in two weeks.
+
+## Correcting without leaving your work
+
+Correcting shouldn't mean dropping what you're doing. That's why the correction lives in the task, inside the module where the person already works, and each module offers only the classifications that belong to it.
+
+<Figure caption="The classification menu, recreated. Check Order and confirm, or check Other.">
+  <ClassifyMenu />
+</Figure>
+
+### The button only turns on when something changed
+
+**The problem.** The classification arrives preloaded, and every manual correction is used to retrain the classifier. An always-on button invites confirming without reviewing, and a correction should only count when someone actually changed something.
+
+**The decision.** Confirm starts off and only turns on when the selection differs from the system's. Below it, a line states what the classification will end up as with every change.
+
+**What it costs.** A disabled button can confuse. The result line explains at all times what confirming would do.
+
+### Other doesn't combine with anything
+
+**The problem.** Other means the email isn't work. Combining it with Quote makes no sense.
+
+**The decision.** Checking Other locks the remaining options, and the button changes to Delete task, in red, because the action is no longer classifying but deleting.
+
+**What it costs.** One more step for someone who checked Other by mistake: they have to uncheck it before picking something else.
+
+### What's confirmed stays fixed
+
+**The problem.** Each confirmed classification creates a task. If it could be unchecked and checked again, work would be duplicated.
+
+**The decision.** A confirmed classification shows as data, not as a checkbox. You can add another one, but not remove one that already created work.
+
+**What it costs.** A confirmed mistake can't be undone here, only by deleting the task it created.
+
+### Blocked isn't the same as disabled
+
+**The problem.** There are moments when reclassifying is no longer possible, for example once the quote was sent or the payment was recorded.
+
+**The decision.** In those cases the button that opens the menu disappears. A disabled control invites people to ask why; one that isn't there says there's nothing to do.
+
+**What it costs.** Someone looking for the menu won't find it, and nothing on screen explains why. I accepted that because in those cases no action is possible anymore.
+
+<Figure caption="The same menu in two modules: in quoting it opens from the request header, in collections from the payment card.">
+  <ScreenPair>
+    <Screen src="/work/correos-recibidos/crop-menu-cotizar.webp" w={1200} h={840} alt="Classification menu open in the quoting module" />
+    <Screen src="/work/correos-recibidos/crop-menu-cobro.webp" w={1360} h={700} alt="Classification menu opened from a payment card" />
+  </ScreenPair>
+</Figure>
+
+## The inbox, and what changed in review
+
+The list reads at a glance: classification as colored tags, customer, subject and time. The detail opens on the right without losing the list.
+
+In the first version, the detail showed the email without its classification or owner: to know whose it was, you had to go to the module. In review we moved both to the top of the detail, because that's the first thing someone needs to know whether an email is theirs.
+
+If the sender isn't a customer yet, the task stays unassigned and is flagged in red, so it doesn't get lost among the rest.
+
+<Figure caption="The detail after review: each classification with its owner before the email itself, and in red when nobody owns it yet.">
+  <ScreenPair>
+    <Screen src="/work/correos-recibidos/crop-detalle.webp" w={1012} h={1428} alt="Email detail with four classifications and the owner of each" />
+    <Screen src="/work/correos-recibidos/crop-cliente-nuevo.webp" w={1012} h={472} alt="Email from a new customer with an unassigned task, flagged in red" />
+  </ScreenPair>
+</Figure>
+
+## The Other tab
+
+Whatever the classifier doesn't recognize as work, like notices, invitations or ads, lands in Other. From there you can classify an email by hand or delete several at once.
+
+An email nobody has opened can't be deleted: you have to look at it first. That way no customer email is erased without someone having read it.
+
+<Figure caption="Multiple selection in Other, with the notice that unopened emails can't be deleted.">
+  <Screen src="/work/correos-recibidos/cr-16-bloqueado.webp" alt="Other tab with several emails selected and a notice about unopened emails" />
+</Figure>
+
+## How I worked
+
+- **Three sizes, one master.** I designed at 2560 and derived 1920 and 1366 from the master, so a change couldn't drift between sizes.
+- **One persona per role.** The whole file uses the same fictional people, each with the menu they'd actually see, so the screens tell one story.
+- **Documentation inside the screen.** Each rule is annotated next to the screen where it applies, and travels with it when exported. Development and QA didn't have to look for it in another document.
+- **A systematic review before handoff.** Before calling the file done, I checked data consistency across sizes, the states and the notes.
+
+## Outcome
+
+The MVP is in development, so there's no usage data yet. I delivered 85 screens that close the whole requirement: 63 for the module in three sizes and 22 for correcting from each task.
+
+Once it's in use, this is what would tell whether the design works:
+
+- What share of emails gets corrected by hand, and in which classifications. That shows where the classifier fails.
+- How long a task takes to get an owner after the email arrives.
+- How many emails come back out of Other to be classified again.
+
+## What I learned
+
+**What worked.** Putting the correction inside each module's flow. Nobody has to switch context to fix a classifier mistake.
+
+**What I'd do differently.** The detail review left me a rule for any automation: show, in the same place, what the system decided and who answers for it. I'd apply it from the first version, not after review.

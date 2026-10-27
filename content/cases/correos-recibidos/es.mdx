@@ -1,0 +1,129 @@
+---
+order: 1
+title: Cuando la clasificación automática se equivoca
+summary: Un MVP donde los correos de los clientes llegan clasificados y se convierten en pendientes con responsable. Diseñé cómo la gente ve esa clasificación y cómo la corrige sin salir de su trabajo.
+client: ERP de distribución B2B
+type: MVP
+year: "2026"
+role: Analista y Product Designer
+duration: 2 semanas
+team: Desarrollo front y back, QA y PM
+status: MVP en desarrollo
+cover: inbox
+locked: true
+note: Las pantallas son las originales de Figma. La marca, los clientes, las personas y los datos se sustituyeron por ficticios.
+problem: Los correos se clasificaban en bandejas separadas por tipo. No había un solo lugar para ver qué había llegado, cómo se clasificó y quién lo atiende.
+did: Participé en la definición de las reglas de negocio con el equipo y el cliente, y diseñé el MVP en alta fidelidad, de la bandeja a la corrección desde cada pendiente, con todos sus estados y en tres tamaños.
+impact: Está en desarrollo, así que aún no hay métricas. Desarrollo y QA recibieron 85 pantallas con cada regla documentada en la pantalla donde aplica.
+---
+
+## Antes y ahora
+
+Antes, cada correo se clasificaba y terminaba en una bandeja según su tipo: una para cotizaciones, otra para pedidos. Para saber qué había mandado un cliente había que revisar varias bandejas.
+
+Con el MVP, todos los correos llegan a una sola bandeja. El sistema lee cada correo y sus adjuntos, lo clasifica y crea los **pendientes**, las tareas de cada módulo, que hagan falta. Cada pendiente nace en su módulo y con su responsable, y un correo con tres asuntos genera tres.
+
+<Figure>
+  <FlowCompare />
+</Figure>
+
+La clasificación automática no siempre acierta. Mi trabajo fue diseñar cómo convive la gente con ella: verla, confiar en ella lo justo y corregirla cuando falla.
+
+## Mi papel
+
+Fui analista y product designer del módulo. Las reglas de negocio las definimos en sesiones entre el equipo y el cliente; yo participé en ellas, las llevé a pantallas y trabajé con desarrollo front y back, QA y el PM hasta la entrega. Todo en dos semanas.
+
+## Corregir sin salir del trabajo
+
+Corregir no debería obligar a dejar lo que se está haciendo. Por eso la corrección vive en el pendiente, dentro del módulo donde la persona ya trabaja, y cada módulo ofrece solo las clasificaciones que le corresponden.
+
+<Figure caption="El menú de clasificación, recreado. Marca Pedido y confirma, o marca Otros.">
+  <ClassifyMenu />
+</Figure>
+
+### El botón solo se activa si algo cambió
+
+**El problema.** La clasificación llega precargada, y cada corrección manual se usa para reentrenar al clasificador. Un botón siempre activo invita a confirmar sin revisar, y una corrección solo debe contar cuando alguien de verdad cambió algo.
+
+**La decisión.** Confirmar empieza apagado y solo se activa cuando la selección difiere de la del sistema. Debajo, una línea dice en qué quedará la clasificación con cada cambio.
+
+**Lo que cuesta.** Un botón apagado puede confundir. La línea de resultado explica en todo momento qué pasaría al confirmar.
+
+### Otros no se combina con nada
+
+**El problema.** Otros significa que el correo no es trabajo. Combinarlo con Cotización no tiene sentido.
+
+**La decisión.** Marcar Otros bloquea las demás opciones, y el botón cambia a Eliminar pendiente, en rojo, porque la acción ya no es clasificar sino eliminar.
+
+**Lo que cuesta.** Un paso más para quien se equivocó al marcar Otros: tiene que desmarcarlo antes de elegir otra cosa.
+
+### Lo confirmado queda fijo
+
+**El problema.** Cada clasificación confirmada crea un pendiente. Si se pudiera desmarcar y volver a marcar, se duplicaría el trabajo.
+
+**La decisión.** Una clasificación confirmada se muestra como dato, no como casilla. Se puede agregar otra, pero no quitar una que ya generó trabajo.
+
+**Lo que cuesta.** Un error confirmado no se deshace desde aquí, sino eliminando el pendiente que generó.
+
+### Bloqueado no es lo mismo que apagado
+
+**El problema.** Hay momentos en que ya no se puede reclasificar, por ejemplo cuando la cotización ya se envió o el cobro ya se capturó.
+
+**La decisión.** En esos casos el botón que abre el menú desaparece. Un control apagado invita a preguntar por qué; uno que no está dice que ahí no hay nada que hacer.
+
+**Lo que cuesta.** Quien busca el menú no lo encuentra, y nada en pantalla le explica por qué. Lo acepté porque en esos casos ya no hay ninguna acción posible.
+
+<Figure caption="El mismo menú en dos módulos: en cotización sale del encabezado del requerimiento, y en cobranza, de la tarjeta del cobro.">
+  <ScreenPair>
+    <Screen src="/work/correos-recibidos/crop-menu-cotizar.webp" w={1200} h={840} alt="Menú de clasificación abierto en el módulo de cotización" />
+    <Screen src="/work/correos-recibidos/crop-menu-cobro.webp" w={1360} h={700} alt="Menú de clasificación abierto desde la tarjeta de un cobro" />
+  </ScreenPair>
+</Figure>
+
+## La bandeja, y lo que cambió en la revisión
+
+La lista se lee de un vistazo: la clasificación como etiquetas de color, el cliente, el asunto y la hora. El detalle se abre a la derecha sin perder la lista.
+
+En la primera versión, el detalle mostraba el correo sin su clasificación y sin responsable: para saber a quién le tocaba había que ir al módulo. En la revisión los subimos al inicio del detalle, porque es lo primero que alguien necesita para saber si un correo es suyo.
+
+Si quien escribe todavía no es cliente, el pendiente queda sin asignar y se marca en rojo, para que no se pierda entre los demás.
+
+<Figure caption="El detalle después de la revisión: cada clasificación con su responsable antes que el correo, y en rojo cuando todavía no hay quien lo atienda.">
+  <ScreenPair>
+    <Screen src="/work/correos-recibidos/crop-detalle.webp" w={1012} h={1428} alt="Detalle de un correo con cuatro clasificaciones y el responsable de cada una" />
+    <Screen src="/work/correos-recibidos/crop-cliente-nuevo.webp" w={1012} h={472} alt="Correo de un cliente nuevo con el pendiente sin asignar, marcado en rojo" />
+  </ScreenPair>
+</Figure>
+
+## La pestaña Otros
+
+Lo que el clasificador no reconoce como trabajo, como avisos, invitaciones o publicidad, cae en Otros. Desde ahí se puede clasificar un correo a mano o eliminar varios a la vez.
+
+Un correo que nadie ha abierto no se puede eliminar: primero hay que verlo. Así ningún correo de un cliente se borra sin que alguien lo haya leído.
+
+<Figure caption="Selección múltiple en Otros, con el aviso de que los correos sin abrir no se pueden eliminar.">
+  <Screen src="/work/correos-recibidos/cr-16-bloqueado.webp" alt="Pestaña Otros con varios correos seleccionados y un aviso sobre los correos sin abrir" />
+</Figure>
+
+## Cómo lo trabajé
+
+- **Tres tamaños, un maestro.** Diseñé en 2560 y derivé 1920 y 1366 del maestro, para que un cambio no divergiera entre tamaños.
+- **Una persona por rol.** Todo el archivo usa las mismas personas ficticias, cada una con el menú que de verdad vería, para que las pantallas cuenten una sola historia.
+- **La documentación dentro de la pantalla.** Cada regla va anotada junto a la pantalla donde aplica, y viaja con ella cuando se exporta. Desarrollo y QA no tenían que buscarla en otro documento.
+- **Revisión sistemática antes de entregar.** Antes de dar el archivo por cerrado, revisé la coherencia de los datos entre tamaños, los estados y las notas.
+
+## Resultado
+
+El MVP está en desarrollo, así que todavía no hay datos de uso. Entregué 85 pantallas que cierran el requisito completo: 63 del módulo en tres tamaños y 22 de la corrección desde cada pendiente.
+
+Cuando esté en uso, esto es lo que diría si el diseño funciona:
+
+- Qué porcentaje de correos se corrige a mano, y en qué clasificaciones. Eso dice dónde falla el clasificador.
+- Cuánto tarda un pendiente en tener responsable desde que llega el correo.
+- Cuántos correos salen de Otros para volver a clasificarse.
+
+## Lo que aprendí
+
+**Lo que funcionó.** Poner la corrección dentro del flujo de cada módulo. Nadie tiene que cambiar de contexto para arreglar un error del clasificador.
+
+**Lo que haría distinto.** La revisión del detalle me dejó una regla para cualquier automatización: mostrar en el mismo lugar qué decidió el sistema y quién responde por ello. La aplicaría desde la primera versión, no después de la revisión.

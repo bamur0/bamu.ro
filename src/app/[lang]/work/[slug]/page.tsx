@@ -100,14 +100,17 @@ export default async function CasePage({ params }: PageProps<"/[lang]/work/[slug
         </dl>
         <Reveal className="mt-12">
           <CaseCover cover={c.cover} title={c.title} locale={lang} interactive />
-          <p className="mt-3 max-w-2xl text-sm text-muted">{dict.case.nda}</p>
+          <p className="mt-3 max-w-2xl text-sm text-muted">{c.note ?? dict.case.nda}</p>
         </Reveal>
       </header>
 
       <div className="mx-auto max-w-[620px] pt-8">{content}</div>
 
       <nav className="mx-auto mt-24 max-w-6xl border-t border-line pt-8">
-        <Link href={`/${lang}/work/${next.slug}/`} className="group flex items-end justify-between gap-6">
+        <Link
+          href={`/${lang}/work/${next.slug}/`}
+          prefetch={next.locked ? false : undefined}
+          className="group flex items-end justify-between gap-6">
           <span>
             <span className="block font-mono text-xs text-muted">{dict.case.next}</span>
             <span className="mt-2 block text-2xl font-semibold tracking-tight text-ink md:text-3xl">{next.title}</span>
