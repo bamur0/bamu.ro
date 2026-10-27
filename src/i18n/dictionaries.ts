@@ -94,7 +94,7 @@ const es = {
     problem: "El problema",
     did: "Lo que hice",
     impact: "Resultado",
-    locked: "Con contraseña",
+    locked: "Acceso con correo",
     nda: "Las pantallas de este caso están recreadas con un sistema neutro para respetar la confidencialidad del cliente. La estructura, los flujos y las decisiones son los originales.",
   },
   footer: {
@@ -201,7 +201,7 @@ const en: Dictionary = {
     problem: "The problem",
     did: "What I did",
     impact: "Outcome",
-    locked: "Password protected",
+    locked: "Email access",
     nda: "Screens in this case are recreated with a neutral system to respect client confidentiality. The structure, flows and decisions are the original ones.",
   },
   footer: {

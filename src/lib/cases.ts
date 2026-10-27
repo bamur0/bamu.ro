@@ -21,7 +21,7 @@ export type CaseMeta = {
   cover: "punchout" | "quote" | "catalog-cms" | "inbox";
   /** Sustituye la nota de confidencialidad por defecto */
   note?: string;
-  /** Detrás de contraseña (Cloudflare Pages Function); fuera del sitemap y sin pantallas en la tarjeta */
+  /** Detrás de un correo (Cloudflare Pages Function); fuera del sitemap y sin pantallas en la tarjeta */
   locked?: boolean;
   /** Resumen de 10 segundos: el problema, lo que hice y el resultado */
   problem: string;
