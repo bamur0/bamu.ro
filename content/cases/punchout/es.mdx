@@ -11,6 +11,7 @@ team: Lideré el proyecto como analista principal de negocio y sistemas, y produ
 status: En producción
 tint: "#5f8f6a"
 cover: punchout
+note: La portada y la selección de planta están recreadas con un sistema neutro. Las demás pantallas son las originales de Figma, con la marca, el cliente y los proveedores sustituidos por ficticios.
 problem: Cada pedido de un cliente corporativo tardaba uno o dos días entre solicitud, cotización, orden de compra y su gestión en el ERP.
 did: Lideré el proyecto de punta a punta en un mes, del análisis de negocio y sistemas al diseño de la interfaz, sus estados y las pruebas finales.
 impact: El tiempo de la cotización al pedido bajó cerca de 80%. La plataforma está en producción.
@@ -32,6 +33,10 @@ Del otro lado estaba el equipo del distribuidor, que necesitaba que cada orden l
 
 Una plataforma PunchOut. Desde su sistema de compras, el comprador entra al catálogo del distribuidor, donde solo ve los productos y precios de su contrato. Arma su pedido y lo regresa a su sistema, donde sigue su aprobación interna. La orden llega al ERP ya estructurada. No hay checkout ni pago: la sesión termina cuando el carrito se transfiere.
 
+<Figure caption="El catálogo: la planta y el tiempo de sesión arriba, el carrito fijo a la derecha.">
+  <Screen src="/work/punchout/po-catalogo.webp" w={1568} h={882} alt="Catálogo con tarjetas de producto, la planta y el tiempo de sesión arriba, y el carrito fijo a la derecha" full />
+</Figure>
+
 ## El flujo
 
 Validación de sesión, aviso de privacidad, selección de planta, catálogo, carrito y transferencia.
@@ -48,11 +53,19 @@ Un mismo cliente tiene varias plantas, cada una con su dirección y su tipo de e
 
 El costo es un paso más antes de ver productos. Vale la pena: un pedido con la dirección equivocada cuesta mucho más que un clic.
 
+<Figure caption="La planta se puede cambiar sin salir del catálogo, y el carrito se conserva.">
+  <Screen src="/work/punchout/po-cambio-direccion.webp" w={1568} h={882} alt="Modal para cambiar la dirección de entrega sobre el catálogo" full />
+</Figure>
+
 ### El tiempo de sesión siempre a la vista
 
 La sesión caduca, y perder un carrito armado es el peor error posible en este producto. El tiempo restante vive en la barra superior y, antes de que expire, un aviso ofrece continuar. Cancelar también pide confirmación.
 
 El costo es que un contador visible puede presionar al comprador. Por eso el aviso ofrece continuar en lugar de solo advertir.
+
+<Figure caption="A un minuto de expirar, el aviso ofrece continuar, no solo advierte.">
+  <Screen src="/work/punchout/po-sesion-expira.webp" w={1568} h={882} alt="Modal de sesión por expirar con cuenta regresiva y las acciones cancelar o continuar" full />
+</Figure>
 
 ### El carrito vive junto al catálogo
 
@@ -60,11 +73,20 @@ El comprador no está explorando, está armando un pedido. El carrito es un pane
 
 El costo es menos espacio para el catálogo. A cambio, el comprador ve el total en todo momento, que es lo que revisa antes de transferir.
 
+<Figure caption="En el resumen el nombre se lee completo, aunque tenga cientos de caracteres.">
+  <Screen src="/work/punchout/po-carrito.webp" w={1568} h={1087} alt="Resumen del pedido con partidas, nombres largos, cantidades extremas y el total a la derecha" full />
+</Figure>
+
 ### Diseñado para datos reales
 
 Probé el diseño con nombres de producto de cientos de caracteres, precios de doce dígitos y cantidades de siete. En el catálogo el nombre se trunca y se lee completo al pasar el cursor. En el carrito se muestra entero, porque ahí el comprador verifica lo que va a pedir.
 
 Diseñé también cada estado antes de pasar a desarrollo: carga, catálogo sin resultados, carrito vacío, error de sesión, cancelación, sesión por expirar y transferencia en proceso.
+
+<ScreenPair>
+  <Screen src="/work/punchout/po-sin-resultados.webp" w={1568} h={882} alt="Catálogo sin resultados con la acción de limpiar filtros" />
+  <Screen src="/work/punchout/po-transferencia.webp" w={1568} h={882} alt="Modal de transferencia en proceso que pide no cerrar la ventana" />
+</ScreenPair>
 
 ## Pruebas
 
