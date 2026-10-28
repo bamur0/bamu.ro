@@ -16,8 +16,9 @@ export function openGraphFor(
     siteName: "bamu.ro",
     locale: lang === "es" ? "es_MX" : "en_US",
     type: page.type ?? "website",
-    // El nombre lleva versión: LinkedIn guarda la imagen por URL y no la vuelve a pedir si el nombre no cambia
-    images: [{ url: `/og/og-${lang}-v3.png`, width: 2400, height: 1260, alt: page.title }],
+    // El nombre lleva versión: LinkedIn guarda la imagen por URL y no la vuelve a pedir si el nombre no cambia.
+    // 1200×627 exacto, la medida de LinkedIn: con la de 2x generaba una miniatura de 160 px y se veía borrosa.
+    images: [{ url: `/og/og-${lang}-v4.png`, width: 1200, height: 627, alt: page.title }],
   };
 }
 
