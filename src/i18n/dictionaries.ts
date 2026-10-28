@@ -94,7 +94,7 @@ const es = {
         body: "Escribo y ejecuto casos de prueba contra heurísticas y criterios de aceptación antes de liberar.",
       },
       {
-        name: "Uso IA donde acelera",
+        name: "Uso IA donde ahorra tiempo",
         body: "Para prototipar rápido, documentar y validar con desarrollo. Las decisiones de diseño siguen siendo mías.",
       },
     ],
@@ -123,7 +123,7 @@ const es = {
   },
   contact: {
     title: "¿Hablamos?",
-    body: "Estoy abierto a nuevos roles de product design. La forma más rápida es por correo.",
+    body: "Estoy abierto a nuevos roles de diseño de producto. La forma más rápida es por correo.",
     copy: "Copiar correo",
     copied: "Copiado",
   },
