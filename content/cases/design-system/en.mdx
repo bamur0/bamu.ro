@@ -5,7 +5,8 @@ summary: I extended an ERP's Design System for a full release. I built component
 client: B2B distribution ERP
 type: Design System
 year: "2026"
-role: Product Designer
+role: Product Designer, system owner
+team: I maintain it; design and development consume it
 status: In use
 tint: "#6b7a3a"
 cover: image
@@ -16,8 +17,6 @@ problem: A new release needed components the system didn't have, and some existi
 did: I designed the new components inside the system, with their own tokens and states as variants. I found and fixed defects that only showed up on certain screens, and documented each component on its page.
 impact: More than 250 instances across two modules updated without breaking. No screen changed its look because of the token changes.
 ---
-
-<Pending>Confirm your role in the system (whether you maintain it or a team does), how long and with whom; and write What I learned.</Pending>
 
 ## Context
 
@@ -87,4 +86,6 @@ The release I designed brought three new modules. They needed pieces the system 
 
 ## What I learned
 
-<Pending>Write in your own words.</Pending>
+To use MCPs for building and for auditing. Building a component by hand is slow, but reviewing it by hand is worse: a node bound to the wrong color or a border drawn outside looks fine on the canvas. With scripts connected to Figma I could sweep hundreds of instances, find what wasn't visible, and confirm a change didn't move a pixel before publishing it.
+
+That changed how I close work. Looking right isn't enough anymore: it has to pass the audit.

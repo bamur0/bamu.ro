@@ -5,7 +5,8 @@ summary: Extendí el Design System de un ERP para un release completo. Construí
 client: ERP de distribución B2B
 type: Design System
 year: "2026"
-role: Product Designer
+role: Product Designer, a cargo del sistema
+team: Lo mantengo yo; lo consumen diseño y desarrollo
 status: En uso
 tint: "#6b7a3a"
 cover: image
@@ -16,8 +17,6 @@ problem: Un release nuevo pedía componentes que el sistema no tenía, y algunos
 did: Diseñé los componentes nuevos dentro del sistema, con tokens propios y estados como variantes. Encontré y corregí defectos que solo aparecían en ciertas pantallas, y documenté cada componente en su página.
 impact: Más de 250 instancias en dos módulos se actualizaron sin romperse. Ninguna pantalla cambió de aspecto por los cambios de tokens.
 ---
-
-<Pending>Confirmar tu rol en el sistema (si lo mantienes tú o un equipo), cuánto tiempo y con quién; y escribir Lo que aprendí.</Pending>
 
 ## Contexto
 
@@ -87,4 +86,6 @@ El release que diseñé traía tres módulos nuevos. Necesitaban piezas que el s
 
 ## Lo que aprendí
 
-<Pending>Escribir con tus palabras.</Pending>
+A usar MCPs para crear y para auditar. Construir un componente a mano es lento, pero revisarlo a mano es peor: un nodo atado al color equivocado o un borde que se dibuja por fuera se ven bien en el canvas. Con scripts conectados a Figma pude recorrer cientos de instancias, encontrar lo que no se veía y comprobar que un cambio no movía un píxel antes de publicarlo.
+
+Eso cambió cómo cierro el trabajo. Ya no basta con que algo se vea bien: tiene que pasar la auditoría.
