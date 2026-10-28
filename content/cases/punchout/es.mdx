@@ -7,19 +7,19 @@ type: Producto nuevo
 year: "2026"
 role: Líder de proyecto, analista y Product Designer
 duration: 1 mes
-team: Lideré el proyecto como analista principal de negocio y sistemas, y product designer
+team: Desarrollo front y back, QA y PM
 status: En producción
 tint: "#5f8f6a"
 cover: punchout
 note: La portada y la selección de planta están recreadas con un sistema neutro. Las demás pantallas son las originales de Figma, con la marca, el cliente y los proveedores sustituidos por ficticios.
 problem: Cada pedido de un cliente corporativo tardaba uno o dos días entre solicitud, cotización, orden de compra y su gestión en el ERP.
 did: Lideré el proyecto de punta a punta en un mes, del análisis de negocio y sistemas al diseño de la interfaz, sus estados y las pruebas finales.
-impact: El tiempo de la cotización al pedido bajó cerca de 80%. La plataforma está en producción.
+impact: Según el registro del ERP, el tiempo de la cotización al pedido bajó cerca de 80%; la cotización y la orden llegan al instante. La plataforma está en producción.
 ---
 
 ## Contexto
 
-Uno de los clientes corporativos del distribuidor compraba con un ida y vuelta manual: enviaba su solicitud, recibía una cotización, mandaba su orden de compra y todo se administraba en el ERP del distribuidor. Cada pedido tardaba uno o dos días en estar listo para tramitarse.
+Uno de los clientes corporativos del distribuidor compraba con un ir y venir manual: enviaba su solicitud, recibía una cotización, mandaba su orden de compra y todo se administraba en el ERP del distribuidor. Cada pedido tardaba uno o dos días en estar listo para tramitarse.
 
 El cliente quería comprar desde su propio sistema de compras, a su ritmo.
 
@@ -90,16 +90,16 @@ Diseñé también cada estado antes de pasar a desarrollo: carga, catálogo sin 
 
 ## Pruebas
 
-Probamos con usuarios de los dos lados: el equipo interno del distribuidor y compradores del cliente. Hicimos pruebas de humo, de usabilidad y de navegación, y revisamos mapas de calor para ver dónde se concentraba la atención.
+Del lado del distribuidor probamos con el equipo de QA: pruebas de humo, de usabilidad y de navegación, y mapas de calor para ver dónde se concentraba la atención. Las pruebas con sus compradores las organizó el cliente.
 
 La navegación no necesitó cambios. Los ajustes fueron visuales, y lo demás fue técnico, en la transferencia del carrito entre sistemas.
 
 ## Resultado
 
-Las cotizaciones y órdenes de compra llegan al ERP al instante, y el tiempo de la cotización al pedido bajó cerca de 80%. El resto corresponde a la tramitación interna del pedido. El cliente cotiza y compra por su cuenta, desde su propio sistema.
+Las cotizaciones y órdenes de compra llegan al ERP al instante y, según el registro del ERP, el tiempo de la cotización al pedido bajó cerca de 80%. El resto corresponde a la tramitación interna del pedido. El cliente cotiza y compra por su cuenta, desde su propio sistema.
 
 ## Lo que aprendí
 
 **Lo que funcionó.** Definir el flujo y todos los estados durante el análisis se notó en las pruebas: nadie se perdió, y el equipo pudo concentrarse en la parte técnica.
 
-**Lo que haría distinto.** La validación con los compradores del cliente fue la más débil, porque no supimos cuántas personas participaron. En un siguiente ciclo mediría el uso real en producción, como el tiempo por pedido y las sesiones que expiran antes de transferir.
+**Lo que haría distinto.** La validación con los compradores del cliente fue la más débil: la organizó el cliente y no tuve el registro de quién participó. En un siguiente ciclo mediría el uso real en producción, como el tiempo por pedido y las sesiones que expiran antes de transferir.

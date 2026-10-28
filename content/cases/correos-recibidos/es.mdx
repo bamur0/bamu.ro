@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 title: Cuando la clasificación automática se equivoca
 summary: Un MVP donde los correos de los clientes llegan clasificados y se convierten en pendientes con responsable. Diseñé cómo la gente ve esa clasificación y cómo la corrige sin salir de su trabajo.
 client: ERP de distribución B2B
@@ -23,7 +23,7 @@ impact: Está en desarrollo, así que aún no hay métricas. Desarrollo y QA rec
 
 Antes, cada correo se clasificaba y terminaba en una bandeja según su tipo: una para cotizaciones, otra para pedidos. Para saber qué había mandado un cliente había que revisar varias bandejas.
 
-Con el MVP, todos los correos llegan a una sola bandeja. El sistema lee cada correo y sus adjuntos, lo clasifica y crea los **pendientes**, las tareas de cada módulo, que hagan falta. Cada pendiente nace en su módulo y con su responsable, y un correo con tres asuntos genera tres.
+Con el MVP, todos los correos llegan a una sola bandeja. El sistema lee cada correo y sus adjuntos, lo clasifica y crea los **pendientes** que hagan falta, que son las tareas de cada módulo. Cada pendiente nace en su módulo y con su responsable, y un correo con tres asuntos genera tres.
 
 <Figure>
   <FlowCompare />
@@ -111,14 +111,14 @@ Un correo que nadie ha abierto no se puede eliminar: primero hay que verlo. Así
 
 - **Tres tamaños, un maestro.** Diseñé en 2560 y derivé 1920 y 1366 del maestro, para que un cambio no divergiera entre tamaños.
 - **Una persona por rol.** Todo el archivo usa las mismas personas ficticias, cada una con el menú que de verdad vería, para que las pantallas cuenten una sola historia.
-- **La documentación dentro de la pantalla.** Cada regla va anotada junto a la pantalla donde aplica, y viaja con ella cuando se exporta. Desarrollo y QA no tenían que buscarla en otro documento.
+- **La documentación dentro de la pantalla.** Cada regla va anotada junto a la pantalla donde aplica, y viaja con ella cuando se exporta. Desarrollo y QA no tienen que buscarla en otro documento.
 - **Revisión sistemática antes de entregar.** Antes de dar el archivo por cerrado, revisé la coherencia de los datos entre tamaños, los estados y las notas.
 
 ## Resultado
 
 El MVP está en desarrollo, así que todavía no hay datos de uso. Entregué 85 pantallas que cierran el requisito completo: 63 del módulo en tres tamaños y 22 de la corrección desde cada pendiente.
 
-Cuando esté en uso, esto es lo que diría si el diseño funciona:
+Cuando esté en uso, esto es lo que indicaría si el diseño funciona:
 
 - Qué porcentaje de correos se corrige a mano, y en qué clasificaciones. Eso dice dónde falla el clasificador.
 - Cuánto tarda un pendiente en tener responsable desde que llega el correo.

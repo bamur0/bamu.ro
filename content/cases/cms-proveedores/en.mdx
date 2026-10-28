@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 2
 title: Supplier catalog CMS
 summary: A portal where suppliers update their own catalog. What used to take days of emails across time zones now reaches the ERP instantly.
 client: B2B supplier platform
@@ -12,14 +12,14 @@ status: In production, used by 3 suppliers
 tint: "#c79a3a"
 cover: catalog-cms
 note: The cover, the interactive history and the system specimen are recreated. The other screens are the original Figma files, in English like the product, with the brand, supplier and users replaced with fictional ones.
-problem: A supplier in India sent catalog changes by email, 12 hours apart, and every update took days to reach the ERP.
-did: Led UX/UI design of a portal where the supplier manages their own catalog, and built its design system.
+problem: A supplier in India sent catalog changes by email, nearly 12 hours apart, and every update took days to reach the ERP.
+did: I led UX/UI design of a portal where the supplier manages their own catalog, and built its design system.
 impact: Changes reach the ERP instantly. It launched with one supplier and is now used by three.
 ---
 
 ## Context
 
-One of the main suppliers operates from India, 12 hours apart. Every catalog update (prices, pack sizes, information validity, availability) arrived by email and someone entered it into the ERP by hand. Between the time difference and manual entry, a change could take days.
+One of the main suppliers operates from India, nearly 12 hours apart. Every catalog update (prices, pack sizes, information validity, availability) arrived by email and someone entered it into the ERP by hand. Between the time difference and manual entry, a change could take days.
 
 Meanwhile, sales reps were quoting with outdated information: products that were already available still showed as discontinued.
 
@@ -33,7 +33,7 @@ Instead of speeding up the email back-and-forth, remove it. A portal where the s
 
 ## My role
 
-I led UX/UI design on a two-person team over three months: research, user flow, data mapping, design system, interfaces, prototype and testing, through to release.
+I led UX/UI design on a two-person team over three months: research, user flow, data mapping, design system, interfaces, prototype and testing, through to release. The other designer built the screens across resolutions and kept the design system up to date; I reviewed everything before handoff.
 
 Before any screens I mapped the supplier's flow and the catalog's product families, with a spec for every data field. Then I designed every screen in three resolutions, from 1366 to 2560 px, with its loading, error and empty-search states.
 
@@ -72,7 +72,7 @@ Adding a product opens a form over the catalog, with required fields marked and 
 
 ## Testing
 
-Testing with the supplier wasn't possible, so we ran simulated sessions with two internal users playing their role. We measured how long it took them to upload a catalog and where they got lost navigating.
+Testing with the supplier wasn't possible, so we ran simulated sessions with two internal users playing their role. We watched where they got stuck uploading a catalog and where they got lost navigating.
 
 The biggest finding was search. The first version searched within specific filters, but users expected something like Google: type anything and find it across the whole CMS. We redesigned it as a global search over the entire database. The rest were navigation, interaction, color and translation fixes.
 
@@ -85,7 +85,7 @@ The biggest finding was search. The first version searched within specific filte
 
 The portal was designed for one supplier, but meant to open up to any of them. So I built a dedicated design system, versioned and with a changelog, in a Figma library separate from the product.
 
-It follows Atomic Design: foundations, 7 atom families, 15 molecule families and 15 organism families. That adds up to 599 variants, because every component ships with its states, not just its happy path. Color lives in two layers: 104 primitive variables define the palette and 133 semantic tokens give each color a role, like `color/background/button/primary-normal`. When a color changes, it changes in one place.
+It follows Atomic Design: foundations, 7 atom families, 15 molecule families and 15 organism families. That adds up to 117 components and 599 variants, because every component ships with its states, not just its happy path. Color lives in two layers: 104 primitive variables define the palette and 133 semantic tokens give each color a role, like `color/background/button/primary-normal`. When a color changes, it changes in one place.
 
 <Figure caption="Figures from the original system and its token architecture, recreated. Pick a chain.">
   <DesignSystemSpecimen />
@@ -95,7 +95,7 @@ Building the system took time at the start of a three-month project. It's also w
 
 ## Outcome
 
-Updates no longer depend on time zones: whatever the supplier changes shows up in the ERP right away. With the catalog current, sales reps quote with valid information and recover sales, such as products moving from discontinued back to available.
+Updates no longer depend on time zones: whatever the supplier changes shows up in the ERP right away. With the catalog current, sales reps quote with valid information and can recover sales, such as those of products moving from discontinued back to available.
 
 The platform launched with one supplier and is now used by three. It's ready for any new supplier.
 

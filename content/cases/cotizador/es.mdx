@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Cotizador de un ERP de ventas
 summary: Mejoras al cotizador de un ERP de venta interna para que los casos especiales se resuelvan dentro del sistema y no por fuera.
 client: ERP de distribución B2B
@@ -7,7 +7,7 @@ type: Mejora de producto
 year: "2024"
 role: UX/UI Designer y analista
 duration: 2 meses
-team: Diseño y análisis a mi cargo
+team: Desarrollo front y back, QA y PM
 status: En producción, en evolución continua
 tint: "#4a68b8"
 cover: quote
@@ -19,7 +19,7 @@ impact: Las cotizaciones resueltas fuera del sistema bajaron cerca de 40%.
 
 ## Contexto
 
-La empresa migró su proceso de venta interna de un sistema heredado a un ERP propio. El flujo completo va de la cotización a la tramitación del pedido: cotización, ajustes de oferta, pre-tramitación, validación de ajustes a la orden de compra y tramitación de la orden del cliente.
+La empresa migró su proceso de venta interna de un sistema heredado a un ERP propio. El flujo completo va de la cotización a la tramitación del pedido: cotización, ajustes de oferta, pretramitación, validación de ajustes a la orden de compra y tramitación de la orden del cliente.
 
 El cotizador es la primera pieza de ese flujo, y lo que pasa ahí afecta todo lo que sigue.
 
@@ -53,6 +53,8 @@ Cada resultado de búsqueda muestra disponibilidad, vigencia, tiempo de entrega 
 
 Diseñé el cambio dentro del flujo y comparé dos formas de validarlo. Una verificación única al final es más rápida, pero deja pasar errores hasta el último paso. Una verificación en cada cambio da más control, pero agrega fricción a un trabajo que se repite muchas veces al día.
 
+**La decisión.** Elegí un código por cada cambio: así cada operación queda registrada y hay una bitácora de cambios con responsables. La fricción extra es el precio de esa trazabilidad.
+
 <Figure caption="Las dos opciones que comparé: un código por cada cambio (izquierda) o un solo código que autoriza los cambios hasta enviar la cotización (derecha).">
   <ScreenPair>
     <Screen src="/work/cotizador/cot-pago-por-cambio.webp" w={1244} h={912} alt="Modal para cambiar condiciones de pago que pide generar un código de autorización" />
@@ -62,7 +64,7 @@ Diseñé el cambio dentro del flujo y comparé dos formas de validarlo. Una veri
 
 ### Separar productos controlados
 
-Los productos controlados siguen reglas distintas a los demás. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar otra a mano.
+Los productos controlados siguen reglas distintas de las del resto. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar otra a mano.
 
 <Figure caption="La regla, documentada junto a la pantalla: controlados y publicaciones no se mezclan en una misma cotización.">
   <Screen src="/work/cotizador/cot-controlados.webp" w={1568} h={1160} alt="Aviso de que no se pueden mezclar productos controlados y publicaciones, con las notas de la regla" />

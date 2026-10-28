@@ -1,11 +1,12 @@
 ---
 order: 6
-title: A system you don't see, but notice
+title: A system you don't see, but you notice
 summary: I extended an ERP's Design System for a full release. I built components with their own tokens and their states as variants, and fixed silent defects without changing a single pixel of the screens.
 client: B2B distribution ERP
 type: Design System
 year: "2026"
 role: Product Designer, system owner
+duration: About 3 weeks
 team: I maintain it; design and development consume it
 status: In use
 tint: "#6b7a3a"
@@ -15,7 +16,7 @@ locked: true
 note: The boards show components from the original system with sample text. They contain no brand or real data.
 problem: A new release needed components the system didn't have, and some existing ones failed only in certain contexts. Fixing them inside each screen would have left the system behind.
 did: I designed the new components inside the system, with their own tokens and states as variants. I found and fixed defects that only showed up on certain screens, and documented each component on its page.
-impact: More than 250 instances across two modules updated without breaking. No screen changed its look because of the token changes.
+impact: More than 300 instances across two modules updated without breaking. No screen changed its look because of the token changes.
 ---
 
 ## Context
@@ -28,7 +29,7 @@ The release I designed brought three new modules. They needed pieces the system 
   <Screen src="/work/design-system/ds-fundamentos.webp" w={1455} h={1568} alt="Foundations board with semantic palette, type scale, spacing and radii" />
 </Figure>
 
-## Decisions and their cost
+## Decisions and what they cost
 
 ### Each component with its own tokens
 
@@ -56,7 +57,7 @@ The release I designed brought three new modules. They needed pieces the system 
 
 **The decision.** I turned pagination into a set with five states: First, Middle, Last, Single page and No results. Whoever builds the screen picks the state, with no guessing about which combination of toggles produces it. The same goes for tables: read and edit are variants of one component, not two twin components.
 
-**What it costs.** The set grows with each state. I had to reassign 63 instances that were in the wrong state by hand.
+**What it costs.** The set grows with each state. I had to reassign by hand 63 instances that were in the wrong state.
 
 <Figure caption="Each field state is a variant you pick, not a combination of properties.">
   <Screen src="/work/design-system/ds-formularios.webp" w={1567} h={955} alt="Text fields and dropdowns in all their states, checkboxes, radio buttons, search and date range" />
@@ -86,6 +87,6 @@ The release I designed brought three new modules. They needed pieces the system 
 
 ## What I learned
 
-To use MCPs for building and for auditing. Building a component by hand is slow, but reviewing it by hand is worse: a node bound to the wrong color or a border drawn outside looks fine on the canvas. With scripts connected to Figma I could sweep hundreds of instances, find what wasn't visible, and confirm a change didn't move a pixel before publishing it.
+I learned to use MCP servers to build and to audit. Building a component by hand is slow, but reviewing it by hand is worse: a node bound to the wrong color or a border drawn outside looks fine on the canvas. With scripts connected to Figma I could sweep hundreds of instances, find what wasn't visible, and confirm a change didn't move a pixel before publishing it.
 
 That changed how I close work. Looking right isn't enough anymore: it has to pass the audit.

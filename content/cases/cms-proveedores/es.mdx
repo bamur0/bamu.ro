@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 2
 title: CMS de catálogo para proveedores
 summary: Un portal para que los proveedores actualicen su catálogo por su cuenta. Lo que antes tomaba días de correos entre husos horarios ahora llega al ERP al instante.
 client: Plataforma B2B de proveedores
@@ -11,15 +11,15 @@ team: Equipo de diseño de 2 personas, que lideré
 status: En producción, con 3 proveedores
 tint: "#c79a3a"
 cover: catalog-cms
-note: La portada, el historial interactivo y el especimen del sistema están recreados. Las demás pantallas son las originales de Figma, en inglés como el producto, con la marca, el proveedor y los usuarios sustituidos por ficticios.
-problem: Un proveedor en la India enviaba sus cambios de catálogo por correo, con 12 horas de diferencia, y cada actualización tardaba días en llegar al ERP.
+note: La portada, el historial interactivo y el espécimen del sistema están recreados. Las demás pantallas son las originales de Figma, en inglés como el producto, con la marca, el proveedor y los usuarios sustituidos por ficticios.
+problem: Un proveedor en la India enviaba sus cambios de catálogo por correo, con casi 12 horas de diferencia, y cada actualización tardaba días en llegar al ERP.
 did: Lideré el diseño UX/UI de un portal donde el proveedor administra su propio catálogo, y construí su sistema de diseño.
 impact: Los cambios llegan al ERP al instante. Arrancó con un proveedor y hoy lo usan tres.
 ---
 
 ## Contexto
 
-Uno de los proveedores principales opera desde la India, con 12 horas de diferencia. Cada actualización de su catálogo (precios, presentaciones, vigencia de la información, disponibilidad) llegaba por correo y alguien la capturaba a mano en el ERP. Entre la diferencia horaria y la captura manual, un cambio podía tardar días.
+Uno de los proveedores principales opera desde la India, con casi 12 horas de diferencia. Cada actualización de su catálogo (precios, presentaciones, vigencia de la información, disponibilidad) llegaba por correo y alguien la capturaba a mano en el ERP. Entre la diferencia horaria y la captura manual, un cambio podía tardar días.
 
 Mientras tanto, los ejecutivos de venta cotizaban con información desactualizada: productos que ya estaban disponibles seguían apareciendo como descontinuados.
 
@@ -29,11 +29,11 @@ Para un equipo que conoce sus productos mejor que nadie, trabaja en inglés y de
 
 ## La propuesta
 
-En lugar de acelerar el ida y vuelta de correos, eliminarlo. Un portal donde el proveedor administra su propio catálogo y cada cambio llega al ERP automáticamente, sin intermediarios y sin depender de que los dos equipos coincidan en horario.
+En lugar de acelerar el ir y venir de correos, eliminarlo. Un portal donde el proveedor administra su propio catálogo y cada cambio llega al ERP automáticamente, sin intermediarios y sin depender de que los dos equipos coincidan en horario.
 
 ## Mi rol
 
-Lideré el diseño UX/UI en un equipo de dos personas durante tres meses: investigación, user flow, mapeo de datos, sistema de diseño, interfaces, prototipo y pruebas, hasta la salida a producción.
+Lideré el diseño UX/UI en un equipo de dos personas durante tres meses: investigación, user flow, mapeo de datos, sistema de diseño, interfaces, prototipo y pruebas, hasta la salida a producción. La otra persona de diseño construyó las pantallas en las distintas resoluciones y mantuvo al día el sistema de diseño; yo revisaba todo antes de entregarlo.
 
 Antes de las pantallas mapeé el flujo del proveedor y las familias de productos del catálogo, con la especificación de cada dato. Después diseñé cada pantalla en tres resoluciones, de 1366 a 2560 px, con sus estados de carga, error y búsqueda sin resultados.
 
@@ -72,7 +72,7 @@ Agregar un producto abre un formulario sobre el catálogo, con los campos obliga
 
 ## Pruebas
 
-No era posible probar con el proveedor, así que hicimos pruebas simuladas con dos usuarios internos que tomaron su rol. Medimos cuánto tardaban en dar de alta un catálogo y dónde se perdían al navegar.
+No era posible probar con el proveedor, así que hicimos pruebas simuladas con dos usuarios internos que tomaron su rol. Observamos dónde se atoraban al dar de alta un catálogo y dónde se perdían al navegar.
 
 El hallazgo más importante fue el buscador. La primera versión buscaba dentro de filtros específicos, pero los usuarios esperaban algo como Google: escribir lo que sea y encontrarlo en todo el CMS. Lo rediseñamos como una búsqueda global sobre toda la base de datos. El resto fueron ajustes de navegación, interacción, color y traducción.
 
@@ -85,7 +85,7 @@ El hallazgo más importante fue el buscador. La primera versión buscaba dentro 
 
 El portal se diseñó para un proveedor, pero con la idea de abrirlo a cualquiera. Por eso construí un sistema de diseño propio, versionado y con changelog, en una librería de Figma separada del producto.
 
-Está organizado con Atomic Design: fundamentos, 7 familias de átomos, 15 de moléculas y 15 de organismos. Suma 599 variantes, porque cada componente incluye sus estados y no solo su versión ideal. Los colores viven en dos capas: 104 variables primitivas definen la paleta y 133 tokens semánticos le dan un rol a cada color, como `color/background/button/primary-normal`. Si un color cambia, cambia en un solo lugar.
+Está organizado con Atomic Design: fundamentos, 7 familias de átomos, 15 de moléculas y 15 de organismos. Suma 117 componentes y 599 variantes, porque cada componente incluye sus estados y no solo su versión ideal. Los colores viven en dos capas: 104 variables primitivas definen la paleta y 133 tokens semánticos le dan un rol a cada color, como `color/background/button/primary-normal`. Si un color cambia, cambia en un solo lugar.
 
 <Figure caption="Cifras del sistema original y su arquitectura de tokens, recreada. Elige una cadena.">
   <DesignSystemSpecimen />
@@ -95,7 +95,7 @@ Construir el sistema tomó tiempo al inicio de un proyecto de tres meses. Es tam
 
 ## Resultado
 
-Las actualizaciones dejaron de depender del horario: lo que el proveedor cambia se ve en el ERP al momento. Con el catálogo al día, los ejecutivos cotizan con información vigente y recuperan ventas, como productos que pasan de descontinuados a disponibles.
+Las actualizaciones dejaron de depender del horario: lo que el proveedor cambia se ve en el ERP al momento. Con el catálogo al día, los ejecutivos cotizan con información vigente y pueden recuperar ventas, como las de productos que pasan de descontinuados a disponibles.
 
 La plataforma salió a producción con un proveedor y hoy la usan tres. Está lista para cualquier proveedor nuevo.
 

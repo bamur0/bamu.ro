@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 4
 title: Quoting in a sales ERP
 summary: Improvements to an internal sales ERP's quoting module so edge cases get handled inside the system instead of outside it.
 client: B2B distribution ERP
@@ -7,13 +7,13 @@ type: Product improvement
 year: "2024"
 role: UX/UI Designer and Analyst
 duration: 2 months
-team: Design and analysis led by me
+team: Front-end and back-end development, QA and PM
 status: In production, continuously evolving
 tint: "#4a68b8"
 cover: quote
 note: The cover is recreated with a neutral system. The screens inside the case are the original Figma ones, in Spanish, with brand, customers and data replaced with fictional ones.
 problem: The quoting tool didn't cover edge cases, so sales reps handled them outside the system, with no traceability.
-did: Found those isolated scenarios and designed the improvements that let the system absorb them, from stakeholder analysis to QA.
+did: I found those isolated scenarios and designed the improvements that let the system absorb them, from stakeholder analysis to QA.
 impact: Quotes handled outside the system dropped by about 40%.
 ---
 
@@ -52,6 +52,8 @@ Every search result shows availability, validity, lead time and linked quotes. W
 ### Changing payment terms without leaving the quote
 
 I designed the change inside the flow and compared two ways to validate it. A single check at the end is faster, but lets errors through until the last step. A check on every change gives more control, but adds friction to work that repeats many times a day.
+
+**The decision.** I went with one code per change: every operation gets logged, and there's a change log with clear owners. The extra friction is the price of that traceability.
 
 <Figure caption="The two options I compared: one code per change (left) or a single code that authorizes changes until the quote is sent (right).">
   <ScreenPair>

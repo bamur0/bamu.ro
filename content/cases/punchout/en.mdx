@@ -7,14 +7,14 @@ type: New product
 year: "2026"
 role: Project Lead, Analyst and Product Designer
 duration: 1 month
-team: Led the project as lead business and systems analyst, and product designer
+team: Front-end and back-end development, QA and PM
 status: In production
 tint: "#5f8f6a"
 cover: punchout
 note: The cover and the plant picker are recreated with a neutral system. The other screens are the original Figma files, with the brand, customer and suppliers replaced with fictional ones.
 problem: Every order from a corporate customer took one or two days to move through request, quote, purchase order and handling in the ERP.
-did: Led the project end to end in one month, from business and systems analysis to interface design, every state and final testing.
-impact: Time from quote to order dropped by about 80%. The platform is in production.
+did: I led the project end to end in one month, from business and systems analysis to interface design, every state and final testing.
+impact: According to ERP records, time from quote to order dropped by about 80%; quotes and orders arrive instantly. The platform is in production.
 ---
 
 ## Context
@@ -63,7 +63,7 @@ Sessions expire, and losing a built cart is the worst possible error in this pro
 
 The cost is that a visible countdown can pressure the buyer. That's why the notice offers to continue instead of just warning.
 
-<Figure caption="One minute before expiring, the notice offers to continue, not just a warning.">
+<Figure caption="One minute before expiring, the notice offers to continue instead of just warning.">
   <Screen src="/work/punchout/po-sesion-expira.webp" w={1568} h={882} alt="Expiring session modal with a countdown and cancel or continue actions" full />
 </Figure>
 
@@ -90,16 +90,16 @@ I also designed every state before handoff: loading, empty results, empty cart, 
 
 ## Testing
 
-We tested with users on both sides: the distributor's internal team and the customer's buyers. We ran smoke, usability and navigation tests, and reviewed heatmaps to see where attention landed.
+On the distributor's side we tested with the QA team: smoke, usability and navigation tests, plus heatmaps to see where attention landed. Testing with the buyers was run by the customer.
 
 Navigation needed no changes. The fixes were visual, and the rest was technical, in how the cart transfers between systems.
 
 ## Outcome
 
-Quotes and purchase orders now reach the ERP instantly, and time from quote to order dropped by about 80%. What remains is internal order processing. The customer quotes and buys on their own, from their own system.
+Quotes and purchase orders now reach the ERP instantly and, according to ERP records, time from quote to order dropped by about 80%. What remains is internal order processing. The customer quotes and buys on their own, from their own system.
 
 ## What I learned
 
 **What worked.** Defining the flow and every state during analysis showed up in testing: nobody got lost, and the team could focus on the technical side.
 
-**What I'd do differently.** Validation with the customer's buyers was the weakest part, since we never knew how many people took part. Next time I'd measure real usage in production, such as time per order and sessions that expire before transfer.
+**What I'd do differently.** Validation with the customer's buyers was the weakest part: the customer ran it and I didn't have a record of who took part. Next time I'd measure real usage in production, such as time per order and sessions that expire before transfer.
