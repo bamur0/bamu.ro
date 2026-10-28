@@ -65,12 +65,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </p>
             </div>
           </div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-[13px] text-ink-2">
-            <span aria-hidden className="relative flex size-2">
+          <p className="inline-flex items-start gap-2 rounded-2xl border border-line px-3 py-1.5 text-[13px] leading-5 text-ink-2 sm:items-center sm:rounded-full">
+            <span aria-hidden className="relative mt-1.5 flex size-2 shrink-0 sm:mt-0">
               <span className="absolute inline-flex size-full rounded-full bg-ok opacity-60 motion-safe:animate-ping" />
               <span className="relative inline-flex size-2 rounded-full bg-ok" />
             </span>
-            {dict.hero.available}
+            <span>
+              {dict.hero.available}
+              <span className="hidden sm:inline"> · </span>
+              <span className="block text-muted sm:inline">{dict.hero.availableWhere}</span>
+            </span>
           </p>
         </div>
 
