@@ -1,0 +1,91 @@
+---
+order: 6
+title: Un sistema que no se ve, pero se nota
+summary: Extendí el Design System de un ERP para un release completo. Construí componentes con sus estados como variantes y tokens propios, y corregí defectos silenciosos sin que las pantallas cambiaran un píxel.
+client: ERP de distribución B2B
+type: Design System
+year: "2026"
+role: Product Designer, a cargo del sistema
+team: Lo mantengo yo; lo consumen diseño y desarrollo
+status: En uso
+tint: "#6b7a3a"
+cover: image
+coverImage: /work/design-system/ds-cover.webp
+locked: true
+note: Los tableros muestran componentes del sistema original con textos de ejemplo. No incluyen la marca ni datos reales.
+problem: Un release nuevo pedía componentes que el sistema no tenía, y algunos de los existentes fallaban solo en ciertos contextos. Si se arreglaban dentro de cada pantalla, el sistema se iba a quedar atrás.
+did: Diseñé los componentes nuevos dentro del sistema, con tokens propios y estados como variantes. Encontré y corregí defectos que solo aparecían en ciertas pantallas, y documenté cada componente en su página.
+impact: Más de 250 instancias en dos módulos se actualizaron sin romperse. Ninguna pantalla cambió de aspecto por los cambios de tokens.
+---
+
+## Contexto
+
+El ERP tiene un Design System en Figma organizado con Atomic Design: tokens, átomos, moléculas y organismos. Más de 300 componentes publicados y dos colecciones de variables, una semántica y una de componente, encima de los primitivos.
+
+El release que diseñé traía tres módulos nuevos. Necesitaban piezas que el sistema no tenía, como un aviso en línea o un asistente por pasos, y estados que ningún componente contemplaba, como un listado que cabe en una sola página.
+
+<Figure caption="Los fundamentos: color semántico, la escala tipográfica, el espaciado y los radios.">
+  <Screen src="/work/design-system/ds-fundamentos.webp" w={1455} h={1568} alt="Tablero de fundamentos con paleta semántica, escala tipográfica, espaciado y radios" />
+</Figure>
+
+## Decisiones y lo que costaron
+
+### Cada componente con sus propios tokens
+
+**El problema.** Varios componentes apuntaban directo a los colores semánticos. Cambiar, por ejemplo, el borde del aviso informativo obligaba a tocar el semántico, y con él todo lo que lo usara.
+
+**La decisión.** La cadena tiene tres eslabones: primitivo, semántico y componente. Los componentes solo consumen el último. El aviso en línea quedó con 13 tokens propios, de fondo, borde, icono y texto para cada tipo, y cada uno es un alias del semántico que ya usaba. Los tokens salieron de lo que el diseño ya usaba, nodo por nodo, así que el cambio no movió un píxel.
+
+**Lo que cuesta.** Hay más variables que mantener, y un token de componente que apunta al mismo semántico que otro parece redundante. Es el precio de poder cambiar uno sin arrastrar al otro.
+
+<Figure caption="El aviso en línea en sus cuatro tipos. Cada color sale de un token del componente, no del semántico.">
+  <Screen src="/work/design-system/ds-retroalimentacion.webp" w={1567} h={1313} alt="Avisos en línea, asistente por pasos en sus tres pasos, paginado en sus estados y etiquetas de estado" />
+</Figure>
+
+### Un token por nivel de composición
+
+**El problema.** El asistente por pasos tenía 19 tokens en un solo nivel. Aun así, 24 nodos seguían atados a semánticos: las etiquetas y los conectores nunca tuvieron token.
+
+**La decisión.** Lo reorganicé en tres niveles y repartí los tokens según qué nodo los consume. El marcador circular se quedó con 13, el marcador con etiqueta suma 4 de tipografía y la secuencia completa suma solo los 2 del conector. Cada nivel aporta lo suyo y hereda el resto.
+
+**Lo que cuesta.** Hay tres componentes en lugar de uno. A cambio, si el conector cambia de color, nadie tiene que buscar entre 19 variables cuál era la suya.
+
+### Los estados son variantes
+
+**El problema.** El paginado no tenía estados. Había un token de flecha deshabilitada que nadie usaba: alguien previó el estado y nunca lo construyó. Mientras tanto, los listados del release caben en una sola página y mostraban la flecha de "siguiente" activa sin ningún lugar a donde ir.
+
+**La decisión.** Convertí el paginado en un set con cinco estados: Primera, Intermedia, Última, Página única y Sin resultados. Quien maqueta elige el estado y no tiene que adivinar qué combinación de interruptores lo produce. Lo mismo pasa con las tablas: lectura y edición son variantes de un mismo componente, no dos componentes gemelos.
+
+**Lo que cuesta.** El set crece con cada estado. Fue necesario reasignar a mano 63 instancias que estaban en el estado equivocado.
+
+<Figure caption="Cada estado de un campo es una variante que se elige, no una combinación de propiedades.">
+  <Screen src="/work/design-system/ds-formularios.webp" w={1567} h={955} alt="Campos de texto y desplegables en todos sus estados, casillas, opción única, búsqueda y rango de fechas" />
+</Figure>
+
+<Figure caption="Lectura y edición son variantes de un mismo componente.">
+  <Screen src="/work/design-system/ds-tablas.webp" w={1568} h={1141} alt="Tabla de partidas en modo lectura y en modo edición" />
+</Figure>
+
+### Un defecto que solo aparece en un contexto
+
+**El problema.** Al aplicar la regla de tamaños de botón, los botones del pie pasaron de Medium a Large y empezaron a perder el borde izquierdo. Eran 55 botones en un solo módulo. En el componente no se veía nada raro.
+
+**La decisión.** Busqué la causa en vez de parchear cada pantalla. De las 9 variantes con borde del botón, 5 lo dibujaban por fuera y 4 por dentro. El borde exterior queda fuera del nodo, y el contenedor de la pantalla lo recortaba tres niveles más arriba. Normalicé las 9 variantes para que lo dibujen por dentro.
+
+**Lo que cuesta.** Nada visible. Este tipo de defecto solo sale al comparar el área que ocupa cada nodo con el área que realmente se dibuja, así que ahora es una comprobación más antes de cerrar un módulo.
+
+<Figure caption="Seis tipos, tres estados y tres tamaños. El tamaño lo decide el contexto, no el gusto.">
+  <Screen src="/work/design-system/ds-botones.webp" w={1567} h={1031} alt="Matriz de botones por tipo y estado, y los tres tamaños según el contexto" />
+</Figure>
+
+## Cómo lo trabajé
+
+- **Sin cambio visual.** Cada cambio de tokens se verificó comparando el antes y el después. Si un cambio así altera un píxel, está mal hecho.
+- **Sin romper instancias.** Renombrar o convertir un componente en set no desconecta sus instancias, porque el enlace va por clave. Lo comprobé en las 78 instancias del asistente y las 262 de otro módulo antes de dar el cambio por bueno.
+- **La documentación en el canvas.** Cada componente tiene su página con una ficha y hojas de color. En cada fila, debajo del token, va el semántico del que hereda. Encontré fichas clonadas de otros componentes que describían algo distinto, y las reescribí completas.
+
+## Lo que aprendí
+
+A usar MCPs para crear y para auditar. Construir un componente a mano es lento, pero revisarlo a mano es peor: un nodo atado al color equivocado o un borde que se dibuja por fuera se ven bien en el canvas. Con scripts conectados a Figma pude recorrer cientos de instancias, encontrar lo que no se veía y comprobar que un cambio no movía un píxel antes de publicarlo.
+
+Eso cambió cómo cierro el trabajo. Ya no basta con que algo se vea bien: tiene que pasar la auditoría.

@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 4
 title: Cotizador de un ERP de ventas
 summary: Mejoras al cotizador de un ERP de venta interna para que los casos especiales se resuelvan dentro del sistema y no por fuera.
 client: ERP de distribución B2B
@@ -9,7 +9,9 @@ role: UX/UI Designer y analista
 duration: 2 meses
 team: Diseño y análisis a mi cargo
 status: En producción, en evolución continua
+tint: "#4a68b8"
 cover: quote
+note: La portada está recreada con un sistema neutro. Las pantallas dentro del caso son las originales de Figma, con la marca, los clientes y los datos sustituidos por ficticios.
 problem: El cotizador no cubría los casos especiales, así que los ejecutivos los resolvían fuera del sistema, sin trazabilidad.
 did: Identifiqué esos escenarios aislados y diseñé las mejoras para que el sistema los absorbiera, del análisis con stakeholders al QA.
 impact: Las cotizaciones resueltas fuera del sistema bajaron cerca de 40%.
@@ -41,19 +43,38 @@ Cotizar empieza con un correo del cliente y un historial comercial, no con una p
 
 Cada resultado de búsqueda muestra disponibilidad, vigencia, tiempo de entrega y cotizaciones vinculadas. Cuando un producto no se puede agregar, la interfaz explica por qué y qué hacer, en lugar de solo deshabilitar el botón.
 
+<Figure caption="El espacio de trabajo: contexto del cliente, requerimiento original y armado de la cotización.">
+  <Screen src="/work/cotizador/cot-espacio-trabajo.webp" w={1366} h={1024} full alt="Cotizador con los tres paneles: cliente, requerimiento y lista de productos" />
+</Figure>
+
 ## Lo que mejoré
 
 ### Cambiar condiciones de pago sin salir de la cotización
 
 Diseñé el cambio dentro del flujo y comparé dos formas de validarlo. Una verificación única al final es más rápida, pero deja pasar errores hasta el último paso. Una verificación en cada cambio da más control, pero agrega fricción a un trabajo que se repite muchas veces al día.
 
+<Figure caption="Las dos opciones que comparé: un código por cada cambio (izquierda) o un solo código que autoriza los cambios hasta enviar la cotización (derecha).">
+  <ScreenPair>
+    <Screen src="/work/cotizador/cot-pago-por-cambio.webp" w={1244} h={912} alt="Modal para cambiar condiciones de pago que pide generar un código de autorización" />
+    <Screen src="/work/cotizador/cot-pago-unica.webp" w={1244} h={1104} alt="Modal para ingresar el código de autorización enviado por correo" />
+  </ScreenPair>
+</Figure>
+
 ### Separar productos controlados
 
 Los productos controlados siguen reglas distintas a los demás. El cotizador ahora los identifica, muestra cuántos hay de cada tipo y permite dividir la cotización en lugar de armar otra a mano.
 
+<Figure caption="La regla, documentada junto a la pantalla: controlados y publicaciones no se mezclan en una misma cotización.">
+  <Screen src="/work/cotizador/cot-controlados.webp" w={1568} h={1160} alt="Aviso de que no se pueden mezclar productos controlados y publicaciones, con las notas de la regla" />
+</Figure>
+
 ### Lo que no se encuentra no bloquea la cotización
 
 Los productos que no están en el catálogo pasan a una pestaña de investigación. El ejecutivo envía lo que sí tiene y da seguimiento a lo demás dentro del mismo sistema.
+
+<Figure caption="Los productos a investigación viven en su propia pestaña, con la respuesta de cada búsqueda.">
+  <Screen src="/work/cotizador/cot-investigacion.webp" w={1552} h={1080} alt="Pestaña de productos a investigación con su estado y respuesta" />
+</Figure>
 
 ## Resultado
 

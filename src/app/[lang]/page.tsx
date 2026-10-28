@@ -11,7 +11,7 @@ import { CaseCard } from "@/components/case-card";
 import { Reveal } from "@/components/reveal";
 import { CopyEmail } from "@/components/copy-email";
 
-/** Marca la última palabra del titular con el acento. */
+/** Marca la última palabra del titular: en tinta y con el marcador vino suave. */
 function markLastWord(text: string) {
   const i = text.trimEnd().lastIndexOf(" ");
   const head = text.slice(0, i + 1);
@@ -19,7 +19,7 @@ function markLastWord(text: string) {
   return (
     <>
       {head}
-      <span className="mark">{last}</span>.
+      <span className="mark text-ink">{last}</span>.
     </>
   );
 }
@@ -29,7 +29,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   if (!hasLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const cases = await getCases(lang);
-  const [featured, ...rest] = cases;
 
   // Datos estructurados: ayudan a Google a asociar el nombre con el sitio y los perfiles
   const personJsonLd = {
@@ -53,34 +52,29 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
       />
-      {/* Hero: ocupa toda la pantalla; el trabajo aparece al hacer scroll */}
-      <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl flex-col pb-10 pt-8 md:pb-14 md:pt-12">
-        <p className="enter text-lg text-ink-2" style={{ "--i": 0 } as React.CSSProperties}>
-          {dict.hero.greeting}
-        </p>
-        <div className="flex flex-1 items-center py-12">
-          <h1
-            className="enter max-w-[15ch] text-[clamp(44px,8.2vw,116px)] font-semibold leading-[0.98] tracking-[-0.035em] text-ink text-balance"
-            style={{ "--i": 1 } as React.CSSProperties}
-          >
-            {markLastWord(dict.hero.title)}
-          </h1>
-        </div>
-        <div
-          className="enter grid gap-6 border-t border-line pt-6 md:grid-cols-[1fr_auto] md:items-end"
-          style={{ "--i": 2 } as React.CSSProperties}
+      {/* Hero: saludo y propuesta en dos tonos; deja ver el trabajo sin ocupar toda la pantalla */}
+      <section className="mx-auto max-w-6xl pb-20 pt-16 md:pb-28 md:pt-28">
+        <h1
+          className="enter font-display max-w-[20ch] text-[clamp(38px,5.6vw,76px)] leading-[1.06] text-muted text-balance"
+          style={{ "--i": 0 } as React.CSSProperties}
         >
-          <p className="max-w-[46ch] text-lg leading-relaxed text-ink-2 text-pretty">{dict.hero.lead}</p>
+          <span className="text-ink">{dict.hero.greeting}</span> {markLastWord(dict.hero.title)}
+        </h1>
+        <div
+          className="enter mt-10 grid gap-6 md:mt-12 md:grid-cols-[1fr_auto] md:items-end"
+          style={{ "--i": 1 } as React.CSSProperties}
+        >
+          <p className="max-w-[48ch] text-lg leading-relaxed text-ink-2 text-pretty">{dict.hero.lead}</p>
           <div className="flex flex-wrap gap-3">
             <Link
               href={`/${lang}/#work`}
-              className="inline-flex h-11 items-center rounded-full bg-ink px-5 text-[15px] font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
+              className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-[15px] font-medium text-accent-ink transition-transform duration-150 active:scale-[0.97]"
             >
               {dict.hero.ctaWork}
             </Link>
             <Link
               href={`/${lang}/#contact`}
-              className="inline-flex h-11 items-center rounded-full border border-line px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
+              className="inline-flex h-11 items-center rounded-full border border-line bg-surface px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
             >
               {dict.hero.ctaContact}
             </Link>
@@ -88,21 +82,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* Trabajo */}
+      {/* Trabajo: dos columnas, la segunda desfasada para que la vista respire */}
       <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl scroll-mt-20">
-        <h2 id="work-title" className="mb-10 pt-16 text-3xl font-semibold tracking-tight text-ink md:mb-14 md:pt-24">
+        <h2 id="work-title" className="font-display mb-8 text-3xl text-ink md:mb-12 md:text-4xl">
           {dict.work.title}
         </h2>
-        <Reveal>
-          <CaseCard item={featured} locale={lang} featured />
-        </Reveal>
-        <div className="mt-16 grid gap-16 md:mt-20 md:grid-cols-12 md:gap-8">
-          {rest.map((item, i) => (
-            <Reveal
-              key={item.slug}
-              delay={i * 0.08}
-              className={i === 0 ? "md:col-span-7" : "md:col-span-5 md:mt-24"}
-            >
+        <div className="grid gap-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
+          {cases.map((item, i) => (
+            <Reveal key={item.slug} delay={(i % 2) * 0.08} className={i % 2 === 1 ? "md:mt-24" : undefined}>
               <CaseCard item={item} locale={lang} />
             </Reveal>
           ))}
@@ -112,7 +99,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Cómo trabajo */}
       <section className="mx-auto mt-28 grid max-w-6xl gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink md:sticky md:top-28">{dict.process.title}</h2>
+          <h2 className="font-display text-3xl text-ink md:sticky md:top-28 md:text-4xl">{dict.process.title}</h2>
         </div>
         <ol className="divide-y divide-line border-y border-line md:col-span-8">
           {dict.process.items.map((p, i) => (
@@ -127,17 +114,20 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Sobre mí */}
       <section id="about" className="mx-auto mt-28 grid max-w-6xl scroll-mt-24 gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
         <Reveal className="md:col-span-4">
-          <Image
-            src="/img/roberto.webp"
-            alt={dict.about.photoAlt}
-            width={720}
-            height={900}
-            sizes="(min-width: 768px) 360px, 100vw"
-            className="aspect-[4/5] w-full max-w-sm rounded-surface border border-line object-cover"
-          />
+          {/* En claro, multiply funde el fondo gris de la foto con el crema de la superficie */}
+          <div className="w-full max-w-sm overflow-hidden rounded-surface border border-line bg-surface-2">
+            <Image
+              src="/img/roberto.webp"
+              alt={dict.about.photoAlt}
+              width={720}
+              height={900}
+              sizes="(min-width: 768px) 360px, 100vw"
+              className="aspect-[4/5] w-full object-cover mix-blend-multiply dark:mix-blend-normal"
+            />
+          </div>
         </Reveal>
         <Reveal delay={0.06} className="md:col-span-7 md:col-start-6">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink">{dict.about.title}</h2>
+          <h2 className="font-display text-3xl text-ink md:text-4xl">{dict.about.title}</h2>
           {dict.about.body.map((para) => (
             <p key={para.slice(0, 24)} className="mt-5 max-w-[60ch] text-[17px] leading-[1.7] text-ink-2">
               {para}
@@ -207,7 +197,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Contacto */}
       <section id="contact" className="mx-auto mt-28 max-w-6xl scroll-mt-24 border-t border-line pt-14 md:mt-40 md:pt-20">
         <Reveal>
-          <h2 className="text-4xl font-semibold tracking-tight text-ink md:text-5xl">{dict.contact.title}</h2>
+          <h2 className="font-display text-4xl text-ink md:text-6xl">{dict.contact.title}</h2>
           <p className="mt-4 max-w-[48ch] text-lg text-ink-2">{dict.contact.body}</p>
           <div className="mt-8">
             <CopyEmail email={site.email} copyLabel={dict.contact.copy} copiedLabel={dict.contact.copied} />

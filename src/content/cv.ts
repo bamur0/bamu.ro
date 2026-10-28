@@ -103,7 +103,7 @@ export const cv: Record<Locale, Cv> = {
       },
     ],
     certificationsLine:
-      "Microsoft UX Design, certificado profesional (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens, master class (Interaction Design Foundation, 2024)",
+      "Prompt Engineering (Platzi, 2026); Microsoft UX Design, certificado profesional (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens, master class (Interaction Design Foundation, 2024)",
   },
   en: {
     name: "Roberto Báez Muñoz",
@@ -177,6 +177,6 @@ export const cv: Record<Locale, Cv> = {
       },
     ],
     certificationsLine:
-      "Microsoft UX Design Professional Certificate (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens master class (Interaction Design Foundation, 2024)",
+      "Prompt Engineering (Platzi, 2026); Microsoft UX Design Professional Certificate (Coursera, 2025); AI for Designers (Interaction Design Foundation, 2025); Design Tokens master class (Interaction Design Foundation, 2024)",
   },
 };

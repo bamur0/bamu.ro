@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 5
 title: Supplier catalog CMS
 summary: A portal where suppliers update their own catalog. What used to take days of emails across time zones now reaches the ERP instantly.
 client: B2B supplier platform
@@ -9,7 +9,9 @@ role: UX/UI Design Lead
 duration: 3 months
 team: Two-person design team, which I led
 status: In production, used by 3 suppliers
+tint: "#c79a3a"
 cover: catalog-cms
+note: The cover, the interactive history and the system specimen are recreated. The other screens are the original Figma files, in English like the product, with the brand, supplier and users replaced with fictional ones.
 problem: A supplier in India sent catalog changes by email, 12 hours apart, and every update took days to reach the ERP.
 did: Led UX/UI design of a portal where the supplier manages their own catalog, and built its design system.
 impact: Changes reach the ERP instantly. It launched with one supplier and is now used by three.
@@ -39,6 +41,14 @@ Before any screens I mapped the supplier's flow and the catalog's product famili
 
 In a catalog of reference standards, a product with expired information can't be sold. So each product's status organizes the whole portal: the catalog splits into expired, expiring soon, awaiting approval and discontinued, and the home screen opens with whatever needs attention.
 
+<Figure caption="Home opens with whatever needs attention: expired, expiring and discontinued products.">
+  <Screen src="/work/cms-proveedores/cms-inicio.webp" w={1568} h={882} alt="Portal home with the list of expired products on the left and catalog indicators" full />
+</Figure>
+
+<Figure caption="The catalog splits by status. Each tab carries its count.">
+  <Screen src="/work/cms-proveedores/cms-por-vencer.webp" w={1568} h={882} alt="Catalog filtered to expiring products, with the validity date on each row" full />
+</Figure>
+
 ### Every change leaves a trail
 
 Two parties edit the information, the supplier and the distributor. So nobody has to send an email asking who changed what, every product keeps a history with author, date, time and time zone, and the old value next to the new one.
@@ -47,15 +57,29 @@ Two parties edit the information, the supplier and the distributor. So nobody ha
   <ChangeHistory />
 </Figure>
 
+<Figure caption="The original screen: each change with its author, its time zone and the old value next to the new one.">
+  <Screen src="/work/cms-proveedores/cms-historial.webp" w={1568} h={882} alt="Product detail with the change history: author, date, time, time zone, old and new value" full />
+</Figure>
+
 ### Adding a product without leaving the catalog
 
 Adding a product opens a form over the catalog, with required fields marked and loading, error and incomplete-form states already designed. The supplier never loses their place.
+
+<ScreenPair>
+  <Screen src="/work/cms-proveedores/cms-alta-incompleta.webp" w={1568} h={882} alt="Add product form over the catalog with a required field flagged as an error" />
+  <Screen src="/work/cms-proveedores/cms-editar.webp" w={1568} h={882} alt="Edit product form over the history" />
+</ScreenPair>
 
 ## Testing
 
 Testing with the supplier wasn't possible, so we ran simulated sessions with two internal users playing their role. We measured how long it took them to upload a catalog and where they got lost navigating.
 
 The biggest finding was search. The first version searched within specific filters, but users expected something like Google: type anything and find it across the whole CMS. We redesigned it as a global search over the entire database. The rest were navigation, interaction, color and translation fixes.
+
+<ScreenPair>
+  <Screen src="/work/cms-proveedores/cms-busqueda.webp" w={1568} h={882} alt="Catalog with a global search and one result" />
+  <Screen src="/work/cms-proveedores/cms-sin-resultados.webp" w={1568} h={882} alt="Catalog with a search that has no matches" />
+</ScreenPair>
 
 ## A design system to add more suppliers
 

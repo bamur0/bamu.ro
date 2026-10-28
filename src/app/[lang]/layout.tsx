@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { IBM_Plex_Mono, Onest } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Mono, Onest } from "next/font/google";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { site } from "@/lib/site";
@@ -12,6 +12,7 @@ import { Intro, introScript } from "@/components/intro";
 import "../globals.css";
 
 const onest = Onest({ subsets: ["latin"], variable: "--font-onest", display: "swap" });
+const bricolage = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -48,7 +49,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const dict = getDictionary(lang);
 
   return (
-    <html lang={lang} suppressHydrationWarning className={`${onest.variable} ${plexMono.variable} antialiased`}>
+    <html lang={lang} suppressHydrationWarning className={`${onest.variable} ${bricolage.variable} ${plexMono.variable} antialiased`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: introScript }} />
       </head>

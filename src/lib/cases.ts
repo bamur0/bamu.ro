@@ -18,7 +18,15 @@ export type CaseMeta = {
   duration?: string;
   team?: string;
   status?: string;
-  cover: "punchout" | "quote" | "catalog-cms";
+  cover: "punchout" | "quote" | "catalog-cms" | "image";
+  /** Ruta de la portada cuando cover es "image" (pantalla exportada, 16:9) */
+  coverImage?: string;
+  /** Color del caso: tiñe su tarjeta y la banda del encabezado (ver .tint-panel) */
+  tint: string;
+  /** Sustituye la nota de confidencialidad por defecto */
+  note?: string;
+  /** Detrás de un correo (Cloudflare Pages Function); fuera del sitemap y sin pantallas en la tarjeta */
+  locked?: boolean;
   /** Resumen de 10 segundos: el problema, lo que hice y el resultado */
   problem: string;
   did: string;
