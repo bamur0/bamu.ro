@@ -11,6 +11,7 @@ team: Equipo de diseño de 2 personas, que lideré
 status: En producción, con 3 proveedores
 tint: "#c79a3a"
 cover: catalog-cms
+note: La portada, el historial interactivo y el especimen del sistema están recreados. Las demás pantallas son las originales de Figma, en inglés como el producto, con la marca, el proveedor y los usuarios sustituidos por ficticios.
 problem: Un proveedor en la India enviaba sus cambios de catálogo por correo, con 12 horas de diferencia, y cada actualización tardaba días en llegar al ERP.
 did: Lideré el diseño UX/UI de un portal donde el proveedor administra su propio catálogo, y construí su sistema de diseño.
 impact: Los cambios llegan al ERP al instante. Arrancó con un proveedor y hoy lo usan tres.
@@ -40,6 +41,14 @@ Antes de las pantallas mapeé el flujo del proveedor y las familias de productos
 
 En un catálogo de estándares de referencia, un producto con información vencida no se puede vender. Por eso el estado de cada producto organiza todo el portal: el catálogo se divide en vencidos, por vencer, en aprobación y descontinuados, y el inicio abre con lo que necesita atención.
 
+<Figure caption="El inicio abre con lo que necesita atención: los productos vencidos, por vencer y descontinuados.">
+  <Screen src="/work/cms-proveedores/cms-inicio.webp" w={1568} h={882} alt="Inicio del portal con la lista de productos vencidos a la izquierda e indicadores del catálogo" full />
+</Figure>
+
+<Figure caption="El catálogo se divide por estado. Cada pestaña lleva su conteo.">
+  <Screen src="/work/cms-proveedores/cms-por-vencer.webp" w={1568} h={882} alt="Catálogo filtrado en productos por vencer, con la fecha de vigencia en cada fila" full />
+</Figure>
+
 ### Cada cambio deja rastro
 
 La información la editan dos partes, el proveedor y el distribuidor. Para que nadie tenga que escribir un correo preguntando quién cambió qué, cada producto guarda un historial con autor, fecha, hora y huso horario, y el valor anterior junto al nuevo.
@@ -48,15 +57,29 @@ La información la editan dos partes, el proveedor y el distribuidor. Para que n
   <ChangeHistory />
 </Figure>
 
+<Figure caption="La pantalla original: cada cambio con su autor, su huso horario y el valor anterior junto al nuevo.">
+  <Screen src="/work/cms-proveedores/cms-historial.webp" w={1568} h={882} alt="Detalle de producto con el historial de cambios: autor, fecha, hora, huso horario, valor anterior y nuevo" full />
+</Figure>
+
 ### Alta de producto sin salir del catálogo
 
 Agregar un producto abre un formulario sobre el catálogo, con los campos obligatorios marcados y los estados de carga, error y formulario incompleto ya diseñados. El proveedor no pierde el lugar donde estaba.
+
+<ScreenPair>
+  <Screen src="/work/cms-proveedores/cms-alta-incompleta.webp" w={1568} h={882} alt="Formulario de alta de producto sobre el catálogo con un campo obligatorio marcado en error" />
+  <Screen src="/work/cms-proveedores/cms-editar.webp" w={1568} h={882} alt="Formulario de edición de producto sobre el historial" />
+</ScreenPair>
 
 ## Pruebas
 
 No era posible probar con el proveedor, así que hicimos pruebas simuladas con dos usuarios internos que tomaron su rol. Medimos cuánto tardaban en dar de alta un catálogo y dónde se perdían al navegar.
 
 El hallazgo más importante fue el buscador. La primera versión buscaba dentro de filtros específicos, pero los usuarios esperaban algo como Google: escribir lo que sea y encontrarlo en todo el CMS. Lo rediseñamos como una búsqueda global sobre toda la base de datos. El resto fueron ajustes de navegación, interacción, color y traducción.
+
+<ScreenPair>
+  <Screen src="/work/cms-proveedores/cms-busqueda.webp" w={1568} h={882} alt="Catálogo con una búsqueda global y un resultado" />
+  <Screen src="/work/cms-proveedores/cms-sin-resultados.webp" w={1568} h={882} alt="Catálogo con una búsqueda sin coincidencias" />
+</ScreenPair>
 
 ## Un sistema de diseño para sumar proveedores
 
