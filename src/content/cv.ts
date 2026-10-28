@@ -70,7 +70,7 @@ export const cv: Record<Locale, Cv> = {
             ],
           },
         ],
-        tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+        tools: "Figma, FigJam, Jira, Notion, Google Workspace, Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM",
       },
       {
         org: "EMECE",
@@ -144,7 +144,7 @@ export const cv: Record<Locale, Cv> = {
             ],
           },
         ],
-        tools: "Figma, FigJam, Jira, Notion, Claude, Claude Code, ChatGPT, Codex, Gemini, Stitch, NotebookLM",
+        tools: "Figma, FigJam, Jira, Notion, Google Workspace, Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM",
       },
       {
         org: "EMECE",
