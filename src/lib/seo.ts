@@ -16,7 +16,8 @@ export function openGraphFor(
     siteName: "bamu.ro",
     locale: lang === "es" ? "es_MX" : "en_US",
     type: page.type ?? "website",
-    images: [{ url: `/og/og-${lang}-2x.png`, width: 2400, height: 1260, alt: page.title }],
+    // El nombre lleva versión: LinkedIn guarda la imagen por URL y no la vuelve a pedir si el nombre no cambia
+    images: [{ url: `/og/og-${lang}-v3.png`, width: 2400, height: 1260, alt: page.title }],
   };
 }
 

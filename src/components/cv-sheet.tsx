@@ -1,8 +1,25 @@
 import { EB_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import type { Cv } from "@/content/cv";
 
 // Garamond solo aquí: la hoja emula un CV impreso en formato Harvard, que es tradicionalmente serif.
 const garamond = EB_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], display: "swap" });
+
+// Para el PDF: la variable de Google se incrusta como Type 3, que algunos ATS (Taleo, iCIMS)
+// leen desordenado. Estas instancias estáticas se incrustan como TrueType. Sin preload: la
+// pantalla no las descarga, solo la impresión (ver .cv-sheet en globals.css).
+const garamondPrint = localFont({
+  src: [
+    { path: "../fonts/EBGaramond-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../fonts/EBGaramond-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../fonts/EBGaramond-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "../fonts/EBGaramond-Italic.ttf", weight: "400", style: "italic" },
+    { path: "../fonts/EBGaramond-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+  ],
+  variable: "--font-cv-print",
+  preload: false,
+  display: "block",
+});
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -17,7 +34,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export function CvSheet({ cv }: { cv: Cv }) {
   return (
     <article
-      className={`${garamond.className} cv-sheet mx-auto w-full max-w-[816px] rounded-[4px] bg-[#fffffe] px-6 py-8 text-[14px] leading-[1.35] text-neutral-900 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(0_0_0/0.25)] sm:px-[72px] sm:py-[64px] sm:text-[15px]`}
+      className={`${garamond.className} ${garamondPrint.variable} cv-sheet mx-auto w-full max-w-[816px] rounded-[4px] bg-[#fffffe] px-6 py-8 text-[14px] leading-[1.35] text-neutral-900 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(0_0_0/0.25)] sm:px-[72px] sm:py-[64px] sm:text-[15px]`}
     >
       <header className="text-center">
         <p className="text-[1.9em] font-semibold leading-tight">{cv.name}</p>

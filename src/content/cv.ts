@@ -53,7 +53,7 @@ export const cv: Record<Locale, Cv> = {
             title: "Product Designer",
             dates: "ene. 2025 – presente",
             bullets: [
-              "Lideré como analista principal y product designer una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de cotización a pedido (registro del ERP)",
+              "Lideré como analista y product designer una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de cotización a pedido (registro del ERP)",
               "Diseñé el módulo de notas de crédito ante el SAT: un asistente de tres pasos para doce casos fiscales",
               "Diseñé en 2 semanas un MVP que convierte correos en pendientes: 85 pantallas hi-fi con sus reglas documentadas",
               "Extendí el sistema de diseño del ERP con tokens de componente y estados como variantes, sin cambios visuales",
