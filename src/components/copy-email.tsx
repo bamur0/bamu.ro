@@ -4,7 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Copy } from "@phosphor-icons/react";
 
-export function CopyEmail({ email, copyLabel, copiedLabel }: { email: string; copyLabel: string; copiedLabel: string }) {
+export function CopyEmail({
+  email,
+  copyLabel,
+  copiedLabel,
+  className,
+}: {
+  email: string;
+  copyLabel: string;
+  copiedLabel: string;
+  className?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -24,14 +34,14 @@ export function CopyEmail({ email, copyLabel, copiedLabel }: { email: string; co
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className={`flex flex-wrap items-center gap-3 ${className ?? ""}`}>
       <a href={`mailto:${email}`} className="link text-xl font-medium tracking-tight text-ink sm:text-2xl">
         {email}
       </a>
       <button
         type="button"
         onClick={copy}
-        className="inline-flex h-9 items-center gap-2 rounded-full border border-line bg-surface px-3.5 text-sm text-ink-2 transition-[color,background-color,transform] duration-150 hover:text-ink active:scale-[0.97]"
+        className="inline-flex h-9 items-center gap-2 rounded-full bg-surface-2 px-3.5 text-sm text-ink-2 transition-[color,background-color,transform] duration-150 hover:text-ink active:scale-[0.97]"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.span

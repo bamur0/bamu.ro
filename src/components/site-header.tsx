@@ -15,7 +15,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
   ];
 
   return (
-    <header className="no-print sticky top-0 z-20 bg-bg/80 px-4 backdrop-blur-md supports-[not(backdrop-filter:blur(0))]:bg-bg sm:px-6">
+    <header className="no-print sticky top-0 z-20 bg-bg/80 px-5 backdrop-blur-md supports-[not(backdrop-filter:blur(0))]:bg-bg sm:px-8">
       <a
         href="#main"
         className="sr-only rounded-full bg-ink px-4 py-2 text-sm text-bg focus:not-sr-only focus:absolute focus:left-4 focus:top-3"

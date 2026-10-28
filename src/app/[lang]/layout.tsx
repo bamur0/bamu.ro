@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Bricolage_Grotesque, IBM_Plex_Mono, Onest } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { site } from "@/lib/site";
@@ -8,17 +8,10 @@ import { languagesFor, openGraphFor } from "@/lib/seo";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Intro, introScript } from "@/components/intro";
 import "../globals.css";
 
-const onest = Onest({ subsets: ["latin"], variable: "--font-onest", display: "swap" });
-const bricolage = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--font-bricolage", display: "swap" });
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
-  display: "swap",
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const dynamicParams = false;
 
@@ -49,12 +42,8 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const dict = getDictionary(lang);
 
   return (
-    <html lang={lang} suppressHydrationWarning className={`${onest.variable} ${bricolage.variable} ${plexMono.variable} antialiased`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: introScript }} />
-      </head>
+    <html lang={lang} suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} antialiased`}>
       <body className="min-h-dvh">
-        <Intro />
         <Providers>
           <SiteHeader locale={lang} dict={dict} />
           <main id="main">{children}</main>

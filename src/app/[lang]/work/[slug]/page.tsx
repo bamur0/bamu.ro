@@ -3,7 +3,7 @@ import { languagesFor, openGraphFor } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
+import { ArrowRight, ArrowLeft } from "@phosphor-icons/react/ssr";
 import { hasLocale, locales } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getCase, getCaseSlugs, getCases } from "@/lib/cases";
@@ -11,6 +11,7 @@ import { getMdxComponents } from "@/components/mdx";
 import { CaseCover } from "@/components/case-cover";
 import { Reveal } from "@/components/reveal";
 import { CaseToc } from "@/components/case-toc";
+import { ReadingProgress } from "@/components/reading-progress";
 import { sectionsOf } from "@/lib/slug";
 
 export const dynamicParams = false;
@@ -63,57 +64,54 @@ export default async function CasePage({ params }: PageProps<"/[lang]/work/[slug
 
   return (
     <article>
-      {/* Banda con el color del caso; termina en curva suave y la portada se monta encima */}
-      <header
-        className="tint-panel px-4 pb-40 pt-10 [border-bottom-left-radius:50%_3.5rem] [border-bottom-right-radius:50%_3.5rem] sm:px-6 md:pb-56 md:pt-14"
-        style={{ "--tint": c.tint } as React.CSSProperties}
-      >
+      <ReadingProgress />
+      <header className="px-5 pt-8 sm:px-8 md:pt-12">
         <div className="mx-auto max-w-6xl">
           <Link
             href={`/${lang}/#work`}
-            className="inline-flex items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-ink"
+            className="group inline-flex min-h-11 items-center gap-1.5 text-sm text-ink-2 transition-colors hover:text-ink"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={14} className="transition-transform duration-300 ease-out-quint group-hover:-translate-x-0.5" />
             {dict.case.back}
           </Link>
-          <div className="mt-10 max-w-3xl md:mt-14">
-            <p className="flex items-center gap-2 text-sm text-ink-2">
-              <span aria-hidden className="size-2.5 rounded-full" style={{ background: c.tint }} />
+          <div className="mt-10 md:mt-16">
+            <p className="flex items-center gap-2 text-sm text-muted">
+              <span aria-hidden className="size-2 rounded-full" style={{ background: c.tint }} />
               {c.client} · {c.type}
             </p>
-            <h1 className="font-display mt-4 text-[clamp(36px,5vw,60px)] leading-[1.06] text-ink text-balance">
+            <h1 className="font-display mt-5 max-w-[18ch] text-[clamp(40px,6vw,80px)] leading-[1.02] text-ink text-balance">
               {c.title}
             </h1>
-            <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-ink-2 text-pretty">{c.summary}</p>
+            <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-ink-2 text-pretty md:text-xl">{c.summary}</p>
           </div>
         </div>
       </header>
 
-      <div className="px-4 sm:px-6">
-        <Reveal className="mx-auto -mt-32 max-w-6xl md:-mt-44">
+      <div className="px-5 sm:px-8">
+        <Reveal className="mx-auto mt-12 max-w-6xl md:mt-16">
           <CaseCover cover={c.cover} image={c.coverImage} title={c.title} locale={lang} interactive />
           <p className="mt-3 max-w-2xl text-sm text-muted">{c.note ?? dict.case.nda}</p>
         </Reveal>
 
-        {/* Datos del caso: etiquetas pequeñas y texto limpio, sin cajas */}
-        <div className="mx-auto mt-14 max-w-6xl border-t border-line pt-8">
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
-            {facts.map(([k, v]) => (
-              <div key={k}>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{k}</dt>
-                <dd className="mt-1.5 text-[15px] text-ink">{v}</dd>
-              </div>
-            ))}
-          </dl>
-          <dl className="mt-10 grid gap-8 md:grid-cols-3">
+        {/* Problema, lo que hice y resultado; los datos del caso en una fila debajo */}
+        <div className="mx-auto mt-14 max-w-6xl md:mt-20">
+          <dl className="grid gap-8 border-t border-line pt-8 md:grid-cols-3">
             {[
               [dict.case.problem, c.problem],
               [dict.case.did, c.did],
               [dict.case.impact, c.impact],
             ].map(([k, v]) => (
               <div key={k}>
-                <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{k}</dt>
-                <dd className="font-display mt-2 text-xl leading-snug text-ink">{v}</dd>
+                <dt className="label">{k}</dt>
+                <dd className="mt-3 text-[17px] font-medium leading-snug text-ink text-pretty">{v}</dd>
+              </div>
+            ))}
+          </dl>
+          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8 sm:grid-cols-3 lg:grid-cols-5">
+            {facts.map(([k, v]) => (
+              <div key={k}>
+                <dt className="label">{k}</dt>
+                <dd className="mt-2 text-[15px] text-ink-2">{v}</dd>
               </div>
             ))}
           </dl>
@@ -129,19 +127,22 @@ export default async function CasePage({ params }: PageProps<"/[lang]/work/[slug
           </div>
         </div>
 
-        <nav className="mx-auto mt-24 max-w-6xl border-t border-line pb-4 pt-8">
-        <Link
-          href={`/${lang}/work/${next.slug}/`}
-          prefetch={next.locked ? false : undefined}
-          className="group flex items-end justify-between gap-6">
-          <span>
-            <span className="block font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{dict.case.next}</span>
-            <span className="font-display mt-2 block text-2xl text-ink md:text-3xl">{next.title}</span>
-          </span>
-          <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-ink transition-transform duration-200 ease-out-quint group-hover:translate-x-1">
-            <ArrowRight size={18} />
-          </span>
-        </Link>
+        <nav className="mx-auto mt-28 max-w-6xl border-t border-line pb-4 pt-10">
+          <Link
+            href={`/${lang}/work/${next.slug}/`}
+            prefetch={next.locked ? false : undefined}
+            className="group flex items-end justify-between gap-6"
+          >
+            <span>
+              <span className="label block">{dict.case.next}</span>
+              <span className="font-display mt-3 block text-[32px] leading-[1.08] text-ink text-balance md:text-[48px]">
+                {next.title}
+              </span>
+            </span>
+            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-ink text-bg transition-transform duration-300 ease-out-quint group-hover:translate-x-1">
+              <ArrowRight size={18} />
+            </span>
+          </Link>
         </nav>
       </div>
     </article>
