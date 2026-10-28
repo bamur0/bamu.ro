@@ -2,7 +2,7 @@ import type { Locale } from "./config";
 
 const es = {
   meta: {
-    title: "Roberto Báez · Product Designer y UX/UI en México",
+    title: "Roberto Báez · Product Designer y diseñador UX/UI en México",
     description:
       "Product designer en México. Diseño productos digitales de punta a punta, del levantamiento de requisitos al QA.",
   },
@@ -38,22 +38,29 @@ const es = {
     cmmi: "CMMI nivel 3",
     items: [
       {
-        dates: "2025 — hoy",
+        dates: "2025 – presente",
         role: "Product Designer",
         org: "RYNDEM Studios",
         body: "Analista principal y product designer: de los requisitos con negocio al QA antes de liberar, dentro de los procesos de una organización con CMMI nivel 3.",
         cmmi: true,
       },
       {
-        dates: "2023 — 2024",
+        dates: "2023 – 2024",
         role: "UX/UI Designer",
         org: "RYNDEM Studios",
         body: "El CMS para proveedores y su sistema de diseño, mejoras al cotizador del ERP y los casos de prueba de QA de cada liberación.",
         cmmi: false,
       },
       {
+        dates: "2021 – 2023",
+        role: "Animación e ilustración",
+        org: "Freelance",
+        body: "Proyectos independientes de animación e ilustración.",
+        cmmi: false,
+      },
+      {
         dates: "2021",
-        role: "Prácticas en diseño UX/UI",
+        role: "Prácticas profesionales en diseño UX/UI",
         org: "EMECE, remoto",
         body: "Interfaces y materiales digitales para distintos clientes.",
         cmmi: false,
@@ -96,7 +103,7 @@ const es = {
     title: "Sobre mí",
     body: [
       "Soy product designer. Estudié Diseño de Interacción y Animación en la Ibero Puebla y diseño interfaces desde 2021. Casi siempre trabajo de punta a punta: requisitos, UX, UI, sistema de diseño y QA.",
-      "Me gusta el trabajo donde la complejidad es real: condiciones comerciales, catálogos enormes, flujos con muchos actores. Mi trabajo es que nada de eso se le note a quien usa el producto.",
+      "Me gustan los proyectos donde la complejidad es real: condiciones comerciales, catálogos enormes, flujos con muchos actores. Mi trabajo es que nada de eso se le note a quien usa el producto.",
     ],
     tools: "Herramientas",
     languagesTitle: "Idiomas",
@@ -148,7 +155,7 @@ export type Dictionary = typeof es;
 
 const en: Dictionary = {
   meta: {
-    title: "Roberto Báez · Product Designer & UX/UI in Mexico",
+    title: "Roberto Báez · Product Designer & UX/UI Designer in Mexico",
     description:
       "Product designer based in Mexico. I design digital products end to end, from requirements to QA.",
   },
@@ -184,17 +191,24 @@ const en: Dictionary = {
     cmmi: "CMMI Level 3",
     items: [
       {
-        dates: "2025 — now",
+        dates: "2025 – present",
         role: "Product Designer",
         org: "RYNDEM Studios",
         body: "Lead analyst and product designer: from requirements with the business to QA before release, within the processes of a CMMI Level 3 organization.",
         cmmi: true,
       },
       {
-        dates: "2023 — 2024",
+        dates: "2023 – 2024",
         role: "UX/UI Designer",
         org: "RYNDEM Studios",
         body: "The supplier CMS and its design system, improvements to the ERP's quoting module, and QA test cases for every release.",
+        cmmi: false,
+      },
+      {
+        dates: "2021 – 2023",
+        role: "Animation and illustration",
+        org: "Freelance",
+        body: "Independent animation and illustration projects.",
         cmmi: false,
       },
       {
@@ -206,7 +220,7 @@ const en: Dictionary = {
       },
       {
         dates: "2021",
-        role: "B.A. in Interaction Design and Animation",
+        role: "Bachelor's Degree in Interaction Design and Animation",
         org: "Ibero Puebla",
         body: "Graduated.",
         cmmi: false,
@@ -225,7 +239,7 @@ const en: Dictionary = {
         body: "Loading, empty, error, expiring sessions, extreme data. Whatever isn't designed gets improvised in development.",
       },
       {
-        name: "Systems, not loose screens",
+        name: "Systems, not one-off screens",
         body: "Shared tokens and components so design and engineering speak the same language.",
       },
       {
@@ -280,7 +294,7 @@ const en: Dictionary = {
     impact: "Outcome",
     locked: "Email access",
     toc: "In this case",
-    nda: "Screens in this case are recreated with a neutral system to respect client confidentiality. The structure, flows and decisions are the original ones.",
+    nda: "Screens in this case are recreated with a neutral system to respect client confidentiality. The structure, flows and decisions are original.",
   },
   footer: {
     rights: "Designed and built by Roberto Báez",

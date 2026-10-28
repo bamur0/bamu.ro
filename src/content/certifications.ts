@@ -11,10 +11,10 @@ const coursera = "https://coursera.org/verify/professional-cert/W1VX8CSDSB9X";
 /** Más reciente primero. La master class es de participación, no un curso evaluado: se nombra como tal. */
 export const certifications: Record<Locale, Certification[]> = {
   es: [
-    { name: "Prompt Engineering", issuer: "Platzi, curso", date: "Oct 2026", url: platzi },
-    { name: "AI for Designers", issuer: "Interaction Design Foundation, curso", date: "Jul 2025", url: ixdfAi },
-    { name: "Microsoft UX Design", issuer: "Coursera, certificado profesional de 4 cursos", date: "Feb 2025", url: coursera },
-    { name: "Design Tokens: Powering Your Design System", issuer: "Interaction Design Foundation, master class", date: "Jul 2024", url: ixdfTokens },
+    { name: "Prompt Engineering", issuer: "Platzi, curso", date: "oct. 2026", url: platzi },
+    { name: "AI for Designers", issuer: "Interaction Design Foundation, curso", date: "jul. 2025", url: ixdfAi },
+    { name: "Microsoft UX Design", issuer: "Coursera, certificado profesional de 4 cursos", date: "feb. 2025", url: coursera },
+    { name: "Design Tokens: Powering Your Design System", issuer: "Interaction Design Foundation, master class", date: "jul. 2024", url: ixdfTokens },
   ],
   en: [
     { name: "Prompt Engineering", issuer: "Platzi, course", date: "Oct 2026", url: platzi },
