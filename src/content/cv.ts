@@ -47,14 +47,14 @@ export const cv: Record<Locale, Cv> = {
     roles: [
       {
         org: "RYNDEM Studios",
-        place: "Cuernavaca, Morelos",
+        place: "Cuernavaca, Morelos (empresa con CMMI nivel 3)",
         positions: [
           {
             title: "Product Designer",
             dates: "2025 – Presente",
             bullets: [
               "Lideré, como analista principal y product designer, una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de un 80% el tiempo de cotización a pedido",
-              "Definí requisitos, flujos y criterios de aceptación con stakeholders de negocio y desarrollo, y acompañé cada producto hasta su salida a producción",
+              "Definí requisitos, flujos y criterios de aceptación con stakeholders de negocio y desarrollo, y acompañé cada producto hasta su salida a producción dentro de los procesos CMMI nivel 3: requisitos trazables, revisiones de diseño y verificación antes de liberar",
               "Integré herramientas de IA en el flujo de diseño para prototipar, documentar y validar con desarrollo, en equipos Agile/Scrum con planeación de sprints y revisiones de diseño",
             ],
           },
@@ -121,14 +121,14 @@ export const cv: Record<Locale, Cv> = {
     roles: [
       {
         org: "RYNDEM Studios",
-        place: "Cuernavaca, Mexico",
+        place: "Cuernavaca, Mexico (CMMI Level 3 company)",
         positions: [
           {
             title: "Product Designer",
             dates: "2025 – Present",
             bullets: [
               "Led a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut time from quote to order by about 80%",
-              "Defined requirements, flows and acceptance criteria with business and engineering stakeholders, and took each product through to production",
+              "Defined requirements, flows and acceptance criteria with business and engineering stakeholders, and took each product through to production within CMMI Level 3 processes: traceable requirements, design reviews and verification before release",
               "Integrated AI tools into the design workflow to prototype, document and validate with engineering, within Agile/Scrum teams running sprint planning and design reviews",
             ],
           },
