@@ -1,0 +1,90 @@
+---
+order: 6
+title: A system you don't see, but notice
+summary: I extended an ERP's Design System for a full release. I built components with their own tokens and their states as variants, and fixed silent defects without changing a single pixel of the screens.
+client: B2B distribution ERP
+type: Design System
+year: "2026"
+role: Product Designer
+status: In use
+tint: "#6b7a3a"
+cover: image
+coverImage: /work/design-system/ds-cover.webp
+locked: true
+note: The boards show components from the original system with sample text. They contain no brand or real data.
+problem: A new release needed components the system didn't have, and some existing ones failed only in certain contexts. Fixing them inside each screen would have left the system behind.
+did: I designed the new components inside the system, with their own tokens and states as variants. I found and fixed defects that only showed up on certain screens, and documented each component on its page.
+impact: More than 250 instances across two modules updated without breaking. No screen changed its look because of the token changes.
+---
+
+<Pending>Confirm your role in the system (whether you maintain it or a team does), how long and with whom; and write What I learned.</Pending>
+
+## Context
+
+The ERP has a Design System in Figma organized with Atomic Design: tokens, atoms, molecules and organisms. It has more than 300 published components and two variable collections, one semantic and one for components, on top of the primitives.
+
+The release I designed brought three new modules. They needed pieces the system didn't have, like an inline alert or a step wizard, and states no component covered, like a list that fits on a single page.
+
+<Figure caption="The foundations: semantic color, type scale, spacing and radii.">
+  <Screen src="/work/design-system/ds-fundamentos.webp" w={1455} h={1568} alt="Foundations board with semantic palette, type scale, spacing and radii" />
+</Figure>
+
+## Decisions and their cost
+
+### Each component with its own tokens
+
+**The problem.** Several components pointed straight at the semantic colors. Changing, say, the border of the info alert meant touching the semantic color, and with it everything else that used it.
+
+**The decision.** The chain has three links: primitive, semantic and component. Components only consume the last one. The inline alert ended up with 13 tokens of its own (background, border, icon and text for each type), each one an alias of the semantic color it was already using. I derived the tokens node by node from what the design already used, so the change didn't move a pixel.
+
+**What it costs.** There are more variables to maintain, and a component token pointing at the same semantic color as another looks redundant. That's the price of being able to change one without dragging the other along.
+
+<Figure caption="The inline alert in its four types. Each color comes from a component token, not from the semantic layer.">
+  <Screen src="/work/design-system/ds-retroalimentacion.webp" w={1567} h={1313} alt="Inline alerts, the step wizard in its three steps, pagination in its states, and status chips" />
+</Figure>
+
+### One token per level of composition
+
+**The problem.** The step wizard had 19 tokens on a single level. Even so, 24 nodes were still bound to semantic colors: the labels and connectors never had a token.
+
+**The decision.** I reorganized it into three levels and assigned each token to the level of the node that consumes it. The circular marker kept 13, the marker with a label adds 4 for type, and the full sequence adds only the 2 for the connector. Each level contributes its own and inherits the rest.
+
+**What it costs.** Three components instead of one. In exchange, if the connector changes color, nobody has to search 19 variables to find which one is theirs.
+
+### States are variants
+
+**The problem.** Pagination had no states. There was a disabled-arrow token nobody used: someone planned the state and never built it. Meanwhile, the release's lists fit on one page and showed an active "next" arrow with nowhere to go.
+
+**The decision.** I turned pagination into a set with five states: First, Middle, Last, Single page and No results. Whoever builds the screen picks the state, with no guessing about which combination of toggles produces it. The same goes for tables: read and edit are variants of one component, not two twin components.
+
+**What it costs.** The set grows with each state. I had to reassign 63 instances that were in the wrong state by hand.
+
+<Figure caption="Each field state is a variant you pick, not a combination of properties.">
+  <Screen src="/work/design-system/ds-formularios.webp" w={1567} h={955} alt="Text fields and dropdowns in all their states, checkboxes, radio buttons, search and date range" />
+</Figure>
+
+<Figure caption="Read and edit are variants of the same component.">
+  <Screen src="/work/design-system/ds-tablas.webp" w={1568} h={1141} alt="Line items table in read mode and edit mode" />
+</Figure>
+
+### A defect that only shows up in one context
+
+**The problem.** When I applied the button size rule, the footer buttons went from Medium to Large and started losing their left border. There were 55 buttons in a single module. Nothing looked wrong in the component itself.
+
+**The decision.** I looked for the cause instead of patching each screen. Of the button's 9 bordered variants, 5 drew the border outside and 4 inside. An outside border sits beyond the node, and the screen's container clipped it three levels up. I normalized all 9 variants to draw the border inside.
+
+**What it costs.** Nothing visible. This kind of defect only shows up when you compare the area each node takes up with the area that actually renders, so that's now one more check before closing a module.
+
+<Figure caption="Six types, three states and three sizes. Context picks the size, not taste.">
+  <Screen src="/work/design-system/ds-botones.webp" w={1567} h={1031} alt="Button matrix by type and state, and the three sizes by context" />
+</Figure>
+
+## How I worked
+
+- **No visual change.** I checked every token change by comparing before and after. A token change that alters a pixel was done wrong.
+- **No broken instances.** Renaming a component or turning it into a set doesn't disconnect its instances, because they link by key. I checked the wizard's 78 instances and another module's 262 before calling a change done.
+- **Documentation on the canvas.** Each component has its own page with a spec card and color sheets. In each row, under the token, sits the semantic color it inherits from. I found spec cards cloned from other components that described something else, and rewrote them in full.
+
+## What I learned
+
+<Pending>Write in your own words.</Pending>
