@@ -1,7 +1,7 @@
 ---
 order: 6
 title: A system you don't see, but you notice
-summary: I extended an ERP's Design System for a full release. I built components with their own tokens and their states as variants, and fixed silent defects without changing a single pixel of the screens.
+summary: I extended an ERP's design system for a full release. I built components with their own tokens and their states as variants, and fixed silent defects without changing a single pixel of the screens.
 client: B2B distribution ERP
 type: Design System
 year: "2026"
@@ -21,7 +21,7 @@ impact: More than 300 instances across two modules updated without breaking. No 
 
 ## Context
 
-The ERP has a Design System in Figma organized with Atomic Design: tokens, atoms, molecules and organisms. It has more than 300 published components and two variable collections, one semantic and one for components, on top of the primitives.
+The ERP has a design system in Figma organized with Atomic Design: tokens, atoms, molecules and organisms. It has more than 300 published components and two variable collections, one semantic and one for components, on top of the primitives.
 
 The release I designed brought three new modules. They needed pieces the system didn't have, like an inline alert or a step wizard, and states no component covered, like a list that fits on a single page.
 
@@ -35,7 +35,7 @@ The release I designed brought three new modules. They needed pieces the system 
 
 **The problem.** Several components pointed straight at the semantic colors. Changing, say, the border of the info alert meant touching the semantic color, and with it everything else that used it.
 
-**The decision.** The chain has three links: primitive, semantic and component. Components only consume the last one. The inline alert ended up with 13 tokens of its own (background, border, icon and text for each type), each one an alias of the semantic color it was already using. I derived the tokens node by node from what the design already used, so the change didn't move a pixel.
+**The decision.** The chain has three links: primitive, semantic and component. Components only consume the last one. The inline alert ended up with 13 tokens of its own: background, border and icon for each of the four types, plus one text token they share. Each one is an alias of the semantic color it was already using. I derived the tokens node by node from what the design already used, so the change didn't move a pixel.
 
 **What it costs.** There are more variables to maintain, and a component token pointing at the same semantic color as another looks redundant. That's the price of being able to change one without dragging the other along.
 

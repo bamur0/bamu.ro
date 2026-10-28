@@ -35,7 +35,7 @@ El release que diseñé traía tres módulos nuevos. Necesitaban piezas que el s
 
 **El problema.** Varios componentes apuntaban directo a los colores semánticos. Cambiar, por ejemplo, el borde del aviso informativo obligaba a tocar el semántico, y con él todo lo que lo usara.
 
-**La decisión.** La cadena tiene tres eslabones: primitivo, semántico y componente. Los componentes solo consumen el último. El aviso en línea quedó con 13 tokens propios, de fondo, borde, icono y texto para cada tipo, y cada uno es un alias del semántico que tenía asignado. Los tokens salieron del diseño existente, nodo por nodo, así que el cambio no movió un píxel.
+**La decisión.** La cadena tiene tres eslabones: primitivo, semántico y componente. Los componentes solo consumen el último. El aviso en línea quedó con 13 tokens propios: fondo, borde e icono para cada uno de los cuatro tipos, más uno de texto que comparten. Cada token es un alias del semántico que tenía asignado. Los tokens salieron del diseño existente, nodo por nodo, así que el cambio no movió un píxel.
 
 **Lo que cuesta.** Hay más variables que mantener, y un token de componente que apunta al mismo semántico que otro parece redundante. Es el precio de poder cambiar uno sin arrastrar al otro.
 
@@ -53,7 +53,7 @@ El release que diseñé traía tres módulos nuevos. Necesitaban piezas que el s
 
 ### Los estados son variantes
 
-**El problema.** El paginado no tenía estados. Había un token de flecha deshabilitada que nadie usaba: alguien previó el estado y nunca lo construyó. Mientras tanto, los listados del release caben en una sola página y mostraban la flecha de "siguiente" activa sin ningún lugar a donde ir.
+**El problema.** El paginado no tenía estados. Había un token de flecha deshabilitada que nadie usaba: alguien previó el estado y nunca lo construyó. Mientras tanto, los listados del release cabían en una sola página y mostraban la flecha de "siguiente" activa sin ningún lugar a donde ir.
 
 **La decisión.** Convertí el paginado en un set con cinco estados: Primera, Intermedia, Última, Página única y Sin resultados. Quien maqueta elige el estado y no tiene que adivinar qué combinación de interruptores lo produce. Lo mismo pasa con las tablas: lectura y edición son variantes de un mismo componente, no dos componentes gemelos.
 
