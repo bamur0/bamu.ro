@@ -81,7 +81,7 @@ El asistente tiene tres pasos: buscar la factura, capturar los datos y confirmar
 
 **El problema.** Timbrar es irreversible, y un botón que dice "confirmar" no deja claro si ya se emitió algo o no.
 
-**La decisión.** Separé las dos acciones. "Revisar y confirmar" solo abre la previsualización del documento tal como quedará; no consume folio ni emite nada. "Timbrar nota de crédito" es la única acción que emite, y la pantalla avisa antes de que es irreversible.
+**La decisión.** Separé las dos acciones. "Revisar y confirmar" solo abre la previsualización del documento tal como quedará; no consume folio ni emite nada. "Timbrar nota de crédito" es la única acción que emite, y antes de emitir, la pantalla avisa que no hay vuelta atrás.
 
 <Figure caption="La previsualización muestra el documento antes de emitirlo. El PDF de la imagen es un ejemplo.">
   <Screen src="/work/notas-credito/nc-previsualizacion.webp" w={1498} h={1498} alt="Previsualización del documento de la nota de crédito antes de timbrar" />
@@ -110,6 +110,6 @@ Está en desarrollo, así que aún no hay métricas. Desarrollo y QA recibieron 
 
 ## Lo que aprendí
 
-Que un flujo fiscal se diseña leyendo las reglas antes de dibujar pantallas. Los doce casos parecían doce procesos hasta que los ordené por qué dato cambiaba en cada uno; a partir de ahí, el diseño fue uno solo.
+Que un flujo fiscal se diseña leyendo las reglas antes de dibujar pantallas. Los doce casos parecían doce procesos hasta que los ordené según el dato que cambiaba en cada uno; a partir de ahí, el diseño fue uno solo.
 
 Y que usar los datos reales del acuerdo con el cliente, en vez de datos de relleno, hace que la maqueta trabaje dos veces: como diseño y como validación de las reglas.
