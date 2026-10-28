@@ -175,10 +175,10 @@ body {
   }
 }
 
-/* Impresión: solo la hoja del CV, tamaño carta con márgenes de 0.75in */
+/* Impresión: solo la hoja del CV, tamaño carta con márgenes de 0.6in */
 @page {
   size: letter;
-  margin: 0.75in;
+  margin: 0.6in;
 }
 @media print {
   html,

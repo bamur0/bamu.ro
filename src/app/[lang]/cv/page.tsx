@@ -12,7 +12,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/cv">): Pro
   if (!hasLocale(lang)) return {};
   const dict = getDictionary(lang);
   return {
-    title: dict.cv.title,
+    // Absoluto: es también el título del PDF que guarda Chrome, y lo leen los ATS
+    title: { absolute: `${cv[lang].name} – Product Designer – ${dict.cv.title}` },
     description: dict.cv.description,
     alternates: { canonical: `/${lang}/cv/`, languages: languagesFor((l) => `/${l}/cv/`) },
     openGraph: openGraphFor(lang, {

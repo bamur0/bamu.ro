@@ -23,9 +23,12 @@ export function CvSheet({ cv }: { cv: Cv }) {
         <p className="text-[1.9em] font-semibold leading-tight">{cv.name}</p>
         <p className="mt-1 flex flex-wrap justify-center gap-x-2 text-[0.95em]">
           {cv.contact.map((c, i) => (
-            <span key={c} className="whitespace-nowrap">
+            // El teléfono solo se imprime: va en el PDF, no en la página web
+            <span key={c} className={`whitespace-nowrap ${c.startsWith("+") ? "hidden print:inline" : ""}`}>
               {i > 0 && <span aria-hidden className="mr-2 text-neutral-400">|</span>}
-              {c.includes("@") ? (
+              {c.startsWith("+") ? (
+                <a href={`tel:${c.replace(/\s/g, "")}`}>{c}</a>
+              ) : c.includes("@") ? (
                 <a href={`mailto:${c}`} className="underline decoration-neutral-400 underline-offset-2 hover:decoration-neutral-900">
                   {c}
                 </a>
@@ -63,9 +66,13 @@ export function CvSheet({ cv }: { cv: Cv }) {
                     <p className="italic">{pos.title}</p>
                     <p>{pos.dates}</p>
                   </div>
-                  <ul className="mt-1 list-disc space-y-1 pl-5 marker:text-neutral-500">
+                  {/* Viñeta como texto real: list-disc no se extrae del PDF y los ATS no separan las viñetas */}
+                  <ul className="mt-1 list-none space-y-1">
                     {pos.bullets.map((b) => (
-                      <li key={b.slice(0, 32)}>{b}</li>
+                      <li key={b.slice(0, 32)} className="relative pl-5">
+                        <span className="absolute left-1.5 text-neutral-500">•</span>
+                        {b}
+                      </li>
                     ))}
                   </ul>
                 </div>
