@@ -72,7 +72,16 @@ export function CvSheet({ cv }: { cv: Cv }) {
         </Section>
 
         <Section title={cv.headings.experience}>
-          {cv.roles.map((r) => (
+          {cv.roles.map((r) =>
+            // Un puesto sin viñetas (el freelance) va en una sola línea
+            r.positions.length === 1 && r.positions[0].bullets.length === 0 ? (
+              <div key={r.org} className="mt-3 flex flex-wrap justify-between gap-x-4 first:mt-0">
+                <p>
+                  <span className="font-semibold">{r.org}</span>, {r.place}: <span className="italic">{r.positions[0].title}</span>
+                </p>
+                <p>{r.positions[0].dates}</p>
+              </div>
+            ) : (
             <div key={r.org} className="mt-3 first:mt-0">
               <p>
                 <span className="font-semibold">{r.org}</span>, {r.place}
@@ -80,25 +89,34 @@ export function CvSheet({ cv }: { cv: Cv }) {
               {r.positions.map((pos) => (
                 <div key={pos.title + pos.dates} className="mt-1.5 break-inside-avoid">
                   <div className="flex flex-wrap justify-between gap-x-4">
-                    <p className="italic">{pos.title}</p>
+                    {/* Con varios puestos en la misma empresa, cada uno la repite: algunos ATS dejan sin empleador al segundo */}
+                    <p>
+                      <span className="italic">{pos.title}</span>
+                      {r.positions.length > 1 && `, ${r.org}`}
+                    </p>
                     <p>{pos.dates}</p>
                   </div>
                   {/* Viñeta como texto real: list-disc no se extrae del PDF y los ATS no separan las viñetas */}
-                  <ul className="mt-1 list-none space-y-1">
-                    {pos.bullets.map((b) => (
-                      <li key={b.slice(0, 32)} className="relative pl-5">
-                        <span className="absolute left-1.5 text-neutral-500">•</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
+                  {pos.bullets.length > 0 && (
+                    <ul className="mt-1 list-none space-y-1">
+                      {pos.bullets.map((b) => (
+                        <li key={b.slice(0, 32)} className="relative pl-5">
+                          <span className="absolute left-1.5 text-neutral-500">•</span>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
-              <p className="mt-1.5 text-[0.92em] text-neutral-600">
-                <span className="font-semibold italic">{cv.headings.tools}</span> <span className="italic">{r.tools}</span>
-              </p>
+              {r.tools && (
+                <p className="mt-1.5 text-[0.92em] text-neutral-600">
+                  <span className="font-semibold italic">{cv.headings.tools}</span> <span className="italic">{r.tools}</span>
+                </p>
+              )}
             </div>
-          ))}
+            ),
+          )}
         </Section>
 
         <Section title={cv.headings.skills}>

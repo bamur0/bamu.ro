@@ -13,7 +13,8 @@ export type CvRole = {
   org: string;
   place: string;
   positions: CvPosition[];
-  tools: string;
+  /** Sin herramientas no se imprime la línea */
+  tools?: string;
 };
 
 export type Cv = {
@@ -43,7 +44,7 @@ export const cv: Record<Locale, Cv> = {
       tools: "Herramientas:",
     },
     profile:
-      "Product Designer con más de 3 años diseñando productos digitales de punta a punta: plataformas de compra, ERP y CMS. Combina análisis de negocio, diseño, sistemas de diseño y QA para convertir requisitos complejos en productos con impacto medible.",
+      "Product Designer con más de 3 años diseñando productos digitales de punta a punta: plataformas de compra, ERP y CMS. Combina análisis de negocio, UX/UI, sistemas de diseño y QA para convertir requisitos complejos en productos con impacto medible.",
     roles: [
       {
         org: "RYNDEM Studios",
@@ -56,9 +57,9 @@ export const cv: Record<Locale, Cv> = {
               "Lideré como analista y product designer una plataforma PunchOut B2B que conecta el catálogo de un distribuidor con el sistema de compras de sus clientes; diseñada y liberada en 1 mes, redujo cerca de 80% el tiempo de cotización a pedido (registro del ERP)",
               "Diseñé el módulo de notas de crédito ante el SAT: un asistente de tres pasos para doce casos fiscales",
               "Diseñé en 2 semanas un MVP que convierte correos en pendientes: 85 pantallas hi-fi con sus reglas documentadas",
-              "Extendí el sistema de diseño del ERP con tokens de componente y estados como variantes, sin cambios visuales",
-              "Definí requisitos trazables y criterios de aceptación con negocio y desarrollo dentro de los procesos CMMI nivel 3",
-              "Integré IA y servidores MCP conectados a Figma para prototipar, documentar y auditar, en equipos Agile/Scrum",
+              "Extendí el sistema de diseño del ERP con tokens de componente y estados como variantes: más de 300 instancias sin romperse",
+              "Definí requisitos trazables y criterios de aceptación con stakeholders de negocio y desarrollo bajo CMMI nivel 3",
+              "Integré IA y servidores MCP conectados a Figma para prototipar, documentar y auditar, en equipos multidisciplinarios",
             ],
           },
           {
@@ -67,13 +68,18 @@ export const cv: Record<Locale, Cv> = {
             bullets: [
               "Lideré el diseño UX/UI de un CMS para proveedores internacionales que sincroniza su catálogo con el ERP en tiempo real, lo que eliminó días de espera causados por una diferencia horaria de casi 12 horas; en producción con 3 proveedores",
               "Construí el sistema de diseño del CMS con Atomic Design: 117 componentes con 599 variantes y 237 variables (104 primitivas y 133 tokens semánticos), versionado para escalar a nuevos proveedores",
-              "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de un 40% las cotizaciones resueltas fuera del sistema",
+              "Diseñé mejoras al cotizador de un ERP de venta interna (cambio de condiciones de pago, división por productos controlados y productos a investigación) que redujeron cerca de 40% las cotizaciones resueltas fuera del sistema (estimación del equipo)",
               "Analicé el ERP completo y diseñé su adaptación para Perú: experiencia de usuario, reglas de negocio e interfaz",
               "Diseñé y ejecuté casos de prueba de QA basados en las heurísticas de Nielsen y en criterios de aceptación antes de cada liberación",
             ],
           },
         ],
         tools: "Figma, FigJam, Jira, Notion, Google Workspace, Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM",
+      },
+      {
+        org: "Freelance",
+        place: "Remoto",
+        positions: [{ title: "Animación e ilustración", dates: "2021 – 2023", bullets: [] }],
       },
       {
         org: "EMECE",
@@ -83,7 +89,7 @@ export const cv: Record<Locale, Cv> = {
             title: "Prácticas profesionales en diseño UX/UI",
             dates: "2021",
             bullets: [
-              "Diseñé de forma remota interfaces y materiales digitales para distintos clientes, entre ellos AMBA (sector de blindajes)",
+              "Diseñé interfaces y materiales digitales para distintos clientes, entre ellos una empresa de blindajes",
             ],
           },
         ],
@@ -92,7 +98,7 @@ export const cv: Record<Locale, Cv> = {
     ],
     skills: [
       ["Diseño y prototipado", "Figma, FigJam, Adobe Creative Cloud, Sketch, HTML, CSS"],
-      ["Métodos", "UX research, user flows, wireframes, prototipado hi-fi, diseño responsive, pruebas de usabilidad, design tokens, Agile/Scrum"],
+      ["Métodos", "UX research, user flows, wireframes, prototipado hi-fi, diseño responsive, pruebas de usabilidad, data-informed, Agile/Scrum"],
       ["IA", "Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM, Figma AI, integraciones MCP"],
       ["Gestión de proyectos", "Notion, Jira, Google Workspace, Trello, Asana"],
       ["Idiomas", "español (nativo), inglés (C1)"],
@@ -110,7 +116,7 @@ export const cv: Record<Locale, Cv> = {
   },
   en: {
     name: "Roberto Báez Muñoz",
-    contact: ["Cuernavaca, Mexico (remote, CDMX or Querétaro)", ...contact.slice(1)],
+    contact: ["Cuernavaca, Mexico (remote, Mexico City or Querétaro)", ...contact.slice(1)],
     headings: {
       profile: "Profile",
       experience: "Experience",
@@ -132,10 +138,10 @@ export const cv: Record<Locale, Cv> = {
             bullets: [
               "Drove a B2B PunchOut platform end to end as lead analyst and product designer, connecting a distributor's catalog to its customers' procurement systems; designed and shipped in 1 month, it cut quote-to-order time by about 80% (ERP records)",
               "Designed a credit-note module for Mexico's tax authority (SAT): a three-step wizard for twelve tax scenarios",
-              "Designed in 2 weeks an MVP that turns emails into tasks: 85 hi-fi screens with their rules documented",
-              "Extended the ERP design system with component tokens and states as variants, with no visual changes",
-              "Defined traceable requirements and acceptance criteria with business and engineering within CMMI Level 3 processes",
-              "Integrated AI and MCP servers connected to Figma to prototype, document and audit, within Agile/Scrum teams",
+              "Designed an email-to-task MVP in 2 weeks: 85 hi-fi screens with documented rules",
+              "Extended the ERP design system with component tokens and states as variants: 300+ instances updated without breaking",
+              "Defined traceable requirements and acceptance criteria with business and engineering stakeholders under CMMI Level 3",
+              "Integrated AI and MCP servers connected to Figma to prototype, document and audit, within cross-functional teams",
             ],
           },
           {
@@ -144,13 +150,18 @@ export const cv: Record<Locale, Cv> = {
             bullets: [
               "Led UX/UI design of a CMS that lets international suppliers sync their catalog with the ERP in real time, removing days of delay caused by a nearly 12-hour time difference; in production with 3 suppliers",
               "Built the CMS design system with Atomic Design: 117 components with 599 variants and 237 variables (104 primitives and 133 semantic tokens), versioned to scale to new suppliers",
-              "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40%",
+              "Designed improvements to an internal sales ERP's quoting module (payment-term changes, controlled-product splits and research items) that reduced off-system quotes by about 40% (team estimate)",
               "Analyzed the full ERP and designed its adaptation for Peru: user experience, business rules and interface",
               "Designed and ran QA test cases based on Nielsen's heuristics and acceptance criteria before every release",
             ],
           },
         ],
         tools: "Figma, FigJam, Jira, Notion, Google Workspace, Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM",
+      },
+      {
+        org: "Freelance",
+        place: "Remote",
+        positions: [{ title: "Animation and illustration", dates: "2021 – 2023", bullets: [] }],
       },
       {
         org: "EMECE",
@@ -160,7 +171,7 @@ export const cv: Record<Locale, Cv> = {
             title: "UX/UI Design Intern",
             dates: "2021",
             bullets: [
-              "Designed interfaces and digital materials remotely for several clients, including AMBA (armoring industry)",
+              "Designed interfaces and digital materials for several clients, including an armoring company",
             ],
           },
         ],
@@ -169,7 +180,7 @@ export const cv: Record<Locale, Cv> = {
     ],
     skills: [
       ["Design and prototyping", "Figma, FigJam, Adobe Creative Cloud, Sketch, HTML, CSS"],
-      ["Methods", "UX research, user flows, wireframes, hi-fi prototyping, responsive design, usability testing, design tokens, Agile/Scrum"],
+      ["Methods", "UX research, user flows, wireframes, hi-fi prototyping, responsive design, usability testing, data-informed design, Agile/Scrum"],
       ["AI", "Claude, Claude Code, ChatGPT, Codex, Orca, Gemini, Stitch, NotebookLM, Figma AI, MCP integrations"],
       ["Project tools", "Notion, Jira, Google Workspace, Trello, Asana"],
       ["Languages", "Spanish (native), English (C1)"],
