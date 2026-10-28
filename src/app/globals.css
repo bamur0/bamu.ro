@@ -202,6 +202,11 @@ body::after {
     background: #fff !important;
     min-height: 0 !important;
   }
+  /* La textura y el grano no se imprimen: ensucian el pie y pesan casi 2 MB en el PDF */
+  body::before,
+  body::after {
+    display: none !important;
+  }
   main > div {
     padding: 0 !important;
   }
