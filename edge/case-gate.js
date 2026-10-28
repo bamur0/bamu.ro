@@ -25,7 +25,7 @@ const copy = {
     email: "Your email",
     submit: "View case",
     privacy: "I only use it to know who viewed the case. I won't share it or add you to any list.",
-    badEmail: "Check the email, it looks incomplete.",
+    badEmail: "Check your email address, it looks incomplete.",
     back: "All work",
   },
 };

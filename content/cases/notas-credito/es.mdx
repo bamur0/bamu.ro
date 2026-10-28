@@ -1,11 +1,12 @@
 ---
-order: 4
+order: 5
 title: Doce casos fiscales, un solo flujo
 summary: Un módulo para emitir notas de crédito ante el SAT. Diseñé un asistente de tres pasos donde el sistema resuelve los datos fiscales y la persona solo decide lo que le toca.
 client: ERP de distribución B2B
 type: Módulo nuevo
 year: "2026"
 role: Analista y Product Designer
+duration: 2 semanas
 team: Desarrollo front y back, QA y PM
 status: En desarrollo
 tint: "#8a5a83"
@@ -30,7 +31,7 @@ Para el equipo que lleva la cobranza de los clientes prepago. Cada persona ve so
 
 ## Doce casos, un flujo
 
-Los casos fiscales parecen doce procesos distintos: devolución física, producto no entregado, error de captura, descuento negociado o posterior al pago, factura parcialmente cobrada, factura en dólares, factura con IVA a tasa cero, devolución del dinero al cliente. Diseñé uno solo.
+Los casos fiscales parecen doce procesos distintos: devolución física, producto no entregado, error de captura, descuento negociado o posterior al pago, factura parcialmente cobrada, factura en dólares, factura con IVA a tasa cero, devolución del dinero al cliente, entre otros. Diseñé uno solo.
 
 El asistente tiene tres pasos: buscar la factura, capturar los datos y confirmar. Entre un caso y otro cambian los datos que llegan a la pantalla, no la pantalla. Eso hizo posible documentar los doce casos sin multiplicar el diseño.
 
@@ -52,7 +53,7 @@ El asistente tiene tres pasos: buscar la factura, capturar los datos y confirmar
 
 **El problema.** Cuando la nota supera lo que el cliente todavía debe, sobra dinero, y alguien tiene que decidir qué pasa con él.
 
-**La decisión.** La pregunta solo aparece cuando hay excedente. Si se deja como saldo a favor, la nota nace con saldo disponible para la siguiente compra; si se devuelve al cliente, se captura cómo se le devolvió. El botón para continuar se bloquea mientras no haya respuesta.
+**La decisión.** La pregunta solo aparece cuando hay excedente. Si se deja como saldo a favor, la nota nace con saldo disponible para la siguiente compra; si se devuelve al cliente, se captura cómo se le devolvió. El botón para continuar se desactiva mientras no haya respuesta.
 
 **Lo que cuesta.** La pantalla cambia según los datos de la factura. Lo compensa que la decisión aparece justo donde se necesita, y no antes.
 
@@ -101,6 +102,7 @@ El asistente tiene tres pasos: buscar la factura, capturar los datos y confirmar
 - **Datos canónicos.** Cada caso usa los datos del documento de acuerdos con el cliente, así que las pantallas también sirven para validar las reglas.
 - **Tres tamaños sin multiplicar.** En 2560 están los doce casos. En 1920 y 1366 van solo los que cambian el diseño: captura por partidas, captura manual y devolución del dinero. Los demás solo cambian datos.
 - **La documentación dentro de la pantalla.** Cada regla va anotada junto a la pantalla donde aplica, con su criterio de requisitos.
+- **Una revisión antes de entregar.** Al revisar el diseño completo encontré errores en la identidad del documento, en cómo se mostraban las marcas y en partes que se empalmaban con otros proyectos del mismo release. Los corregí antes de pasarlo a desarrollo.
 
 ## Resultado
 
