@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ArrowUpRight } from "@phosphor-icons/react/ssr";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { hasLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getCases } from "@/lib/cases";
@@ -10,19 +10,12 @@ import { certifications } from "@/content/certifications";
 import { CaseCard } from "@/components/case-card";
 import { Reveal } from "@/components/reveal";
 import { CopyEmail } from "@/components/copy-email";
+import { ToolList } from "@/components/tool-list";
 
-/** Marca la última palabra del titular: en tinta y con el marcador vino suave. */
-function markLastWord(text: string) {
-  const i = text.trimEnd().lastIndexOf(" ");
-  const head = text.slice(0, i + 1);
-  const last = text.slice(i + 1).replace(/\.$/, "");
-  return (
-    <>
-      {head}
-      <span className="mark text-ink">{last}</span>.
-    </>
-  );
-}
+/** Rótulo de sección a la izquierda y contenido en las nueve columnas restantes */
+const sectionGrid = "mx-auto grid max-w-6xl gap-8 md:grid-cols-12";
+const sectionLabel = "label md:col-span-3 md:pt-1.5";
+const textLink = "group inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-ink";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -47,118 +40,186 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   };
 
   return (
-    <div className="px-4 sm:px-6">
+    <div className="px-5 sm:px-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
       />
-      {/* Hero: saludo y propuesta en dos tonos; deja ver el trabajo sin ocupar toda la pantalla */}
-      <section className="mx-auto max-w-6xl pb-20 pt-16 md:pb-28 md:pt-28">
+
+      {/* Hero: quién soy, qué hago y cómo contactarme. La foto es una firma, no la protagonista */}
+      <section className="mx-auto max-w-6xl pb-24 pt-14 md:pb-32 md:pt-24">
+        <div className="enter flex flex-wrap items-center gap-x-6 gap-y-4" style={{ "--i": 0 } as React.CSSProperties}>
+          <div className="flex items-center gap-3.5">
+            <Image
+              src="/img/roberto.webp"
+              alt={dict.about.photoAlt}
+              width={112}
+              height={112}
+              priority
+              className="size-14 rounded-full bg-surface-2 object-cover object-top"
+            />
+            <div>
+              <p className="text-[15px] font-medium text-ink">Roberto Báez</p>
+              <p className="text-sm text-muted">
+                {dict.hero.role} · {dict.hero.place}
+              </p>
+            </div>
+          </div>
+          <p className="inline-flex items-start gap-2 rounded-2xl border border-line px-3 py-1.5 text-[13px] leading-5 text-ink-2 sm:items-center sm:rounded-full">
+            <span aria-hidden className="relative mt-1.5 flex size-2 shrink-0 sm:mt-0">
+              <span className="absolute inline-flex size-full rounded-full bg-ok opacity-60 motion-safe:animate-ping" />
+              <span className="relative inline-flex size-2 rounded-full bg-ok" />
+            </span>
+            <span>
+              {dict.hero.available}
+              <span className="hidden sm:inline"> · </span>
+              <span className="block text-muted sm:inline">{dict.hero.availableWhere}</span>
+            </span>
+          </p>
+        </div>
+
         <h1
-          className="enter font-display max-w-[20ch] text-[clamp(38px,5.6vw,76px)] leading-[1.06] text-muted text-balance"
-          style={{ "--i": 0 } as React.CSSProperties}
-        >
-          <span className="text-ink">{dict.hero.greeting}</span> {markLastWord(dict.hero.title)}
-        </h1>
-        <div
-          className="enter mt-10 grid gap-6 md:mt-12 md:grid-cols-[1fr_auto] md:items-end"
+          className="enter font-display mt-12 max-w-[18ch] text-[clamp(40px,6vw,84px)] leading-[1.02] text-ink text-balance md:mt-16"
           style={{ "--i": 1 } as React.CSSProperties}
         >
-          <p className="max-w-[48ch] text-lg leading-relaxed text-ink-2 text-pretty">{dict.hero.lead}</p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href={`/${lang}/#work`}
-              className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-[15px] font-medium text-accent-ink transition-transform duration-150 active:scale-[0.97]"
-            >
-              {dict.hero.ctaWork}
-            </Link>
-            <Link
-              href={`/${lang}/#contact`}
-              className="inline-flex h-11 items-center rounded-full border border-line bg-surface px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
-            >
-              {dict.hero.ctaContact}
-            </Link>
-          </div>
+          {dict.hero.title}
+        </h1>
+        <p
+          className="enter mt-8 max-w-[58ch] text-lg leading-relaxed text-ink-2 text-pretty md:text-xl"
+          style={{ "--i": 2 } as React.CSSProperties}
+        >
+          {dict.hero.lead}
+        </p>
+        <div className="enter mt-10 flex flex-wrap items-center gap-x-7 gap-y-2" style={{ "--i": 3 } as React.CSSProperties}>
+          <Link
+            href={`/${lang}/#work`}
+            className="group inline-flex h-12 items-center gap-2 rounded-full bg-ink px-6 text-[15px] font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
+          >
+            {dict.hero.ctaWork}
+            <ArrowDown size={16} className="transition-transform duration-300 ease-out-quint group-hover:translate-y-0.5" />
+          </Link>
+          <Link href={`/${lang}/#contact`} className={textLink}>
+            <span className="link">{dict.hero.ctaContact}</span>
+          </Link>
+          <a href={site.linkedin} target="_blank" rel="noreferrer" className={textLink}>
+            <span className="link">LinkedIn</span>
+            <ArrowUpRight size={14} />
+          </a>
+          <Link href={`/${lang}/cv/`} className={textLink}>
+            <span className="link">{dict.nav.cv}</span>
+          </Link>
         </div>
       </section>
 
-      {/* Trabajo: dos columnas, la segunda desfasada para que la vista respire */}
+      {/* Trabajo: índice de casos; al pasar el cursor por uno, los demás se atenúan */}
       <section id="work" aria-labelledby="work-title" className="mx-auto max-w-6xl scroll-mt-20">
-        <h2 id="work-title" className="font-display mb-8 text-3xl text-ink md:mb-12 md:text-4xl">
-          {dict.work.title}
-        </h2>
-        <div className="grid gap-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16">
+        <div className="flex items-baseline justify-between pb-6">
+          <h2 id="work-title" className="label">
+            {dict.work.title}
+          </h2>
+          <span className="label">{String(cases.length).padStart(2, "0")}</span>
+        </div>
+        <ol className="index border-b border-line">
           {cases.map((item, i) => (
-            <Reveal key={item.slug} delay={(i % 2) * 0.08} className={i % 2 === 1 ? "md:mt-24" : undefined}>
-              <CaseCard item={item} locale={lang} />
-            </Reveal>
+            <li key={item.slug}>
+              <Reveal>
+                <CaseCard item={item} locale={lang} index={i} />
+              </Reveal>
+            </li>
           ))}
+        </ol>
+      </section>
+
+      {/* Trayectoria: aquí, y solo aquí, aparecen las empresas */}
+      <section id="experience" aria-labelledby="experience-title" className={`${sectionGrid} mt-28 scroll-mt-24 md:mt-40`}>
+        <h2 id="experience-title" className={sectionLabel}>
+          {dict.experience.title}
+        </h2>
+        <div className="md:col-span-9">
+          <ol className="border-b border-line">
+            {dict.experience.items.map((e, i) => (
+              <Reveal as="li" key={e.role} delay={i * 0.04} className="grid gap-2 border-t border-line py-7 sm:grid-cols-9 sm:gap-8">
+                <p className="label sm:col-span-2 sm:pt-1">{e.dates}</p>
+                <div className="sm:col-span-3">
+                  <h3 className="text-[17px] font-medium leading-snug text-ink">{e.role}</h3>
+                  <p className="mt-1 flex flex-wrap items-center gap-2 text-[15px] text-ink-2">
+                    {e.org}
+                    {e.cmmi && (
+                      <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.02em] text-ink-2">
+                        {dict.experience.cmmi}
+                      </span>
+                    )}
+                  </p>
+                </div>
+                <p className="text-[15px] leading-relaxed text-ink-2 sm:col-span-4">{e.body}</p>
+              </Reveal>
+            ))}
+          </ol>
+          <Link href={`/${lang}/cv/`} className={`${textLink} mt-4`}>
+            <span className="link">{dict.about.cvLink}</span>
+            <ArrowRight size={15} className="transition-transform duration-300 ease-out-quint group-hover:translate-x-1" />
+          </Link>
         </div>
       </section>
 
-      {/* Cómo trabajo */}
-      <section className="mx-auto mt-28 grid max-w-6xl gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
-        <div className="md:col-span-4">
-          <h2 className="font-display text-3xl text-ink md:sticky md:top-28 md:text-4xl">{dict.process.title}</h2>
-        </div>
-        <ol className="divide-y divide-line border-y border-line md:col-span-8">
+      {/* Cómo trabajo: principios numerados en dos columnas */}
+      <section aria-labelledby="process-title" className={`${sectionGrid} mt-28 md:mt-40`}>
+        <h2 id="process-title" className={sectionLabel}>
+          {dict.process.title}
+        </h2>
+        <ol className="grid gap-x-12 gap-y-12 sm:grid-cols-2 md:col-span-9">
           {dict.process.items.map((p, i) => (
-            <Reveal as="li" key={p.name} delay={i * 0.04} className="grid gap-2 py-6 sm:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] sm:gap-8">
-              <h3 className="text-[17px] font-semibold tracking-tight text-ink">{p.name}</h3>
-              <p className="leading-relaxed text-ink-2">{p.body}</p>
+            <Reveal as="li" key={p.name} delay={(i % 2) * 0.05}>
+              <span className="label">{String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-3 text-[19px] font-medium leading-snug tracking-tight text-ink">{p.name}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{p.body}</p>
             </Reveal>
           ))}
         </ol>
       </section>
 
-      {/* Sobre mí */}
-      <section id="about" className="mx-auto mt-28 grid max-w-6xl scroll-mt-24 gap-10 md:mt-40 md:grid-cols-12 md:gap-8">
-        <Reveal className="md:col-span-4">
-          {/* En claro, multiply funde el fondo gris de la foto con el crema de la superficie */}
-          <div className="w-full max-w-sm overflow-hidden rounded-surface border border-line bg-surface-2">
-            <Image
-              src="/img/roberto.webp"
-              alt={dict.about.photoAlt}
-              width={720}
-              height={900}
-              sizes="(min-width: 768px) 360px, 100vw"
-              className="aspect-[4/5] w-full object-cover mix-blend-multiply dark:mix-blend-normal"
-            />
-          </div>
-        </Reveal>
-        <Reveal delay={0.06} className="md:col-span-7 md:col-start-6">
-          <h2 className="font-display text-3xl text-ink md:text-4xl">{dict.about.title}</h2>
-          {dict.about.body.map((para) => (
-            <p key={para.slice(0, 24)} className="mt-5 max-w-[60ch] text-[17px] leading-[1.7] text-ink-2">
-              {para}
-            </p>
-          ))}
-          <Link
-            href={`/${lang}/cv/`}
-            className="mt-7 inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 text-[15px] font-medium text-ink transition-[background-color,transform] duration-150 hover:bg-surface-2 active:scale-[0.97]"
-          >
-            {dict.about.cvLink}
-            <ArrowRight size={15} />
-          </Link>
+      {/* Sobre mí: quién soy en grande; herramientas, idiomas y certificaciones en tamaño de consulta */}
+      <section id="about" aria-labelledby="about-title" className={`${sectionGrid} mt-28 scroll-mt-24 md:mt-40`}>
+        <h2 id="about-title" className={sectionLabel}>
+          {dict.about.title}
+        </h2>
+        <div className="md:col-span-9">
+          <Reveal>
+            {dict.about.body.map((para, i) => (
+              <p
+                key={para.slice(0, 24)}
+                className={`max-w-[46ch] text-pretty ${
+                  i === 0
+                    ? "font-display text-[24px] leading-[1.35] text-ink md:text-[30px]"
+                    : "mt-6 text-lg leading-relaxed text-ink-2"
+                }`}
+              >
+                {para}
+              </p>
+            ))}
+          </Reveal>
 
-          <div className="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-2">
+          <div className="mt-14 grid gap-10 border-t border-line pt-8">
             <div>
-              <h3 className="font-mono text-xs text-muted">{dict.about.tools}</h3>
-              <p className="mt-2 leading-relaxed text-ink">{dict.about.toolsList}</p>
+              <h3 className="label">{dict.about.tools}</h3>
+              <div className="mt-4">
+                <ToolList />
+              </div>
             </div>
             <div>
-              <h3 className="font-mono text-xs text-muted">{lang === "es" ? "Idiomas" : "Languages"}</h3>
-              <p className="mt-2 text-ink">{dict.about.languages}</p>
+              <h3 className="label">{dict.about.languagesTitle}</h3>
+              <p className="mt-3 text-[15px] text-ink">{dict.about.languages}</p>
             </div>
           </div>
-          <div className="mt-8">
-            <h3 className="font-mono text-xs text-muted">{dict.about.certifications}</h3>
-            <ul className="mt-2 divide-y divide-line">
+
+          <div className="mt-12">
+            <h3 className="label">{dict.about.certifications}</h3>
+            <ul className="mt-3 border-b border-line">
               {certifications[lang].map((c) => (
-                <li key={c.name} className="flex items-start justify-between gap-4 py-3">
+                <li key={c.name} className="flex items-start justify-between gap-4 border-t border-line py-4">
                   <div>
-                    <p className="font-medium text-ink">{c.name}</p>
-                    <p className="mt-0.5 text-sm text-ink-2">
+                    <p className="text-[15px] font-medium text-ink">{c.name}</p>
+                    <p className="mt-0.5 text-sm text-muted">
                       {c.issuer}, {c.date}
                     </p>
                   </div>
@@ -176,30 +237,30 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               ))}
             </ul>
           </div>
-          <div className="mt-8 flex flex-col gap-3 rounded-surface border border-line bg-surface p-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h3 className="font-medium text-ink">{dict.about.explorations}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-ink-2">{dict.about.explorationsBody}</p>
-            </div>
-            <a
-              href={site.behance}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-ink"
-            >
+
+          <p className="mt-8 text-[15px] leading-relaxed text-ink-2">
+            {dict.about.explorationsBody}{" "}
+            <a href={site.behance} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium text-ink">
               <span className="link">{dict.about.explorationsLink}</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={13} />
             </a>
-          </div>
-        </Reveal>
+          </p>
+        </div>
       </section>
 
-      {/* Contacto */}
-      <section id="contact" className="mx-auto mt-28 max-w-6xl scroll-mt-24 border-t border-line pt-14 md:mt-40 md:pt-20">
+      {/* Contacto: la invitación en grande y el correo a un clic */}
+      <section
+        id="contact"
+        aria-labelledby="contact-title"
+        className="mx-auto mt-28 max-w-6xl scroll-mt-24 border-t border-line pt-14 md:mt-40 md:pt-20"
+      >
         <Reveal>
-          <h2 className="font-display text-4xl text-ink md:text-6xl">{dict.contact.title}</h2>
-          <p className="mt-4 max-w-[48ch] text-lg text-ink-2">{dict.contact.body}</p>
-          <div className="mt-8">
+          <h2 id="contact-title" className="label">
+            {dict.nav.contact}
+          </h2>
+          <p className="font-display mt-6 max-w-[14ch] text-[clamp(40px,6vw,80px)] leading-[1.02] text-ink">{dict.contact.title}</p>
+          <p className="mt-6 max-w-[44ch] text-lg leading-relaxed text-ink-2">{dict.contact.body}</p>
+          <div className="mt-10">
             <CopyEmail email={site.email} copyLabel={dict.contact.copy} copiedLabel={dict.contact.copied} />
           </div>
         </Reveal>

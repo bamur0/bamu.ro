@@ -5,7 +5,7 @@ import { ClaudeCodeMark } from "./claude-code-mark";
 
 export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
-    <footer className="no-print mt-24 px-4 pb-10 sm:px-6">
+    <footer className="no-print mt-28 px-5 pb-10 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 text-sm text-muted sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-1.5">
           <p>

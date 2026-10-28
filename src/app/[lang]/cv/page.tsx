@@ -29,7 +29,7 @@ export default async function CvPage({ params }: PageProps<"/[lang]/cv">) {
   const dict = getDictionary(lang);
 
   return (
-    <div className="px-4 sm:px-6">
+    <div className="px-5 sm:px-8">
       <div className="no-print mx-auto flex max-w-[816px] items-center justify-between gap-4 pb-8 pt-10 md:pt-16">
         <h1 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">{dict.cv.title}</h1>
         <DownloadCvButton href={`/cv/roberto-baez-cv-${lang}.pdf`} label={dict.cv.download} />

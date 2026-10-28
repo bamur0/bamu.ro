@@ -36,7 +36,7 @@ export function CaseToc({ label, items }: { label: string; items: Item[] }) {
 
   return (
     <nav aria-label={label} className="sticky top-28">
-      <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{label}</p>
+      <p className="mb-3 text-[13px] font-semibold text-muted">{label}</p>
       <ol className="space-y-1 border-l border-line">
         {items.map((item) => {
           const on = item.id === active;

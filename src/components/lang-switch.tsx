@@ -52,7 +52,7 @@ export function LangSwitch({ to, label, short }: { to: Locale; label: string; sh
       lang={to}
       aria-label={label}
       title={label}
-      className="grid h-11 min-w-11 place-items-center rounded-full px-2.5 font-mono text-xs tracking-wide text-ink-2 transition-colors duration-150 hover:bg-surface-2 hover:text-ink sm:h-9 sm:min-w-9"
+      className="grid h-11 min-w-11 place-items-center rounded-full px-2.5 text-[13px] font-medium text-ink-2 transition-colors duration-150 hover:bg-surface-2 hover:text-ink sm:h-9 sm:min-w-9"
     >
       {short}
     </Link>

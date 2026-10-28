@@ -9,6 +9,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const copy = {
   es: {
+    label: "Acceso con correo",
     title: "Caso privado",
     lead: "Este caso muestra trabajo de un proyecto en curso, así que no es público. Déjame tu correo y entras directo.",
     email: "Tu correo",
@@ -18,6 +19,7 @@ const copy = {
     back: "Todos los casos",
   },
   en: {
+    label: "Email access",
     title: "Private case",
     lead: "This case shows work from an ongoing project, so it isn't public. Leave your email and you're in.",
     email: "Your email",
@@ -45,17 +47,19 @@ const cookieHeader = (value) => `${COOKIE}=${value}; Path=/; Max-Age=${MAX_AGE};
 
 function page(lang, { invalid = false, email = "" } = {}) {
   const t = copy[lang];
-  const body = `<h1>${escape(t.title)}</h1>
-  <p>${escape(t.lead)}</p>
-  <form method="post" class="card">
+  const body = `<p class="label">${escape(t.label)}</p>
+  <h1>${escape(t.title)}</h1>
+  <p class="lead">${escape(t.lead)}</p>
+  <form method="post">
     <label for="email">${escape(t.email)}</label>
     <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required autofocus value="${escape(email)}"${invalid ? ' aria-invalid="true" aria-describedby="email-error"' : ""}>
     ${invalid ? `<p class="error" id="email-error" role="alert">${escape(t.badEmail)}</p>` : ""}
     <input class="trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button type="submit">${escape(t.submit)}</button>
+    <button type="submit">${escape(t.submit)} <span aria-hidden="true">→</span></button>
     <p class="note">${escape(t.privacy)}</p>
   </form>`;
 
+  // Mismos tokens y tipografía que el sitio (src/app/globals.css)
   const html = `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -63,31 +67,50 @@ function page(lang, { invalid = false, email = "" } = {}) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>${escape(t.title)} · Roberto Báez</title>
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#f4ede1; --surface:#faf6ee; --surface-2:#ebe2d3; --ink:#2b1e1b; --ink-2:#5a4842; --muted:#76655c; --line:#e0d5c4; --accent:#7c1f30; --accent-ink:#fbf3e7; --danger:#b42318; --ridge:rgb(92 58 40 / 0.035); color-scheme: light dark; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#1b1513; --surface:#231b19; --surface-2:#2e2421; --ink:#f3eadf; --ink-2:#cdbfb1; --muted:#a29384; --line:#3b2f2b; --accent:#d77a88; --accent-ink:#2a0c12; --danger:#f97066; --ridge:rgb(255 236 220 / 0.025); } }
+  :root { --bg:#fbfbfa; --surface:#fff; --ink:#141414; --ink-2:#474747; --muted:#6f6f6f; --line:#e6e6e3; --danger:#b42318; color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0c0c0c; --surface:#151515; --ink:#ededed; --ink-2:#b5b5b5; --muted:#8f8f8f; --line:#262626; --danger:#f97066; } }
   * { box-sizing: border-box; }
-  body { margin:0; min-height:100dvh; display:grid; place-items:center; padding:16px; background:var(--bg) repeating-linear-gradient(90deg, transparent 0, var(--ridge) 3.5px, transparent 7px); color:var(--ink); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { width:100%; max-width:400px; }
-  a { color:var(--ink-2); font-size:14px; text-decoration:none; }
-  a:hover { color:var(--ink); }
-  h1 { margin:28px 0 8px; font-size:26px; line-height:1.15; letter-spacing:-0.02em; }
-  p { margin:0; color:var(--ink-2); }
-  .card { margin-top:24px; padding:20px; border:1px solid var(--line); border-radius:18px; background:var(--surface); }
+  body { margin:0; min-height:100dvh; display:flex; flex-direction:column; background:var(--bg); color:var(--ink); font:16px/1.5 Geist, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing:antialiased; }
+  header { display:flex; justify-content:space-between; align-items:center; max-width:1152px; width:100%; margin:0 auto; padding:20px; }
+  header a { color:var(--ink-2); font-size:15px; text-decoration:none; }
+  header a:hover { color:var(--ink); }
+  .logo { color:var(--ink); font-weight:500; }
+  .logo span { color:var(--muted); }
+  main { flex:1; display:grid; place-items:center; padding:24px 20px 80px; }
+  .wrap { width:100%; max-width:440px; }
+  .label { margin:0; font:12px/1.4 "Geist Mono", ui-monospace, monospace; text-transform:uppercase; color:var(--muted); }
+  h1 { margin:16px 0 0; font-size:44px; font-weight:500; line-height:1.04; letter-spacing:-0.035em; }
+  .lead { margin:16px 0 0; font-size:17px; color:var(--ink-2); text-wrap:pretty; }
+  form { margin-top:36px; padding-top:28px; border-top:1px solid var(--line); }
   label { display:block; font-size:14px; font-weight:500; }
-  input { width:100%; height:44px; margin-top:8px; padding:0 12px; border:1px solid var(--line); border-radius:10px; background:var(--bg); color:var(--ink); font:inherit; }
-  input:focus { outline:2px solid var(--accent); outline-offset:1px; }
+  input { width:100%; height:48px; margin-top:8px; padding:0 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); font:inherit; transition:border-color 150ms; }
+  input:hover { border-color:var(--muted); }
+  input:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+  input[aria-invalid="true"] { border-color:var(--danger); }
   .trap { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
-  .error { margin-top:8px; color:var(--danger); font-size:14px; }
-  .note { margin-top:12px; font-size:13px; color:var(--muted); }
-  button { display:grid; place-items:center; width:100%; height:44px; margin-top:16px; border:0; border-radius:999px; background:var(--accent); color:var(--accent-ink); font:inherit; font-size:16px; font-weight:500; cursor:pointer; }
-  button:active { transform:scale(0.98); }
+  .error { margin:8px 0 0; color:var(--danger); font-size:14px; }
+  .note { margin:14px 0 0; font-size:13px; color:var(--muted); }
+  button { display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%; height:48px; margin-top:16px; border:0; border-radius:999px; background:var(--ink); color:var(--bg); font:inherit; font-size:15px; font-weight:500; cursor:pointer; transition:transform 150ms; }
+  button span { transition:transform 300ms cubic-bezier(0.22,1,0.36,1); }
+  button:hover span { transform:translateX(3px); }
+  button:active { transform:scale(0.97); }
+  button:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+  @media (min-width:640px) { header { padding:20px 32px; } h1 { font-size:56px; } }
 </style>
 </head>
 <body>
-<main>
+<header>
+  <a class="logo" href="/${lang}/">bamu<span>.ro</span></a>
   <a href="/${lang}/#work">← ${escape(t.back)}</a>
+</header>
+<main>
+  <div class="wrap">
   ${body}
+  </div>
 </main>
 </body>
 </html>`;

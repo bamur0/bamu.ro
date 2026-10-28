@@ -41,7 +41,7 @@ export function MobileMenu({ items, openLabel, closeLabel }: { items: Item[]; op
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ type: "spring", duration: 0.3, bounce: 0 }}
-            className="absolute inset-x-0 top-16 border-b border-line bg-bg px-4 pb-4"
+            className="absolute inset-x-0 top-16 border-b border-line bg-bg px-5 pb-4"
           >
             <ul className="divide-y divide-line">
               {items.map((item) => (
